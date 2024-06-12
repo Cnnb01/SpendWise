@@ -1,0 +1,40 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F9E897;
+}
+
+#form {
+    border: 1px solid;
+    padding: 20px;
+    background-color: #ffffff;
+    display: inline-block;
+}
+
+form {
+    padding: 20px;
+    background-color: #F9E897;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    width: calc(100% - 40px); /* subtract the total left and right padding */
+    border: none;
+    border-bottom: 1px solid #000;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #F9E897;
+    outline: none;
+}
+
+input[type=submit] {
+    border-radius: 12px;
+    margin-top: 20px;
+    background-color: #124076;
+    color: #ffffff;
+}
+
+
