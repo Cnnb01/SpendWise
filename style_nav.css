@@ -23,8 +23,8 @@ body, html {
 }
 
 #navbar_home.selected, #navbar_expenses.selected, #navbar_budget.selected {
-    background-color: #0F3057;
-    color: #FFFFFF;
+    background-color:#D1DFFA;
+    color: #000000;
 }
 
 /* login and signup */
