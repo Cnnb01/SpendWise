@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style_budgets_create.css">
+    <title>Create Budget</title>
+</head>
+<body>
+    <h1>Create New Budget</h1>
+    <div id="form_container">
+        <form id="budget_form">
+            <label for="budget_title">Budget Title</label><br>
+            <input type="text" id="budget_title" name="budget_title"><br>
+            <label for="item_name">Item Name</label><br>
+            <input type="text" id="item_name" name="item_name"><br>
+            <label for="amount_budgeted">Amount Budgeted</label><br>
+            <input type="number" id="amount_budgeted" name="amount_budgeted"><br>
+            <button type="button" id="submit_button">Submit</button>
+            <button type="button" id="done_button">Done</button>
+            <button type="button" id="back_button">Back</button>
+        </form>
+    </div>
+    <script>
+        var budgetItems = JSON.parse(localStorage.getItem('budgetItems')) || [];
+
+        document.getElementById('submit_button').addEventListener('click', function() {
+            var budgetTitle = document.getElementById('budget_title').value;
+            var itemName = document.getElementById('item_name').value;
+            var amountBudgeted = document.getElementById('amount_budgeted').value;
+            // Save the budget item to local storage
+            budgetItems.push({
+                budgetTitle: budgetTitle,
+                itemName: itemName,
+                amountBudgeted: amountBudgeted
+            });
+            localStorage.setItem('budgetItems', JSON.stringify(budgetItems));
+            // Clear the form fields
+            document.getElementById('budget_title').value = '';
+            document.getElementById('item_name').value = '';
+            document.getElementById('amount_budgeted').value = '';
+        });
+
+        document.getElementById('done_button').addEventListener('click', function() {
+            // Redirect to the Budget Display page
+            window.location.href = 'budgets_display.html';
+        });
+
+        document.getElementById('back_button').addEventListener('click', function() {
+            // Redirect to the Create Budget page
+            window.location.href = 'budgets.html';
+        });
+    </script>
+</body>
+</html>
