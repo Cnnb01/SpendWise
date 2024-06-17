@@ -4,9 +4,9 @@
 
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Numeric
 from datetime import datetime
+from base_model import Base
 
-
-class Expense:
+class Expense(Base):
     """Represents an expense"""
 
     __tablename__ = 'expenses'

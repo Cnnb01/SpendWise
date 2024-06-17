@@ -3,9 +3,9 @@
 """Represents a user of the application"""
 
 from sqlalchemy import Column, Integer, String
+from base_model import Base
 
-
-class User:
+class User(Base):
     """A user of the application"""
 
     __tablename__ = 'users'
