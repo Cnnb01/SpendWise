@@ -6,6 +6,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Numeric
 from datetime import datetime
 from base_model import Base
 
+
 class Budget(Base):
     """Represents a budget created by a user"""
 

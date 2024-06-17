@@ -5,6 +5,7 @@
 from sqlalchemy import Column, Integer, String
 from base_model import Base
 
+
 class Category(Base):
     """Represents a category that any item can belong to"""
 
