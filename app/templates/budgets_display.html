@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/style_budgets_display.css">
+    <script src="../static/js/budgets_display.js"></script>
     <title>Display Budget</title>
 </head>
 <body>
@@ -19,30 +20,5 @@
         </tr>
     </table>
     <button id="back_button">Back</button>
-    <script>
-        // Load the budget items from local storage
-        var budgetItems = JSON.parse(localStorage.getItem('budgetItems')) || [];
-        budgetItems.forEach(function(budgetItem) {
-            // Add a new row to the table for each budget item
-            var newRow = document.createElement('tr');
-            newRow.innerHTML = '<td>' + budgetItem.budgetTitle + '</td><td>' + budgetItem.itemName + '</td><td>' + budgetItem.amountBudgeted + '</td><td contenteditable="true" class="amount_spent"></td><td class="remainder"></td>';
-            document.getElementById('budget_table').appendChild(newRow);
-        });
-
-        // Calculate the remainder/excess whenever the Amount Spent field is updated
-        document.querySelectorAll('.amount_spent').forEach(function(element) {
-            element.addEventListener('input', function() {
-                var amountSpent = parseFloat(this.innerText);
-                var amountBudgeted = parseFloat(this.previousElementSibling.innerText);
-                var remainder = amountBudgeted - amountSpent;
-                this.nextElementSibling.innerText = remainder.toFixed(2);
-            });
-        });
-
-        document.getElementById('back_button').addEventListener('click', function() {
-            // Redirect to the Create Budget page
-            window.location.href = 'budgets_create.html';
-        });
-    </script>
 </body>
 </html>
