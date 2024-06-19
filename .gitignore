@@ -1,3 +1,6 @@
+# helper scripts
+setup_spendwise_test_db.sql
+
 # drawio files
 *.drawio
 *.bkp
