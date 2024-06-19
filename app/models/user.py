@@ -3,7 +3,7 @@
 """Represents a user of the application"""
 
 from sqlalchemy import Column, Integer, String
-from base_model import Base
+from .base_model import Base
 from sqlalchemy.orm import relationship
 from werkzeug.security import generate_password_hash, check_password_hash
 

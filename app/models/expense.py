@@ -4,7 +4,7 @@
 
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Numeric
 from datetime import datetime
-from base_model import Base
+from .base_model import Base
 
 
 class Expense(Base):
