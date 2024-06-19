@@ -4,11 +4,11 @@
 
 import os
 from sqlalchemy import create_engine, MetaData
-from models.base_model import Base
-from models.budget import Budget
-from models.category import Category
-from models.expense import Expense
-from models.user import User
+from ..base_model import Base
+from ..budget import Budget
+from ..category import Category
+from ..expense import Expense
+from ..user import User
 
 
 class DB:
