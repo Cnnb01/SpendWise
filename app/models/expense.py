@@ -12,7 +12,9 @@ class Expense(Base):
 
     __tablename__ = 'expenses'
 
-    expenseId = Column(Integer, nullable=False, autoincrement=True)
+    expenseId = Column(
+        Integer, nullable=False, autoincrement=True, primary_key=True
+    )
     userId = Column(Integer, ForeignKey('users.userId'), nullable=False)
     categoryId = Column(
         Integer, ForeignKey('categories.categoryId'), nullable=False

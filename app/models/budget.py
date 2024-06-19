@@ -12,7 +12,9 @@ class Budget(Base):
 
     __tablename__ = 'budgets'
 
-    budgetId = Column(Integer, nullable=False, autoincrement=True)
+    budgetId = Column(
+        Integer, nullable=False, autoincrement=True, primary_key=True
+    )
     categoryId = Column(
         Integer, ForeignKey('categories.categoryId'), nullable=False
     )

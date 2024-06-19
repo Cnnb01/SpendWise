@@ -11,5 +11,5 @@ class Category(Base):
 
     __tablename__ = 'categories'
 
-    categoryId = Column(Integer, nullable=False)
-    categoryName = Column(String(60), nullable=False)
+    categoryId = Column(Integer, nullable=False, primary_key=True)
+    categoryName = Column(String(60), nullable=False, primary_key=True)
