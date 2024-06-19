@@ -12,10 +12,13 @@ class Budget(Base):
 
     __tablename__ = 'budgets'
 
-    expenseId = Column(Integer, nullable=False)
+    budgetId = Column(Integer, nullable=False, autoincrement=True)
     categoryId = Column(
         Integer, ForeignKey('categories.categoryId'), nullable=False
     )
-    userId = Column(Integer, ForeignKey('users.userId'))
-    dateAdded = Column(DateTime, default=datetime.utcnow)
-    expenseAmount = Column(Numeric(10, 2))
+    userId = Column(Integer, ForeignKey('users.userId'), nullable=False)
+    budgetTitle = Column(String(60), nullable=False)
+    dateCreated = Column(DateTime, default=datetime.utcnow)
+    amountPredicted = Column(Numeric(10, 2), nullable=False)
+    amountSpent = Column(Numeric(10, 2), nullable=True)
+    balance = Column(Numeric(10, 2), nullable=True)
