@@ -4,6 +4,7 @@
 
 from sqlalchemy import Column, Integer, String
 from base_model import Base
+from sqlalchemy.orm import relationship
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -19,6 +20,9 @@ class User(Base):
     firstName = Column(String(150), nullable=False)
     email = Column(String(80), nullable=False)
     hashedPwd = Column(String(128), nullable=False)
+
+    # one-to-many relationship with Budget
+    budgets = relationship('Budget', back_populates='user')
 
     def get_pwd_hash(self, password):
         """Gets a hashed version of the provided password"""
