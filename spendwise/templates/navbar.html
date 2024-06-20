@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style_nav.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="navbar"> 
+        <div class="navbar_item" id="navbar_home">Home</div>
+        <div class="navbar_item" id="navbar_expenses">Expenses</div>
+        <div class="navbar_item" id="navbar_budget">Budget</div>
+    </div>
+
+    <script>
+        // Get all navbar items
+        var navbarItems = document.getElementsByClassName('navbar_item');
+
+        // Function to remove 'selected' class from all items
+        function removeSelectedClass() {
+            for (var i = 0; i < navbarItems.length; i++) {
+                navbarItems[i].classList.remove('selected');
+            }
+        }
+
+        // Add event listener to each item
+        for (var i = 0; i < navbarItems.length; i++) {
+            navbarItems[i].addEventListener('click', function() {
+                // Remove 'selected' class from all items
+                removeSelectedClass();
+
+                // Add 'selected' class to clicked item
+                this.classList.add('selected');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -3,10 +3,10 @@
 """Runs the spendwise application"""
 
 from flask import Flask, render_template
-from app.models import storage
+from spendwise.models import storage
 
 app = Flask(
-    __name__, template_folder='app/templates', static_folder='app/static'
+    __name__, template_folder='spendwise/templates', static_folder='spendwise/static'
 )
 
 
