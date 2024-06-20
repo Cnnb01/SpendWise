@@ -1,5 +1,9 @@
 # helper scripts
-setup_spendwise_test_db.sql
+/helpers/
+run_app_in_test_env.sh
+setup_mysqldb_user.sh
+setup_python_dev_environment.sh
+
 
 # drawio files
 *.drawio
