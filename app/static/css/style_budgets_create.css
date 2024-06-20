@@ -1,0 +1,81 @@
+body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #124076;
+    background-color: #D1DFFA;
+}
+
+h1 {
+    text-align: center;
+}
+
+#add_item {
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: 20px auto;
+    background-color: #124076;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+#form_container {
+    border-radius: 20px;
+    width: 500px;
+    margin: 40px auto; /* Add padding for better spacing */
+    padding: 20px; /* Padding for form elements */
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
+}
+
+#budget_form {
+    display: flex;
+    flex-direction: column;
+}
+
+#budget_form label {
+    margin-top: 10px;
+}
+
+#budget_form input[type="text"],
+#budget_form input[type="number"] {
+    padding: 5px;
+}
+
+#budget_form input[type="submit"] {
+    margin-top: 10px;
+    background-color: #124076;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#budget_form button {
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: #124076;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#budget_table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+#budget_table th {
+    background-color: #124076;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+}
+
+#budget_table td {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
