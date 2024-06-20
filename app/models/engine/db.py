@@ -25,7 +25,7 @@ class DB:
         )
         # drop all tables in the test environment
         if os.getenv('SPENDWISE_ENV') == 'test':
-            Base.metadata.dropall(bind=self.__engine)
+            Base.metadata.drop_all(bind=self.__engine)
 
     def reload(self):
         """Creates all tables defined in the database schema, and starts a database
