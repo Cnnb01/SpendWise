@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style_nav.css">
+    <link rel="stylesheet" href="../static/css/style_homepage.css">
+    <title>Spendwise</title>
+</head>
+<body>
+
+    <div class="flex-container">
+        <div id="navbar"> 
+            <a class="navbar_item" id="navbar_home" href="homepage.html">Home</a>
+            <a class="navbar_item" id="navbar_expenses" href="expenses.html">Expenses</a>
+            <a class="navbar_item" id="navbar_budget" href="budget.html">Budget</a>
+        </div>
+    
+        <div class="grid-container">
+            <div id="logo">
+                <img src="../images/no_background_logo.png" alt="Logo" id="centered_image">
+            </div>
+            <div id="text1">
+                At SpendWise, we help you manage your finances better and spend wisely.
+            </div> 
+            <div id="text2">
+                Track your expenses, set budgets, and achieve your financial goals with ease.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const navbarItems = document.getElementsByClassName('navbar_item');
+
+        // Function to remove 'selected' class from all items
+        function removeSelectedClass() {
+            for (let i = 0; i < navbarItems.length; i++) {
+                navbarItems[i].classList.remove('selected');
+            }
+        }
+
+        // Function to save selected item in localStorage
+        function saveSelectedNavItem(index) {
+            localStorage.setItem('selectedNavbarItem', index);
+        }
+
+        // Function to set 'selected' class based on current page URL
+        function setSelectedNavItem() {
+            const path = window.location.pathname.split('/').pop(); // Get the current page
+            for (let i = 0; i < navbarItems.length; i++) {
+                const href = navbarItems[i].getAttribute('href');
+                if (path === href) {
+                    navbarItems[i].classList.add('selected');
+                    saveSelectedNavItem(i);  // Save the selected item in localStorage
+                    break;
+                }
+            }
+        }
+
+        // Event listeners to update selected navbar item when clicked
+        for (let i = 0; i < navbarItems.length; i++) {
+            navbarItems[i].addEventListener('click', function(event) {
+                removeSelectedClass(); // Remove 'selected' class from all items
+                this.classList.add('selected'); // Add 'selected' class to clicked item
+                saveSelectedNavItem(i); // Save selected item index in localStorage
+            });
+        }
+
+        // Set selected navbar item on page load
+        setSelectedNavItem();
+    });
+
+    </script>
+</body>
+</html>
