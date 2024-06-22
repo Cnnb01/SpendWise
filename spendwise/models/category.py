@@ -5,6 +5,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from .base_model import Base
+from .junction_tables import budget_category_table
 
 
 class Category(Base):
@@ -17,5 +18,5 @@ class Category(Base):
 
     # many-to-many relationship with Budget, via BudgetCategory junction table
     budgets = relationship(
-        'Budget', secondary='budget_category', back_populates='categories'
+        'Budget', secondary=budget_category_table, back_populates='categories'
     )

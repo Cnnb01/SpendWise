@@ -6,6 +6,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Numeric
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from .base_model import Base
+from .junction_tables import budget_category_table
 
 
 class Budget(Base):
@@ -28,7 +29,7 @@ class Budget(Base):
 
     # many-to-many relationship with Category, via BudgetCategory junction table
     categories = relationship(
-        'Category', secondary='budget_category', back_populates='budgets'
+        'Category', secondary=budget_category_table, back_populates='budgets'
     )
     # one-to-many relationship with User
     user = relationship('User', back_populates='budgets')
