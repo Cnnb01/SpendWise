@@ -19,7 +19,7 @@ class User(Base):
     lastName = Column(String(150), nullable=False)
     firstName = Column(String(150), nullable=False)
     email = Column(String(80), nullable=False)
-    hashedPwd = Column(String(128), nullable=False)
+    hashedPwd = Column(String(256), nullable=False)
 
     # one-to-many relationship with Budget
     budgets = relationship('Budget', back_populates='user')
