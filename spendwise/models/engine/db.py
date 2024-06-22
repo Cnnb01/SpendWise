@@ -4,6 +4,7 @@
 
 import os
 from sqlalchemy import create_engine, MetaData
+from sqlalchemy.orm import sessionmaker, scoped_session
 from ..base_model import Base
 from ..budget import Budget
 from ..category import Category
@@ -27,7 +28,20 @@ class DB:
         if os.getenv('SPENDWISE_ENV') == 'test':
             Base.metadata.drop_all(bind=self.__engine)
 
+    def new(self, obj):
+        """Adds this object to the current database session"""
+        self.__session.add(obj)
+
+    def save(self):
+        """Saves and applies all current db session changes"""
+        self.__session.commit()
+
     def reload(self):
         """Creates all tables defined in the database schema, and starts a database
         session"""
         Base.metadata.create_all(self.__engine)
+        session_factory = sessionmaker(
+            bind=self.__engine, expire_on_commit=False
+        )
+        Session = scoped_session(session_factory)
+        self.__session = Session
