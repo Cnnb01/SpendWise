@@ -3,18 +3,20 @@
 <head>
     <title>Sign Up</title>
     <link rel="stylesheet" type="text/css" href="../static/css/style_log_sign.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../static/js/signup.js"></script>
 </head>
 <body>
     <div id="form">
         <h2>Sign Up</h2>
-    <form>
-        <input type="text" id="name" name="name" placeholder="Name"><br>
+    <form id="signup-form", method="post">
+        <input type="text" id="first-name" name="first name" placeholder="First name"><br>
+        <input type="text" id="last-name" name="last name" placeholder="Last name"><br>
         <input type="email" id="email" name="email" placeholder="Email"><br>
-        <input type="password" id="password" name="password" placeholder="Password"><br>
-        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password"><br>
+        <input type="password" id="passwd" name="password" placeholder="Password"><br>
+        <input type="password" id="confirm-passwd" name="confirm password" placeholder="Confirm Password"><br>
         <input type="submit" id="signup" value="Sign Up">
     </form>
     </div>
-    
 </body>
 </html>
