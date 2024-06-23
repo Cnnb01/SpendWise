@@ -11,7 +11,20 @@ from ..category import Category
 from ..expense import Expense
 from ..user import User
 
-# classes = {"Budget": Budget, "BudgetCategory":BudgetCategory, "Category":Category, "Expense":Expense, "User":User}
+classes = {
+    "Budget": Budget,
+    "Category": Category,
+    "Expense": Expense,
+    "User": User,
+}
+
+id_names = {
+    "Budget": 'BudgetId',
+    "Category": 'CategoryId',
+    "Expense": 'ExpenseId',
+    "User": 'UserId',
+}
+
 
 class DB:
     """Manages database storage actions for the application"""
@@ -34,17 +47,16 @@ class DB:
         """Returns the current database session"""
         return self.__session
 
-    # def all(self, cls=None):
-    #     """query on the current database session"""
-    #     new_dict = {}
-    #     for clss in classes:
-    #         if cls is None or cls is classes[clss] or cls is clss:
-    #             objs = self.__session.query(classes[clss]).all()
-    #             for obj in objs:
-    #                 key = obj.__class__.__name__ + '.' + obj.id
-    #                 new_dict[key] = obj
-    #     return (new_dict)
+    def all(self, cls=None):
+        """Returns all objects for the provided class ..."""
+        new_dict = {}
 
+        obj_name = cls.__name__  # 'Budget'
+        objs = self.__session.query(classes[cls]).all()
+        for obj in objs:
+            key = obj.__class__.__name__ + '.' + f'{obj}.{id_names[obj_name]}'
+            new_dict[key] = obj
+        return new_dict
 
     def new(self, obj):
         """Adds this object to the current database session"""
