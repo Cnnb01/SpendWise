@@ -11,6 +11,7 @@ from ..category import Category
 from ..expense import Expense
 from ..user import User
 
+# classes = {"Budget": Budget, "BudgetCategory":BudgetCategory, "Category":Category, "Expense":Expense, "User":User}
 
 class DB:
     """Manages database storage actions for the application"""
@@ -33,6 +34,18 @@ class DB:
         """Returns the current database session"""
         return self.__session
 
+    # def all(self, cls=None):
+    #     """query on the current database session"""
+    #     new_dict = {}
+    #     for clss in classes:
+    #         if cls is None or cls is classes[clss] or cls is clss:
+    #             objs = self.__session.query(classes[clss]).all()
+    #             for obj in objs:
+    #                 key = obj.__class__.__name__ + '.' + obj.id
+    #                 new_dict[key] = obj
+    #     return (new_dict)
+
+
     def new(self, obj):
         """Adds this object to the current database session"""
         self.__session.add(obj)
@@ -40,6 +53,11 @@ class DB:
     def save(self):
         """Saves and applies all current db session changes"""
         self.__session.commit()
+
+    def delete(self, obj=None):
+        """delete from the current database session obj if not None"""
+        if obj is not None:
+            self.__session.delete(obj)
 
     def reload(self):
         """Creates all tables defined in the database schema, and starts a database
