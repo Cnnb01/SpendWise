@@ -28,6 +28,11 @@ class DB:
         if os.getenv('SPENDWISE_ENV') == 'test':
             Base.metadata.drop_all(bind=self.__engine)
 
+    @property
+    def session(self):
+        """Returns the current database session"""
+        return self.__session
+
     def new(self, obj):
         """Adds this object to the current database session"""
         self.__session.add(obj)

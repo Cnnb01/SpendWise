@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, Blueprint, request
+from flask import Flask, Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash
 from ...models.user import User
 from ...models import storage
@@ -17,6 +17,13 @@ def signup():
     email = data.get('email')
     passwd = data.get('passwd')
 
+    # check if this user already exists
+    user_exists = storage.session.query(User).filter_by(email=email).first()
+    if user_exists:
+        print('User already exists!!!!!')  # DEBUG
+        message = 'User already exists. If this is you, please log in'
+        return (jsonify({'message': message}), 400)
+
     # create user to be added to the db
     user = User(
         lastName=last_name,
@@ -27,4 +34,7 @@ def signup():
     storage.new(user)
     storage.save()
 
-    return "Registration successful!"
+    return (
+        jsonify({'message': 'Successfully signed up!'}),
+        200,
+    )
