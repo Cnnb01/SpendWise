@@ -6,13 +6,15 @@ from models.budget_category import BudgetCategory
 from models.category import Category
 from models.expense import Expense
 from models.user import User
-from models import storage #for the count method to be created
+from models import storage  # for the count method to be created
 from flask import jsonify
+
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
 def status():
-    """ Status of API """
+    """Status of API"""
     return jsonify({"status": "OK"})
+
 
 @app_views.routes('/stats', methods=['GET'], strict_slashes=False)
 def number_objects():

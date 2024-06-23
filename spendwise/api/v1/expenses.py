@@ -8,6 +8,7 @@ from ...models.expense import Expense
 
 app_views = Blueprint('app_views', __name__)
 
+
 @app_views.route('/expenses', methods=['GET'], strict_slashes=False)
 def get_expenses():
     expenses = storage.all(Expense)
@@ -16,10 +17,13 @@ def get_expenses():
 
 # def get_expense():
 
-@app_views.route('/expenses/<expenseId>', methods=['POST'], strict_slashes=False)
+
+@app_views.route(
+    '/expenses/<expenseId>', methods=['POST'], strict_slashes=False
+)
 def add_expense():
     if not request.get_json():
-        abort(400, description="Not a JSON") 
+        abort(400, description="Not a JSON")
     if 'name' not in request.get_json():
         abort(400, description="Missiong name")
     expense = Expense(name=request.get_json()['name'])
@@ -27,7 +31,10 @@ def add_expense():
     storage.save()
     return make_response(jsonify(expense.to_dict()), 201)
 
-@app_views.route('/expenses/<expenseId>', methods=['PUT'], strict_slashes=False)
+
+@app_views.route(
+'/expenses/<expenseId>', methods=['PUT'], strict_slashes=False
+)
 def update_expense(expenseId):
     expense = storage.get(Expense, expenseId)
     if expense is None:
@@ -35,12 +42,13 @@ def update_expense(expenseId):
     if not request.get_json():
         abort(400, description="Not a JSON")
     data = request.get_json()
-    for k,v in data.items():
+    for k, v in data.items():
         if k != 'id':
             setattr(expense, k, v)
     storage.save()
     return make_response(jsonify(expense.to_dict()), 200)
-        #incomplete
+    # incomplete
+
 
 # @app_views
 # def delete_expense(expenseId):
@@ -50,4 +58,3 @@ def update_expense(expenseId):
 #     storage.delete(expense)
 #     storage.save()
 #     return make_response(jsonify({}), 200)
-
