@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 "handels APIs for expenses"
-from api.v1.views import app_views
-from flask import jsonify, abort, request, make_response
-from models import storage
-from models.expense import Expense
+# from api.v1.views import app_views
+from flask import Flask, Blueprint, jsonify, abort, request, make_response
+from ...models import storage
+from ...models.expense import Expense
+
+
+app_views = Blueprint('app_views', __name__)
 
 @app_views.route('/expenses', methods=['GET'], strict_slashes=False)
 def get_expenses():
@@ -39,12 +42,12 @@ def update_expense(expenseId):
     return make_response(jsonify(expense.to_dict()), 200)
         #incomplete
 
-@app_views
-def delete_expense(expenseId):
-    expense = storage.get(Expense, expenseId)
-    if expense is None:
-        abort(404)
-    storage.delete(expense)
-    storage.save()
-    return make_response(jsonify({}), 200)
+# @app_views
+# def delete_expense(expenseId):
+#     expense = storage.get(Expense, expenseId)
+#     if expense is None:
+#         abort(404)
+#     storage.delete(expense)
+#     storage.save()
+#     return make_response(jsonify({}), 200)
 
