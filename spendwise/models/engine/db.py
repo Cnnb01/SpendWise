@@ -11,6 +11,7 @@ from ..category import Category
 from ..expense import Expense
 from ..user import User
 
+# our classes and id mapping
 classes = {
     "Budget": Budget,
     "Category": Category,
@@ -19,18 +20,17 @@ classes = {
 }
 
 id_names = {
-    "Budget": 'BudgetId',
-    "Category": 'CategoryId',
-    "Expense": 'ExpenseId',
-    "User": 'UserId',
+    "Budget": 'budgetId',
+    "Category": 'categoryId',
+    "Expense": 'expenseId',
+    "User": 'userId',
 }
-
 
 class DB:
     """Manages database storage actions for the application"""
 
     def __init__(self):
-        self.__engine = create_engine(
+        self.__engine = create_engine( #create_engine creates a connection to db using creds from env vars
             'mysql+mysqldb://{}:{}@{}/{}'.format(
                 os.getenv('SPENDWISE_MYSQL_USER'),
                 os.getenv('SPENDWISE_MYSQL_PWD'),
@@ -38,24 +38,27 @@ class DB:
                 os.getenv('SPENDWISE_MYSQL_DB'),
             )
         )
-        # drop all tables in the test environment
-        if os.getenv('SPENDWISE_ENV') == 'test':
-            Base.metadata.drop_all(bind=self.__engine)
+        self.__session = None
+        self.reload() #initializes the db session.
 
     @property
     def session(self):
         """Returns the current database session"""
         return self.__session
 
-    def all(self, cls=None):
-        """Returns all objects for the provided class ..."""
+    def all(self, cls):
+        """Returns all objects for the provided class"""
+        objs = self.__session.query(cls).all()#retrieves all records of the given class from the database.
         new_dict = {}
 
-        obj_name = cls.__name__  # 'Budget'
-        objs = self.__session.query(classes[cls]).all()
         for obj in objs:
-            key = obj.__class__.__name__ + '.' + f'{obj}.{id_names[obj_name]}'
-            new_dict[key] = obj
+            key_name = id_names.get(obj.__class__.__name__)#retrieves the name of the pk for the class of the current object (obj). It looks up the class name in the id_names dictionary
+            if key_name:
+                key = obj.__class__.__name__ + '.' + str(getattr(obj, key_name))
+                #key = 'Expense' + '.' + '1'
+                new_dict[key] = obj #stores each object in a dictionary with a unique key
+            else:
+                print(f"Warning: Attribute not found for class {obj.__class__.__name__}")
         return new_dict
 
     def new(self, obj):
@@ -67,16 +70,13 @@ class DB:
         self.__session.commit()
 
     def delete(self, obj=None):
-        """delete from the current database session obj if not None"""
+        """Delete from the current database session obj if not None"""
         if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
-        """Creates all tables defined in the database schema, and starts a database
-        session"""
-        Base.metadata.create_all(self.__engine)
-        session_factory = sessionmaker(
-            bind=self.__engine, expire_on_commit=False
-        )
+        """Creates all tables defined in the database schema, and starts a database session"""
+        Base.metadata.create_all(self.__engine) #creates all tables in the database that are defined by the models.
+        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
-        self.__session = Session
+        self.__session = Session()
