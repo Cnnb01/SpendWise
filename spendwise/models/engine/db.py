@@ -40,6 +40,7 @@ class DB:
         )
         self.__session = None
         self.reload() #initializes the db session.
+        
 
     @property
     def session(self):

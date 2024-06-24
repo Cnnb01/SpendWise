@@ -5,6 +5,7 @@
 from flask import Flask, render_template
 from spendwise.api.v1.auth import auth_bp
 from spendwise.api.v1.expenses import app_views
+from spendwise.api.v1.categories import app_views
 from spendwise.models import storage
 
 app = Flask(
