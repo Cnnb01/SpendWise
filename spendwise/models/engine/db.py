@@ -80,3 +80,10 @@ class DB:
         session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
+
+    def get(self, cls, id):
+        """Retrieve an object based on its class and primary key"""
+        key_name = id_names.get(cls.__name__) #cls.__name__ is the name of the class specified eh Expense
+        if not key_name:
+            return None
+        return self.__session.query(cls).filter(getattr(cls, key_name) == id).first()

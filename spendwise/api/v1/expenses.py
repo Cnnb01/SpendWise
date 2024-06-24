@@ -52,3 +52,9 @@ def delete_expense(expenseId):
     storage.delete(expense)
     storage.save()
     return make_response(jsonify({}), 200)
+
+# commands i used to test out the APIs, you have to have a user and an expense in the db
+# curl -X GET http://localhost:5000/api/v1/expenses
+# curl -X PUT http://localhost:5000/api/v1/expenses/1 -H "Content-Type: application/json" -d '{"expenseAmount": 150.00, "categoryId": 3}'
+# curl -X POST http://localhost:5000/api/v1/expenses -H "Content-Type: application/json" -d '{"userId": 1, "categoryId": 1, "expenseAmount": 100.00}'
+# curl -X DELETE http://localhost:5000/api/v1/expenses/1
