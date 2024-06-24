@@ -30,7 +30,8 @@ class DB:
     """Manages database storage actions for the application"""
 
     def __init__(self):
-        self.__engine = create_engine( #create_engine creates a connection to db using creds from env vars
+        #create_engine creates a connection to db using creds from env vars
+        self.__engine = create_engine(
             'mysql+mysqldb://{}:{}@{}/{}'.format(
                 os.getenv('SPENDWISE_MYSQL_USER'),
                 os.getenv('SPENDWISE_MYSQL_PWD'),
@@ -39,8 +40,11 @@ class DB:
             )
         )
         self.__session = None
+        # drop all tables in the test environment
+        if os.getenv('SPENDWISE_ENV') == 'test':
+            Base.metadata.drop_all(bind=self.__engine)
+
         self.reload() #initializes the db session.
-        
 
     @property
     def session(self):
