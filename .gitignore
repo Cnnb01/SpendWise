@@ -1,6 +1,7 @@
 # helper scripts
 /helpers/
 run_app_in_test_env.sh
+run_app_in_dev_env.sh
 setup_mysqldb_user.sh
 setup_python_dev_environment.sh
 
