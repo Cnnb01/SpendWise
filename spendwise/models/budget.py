@@ -25,7 +25,7 @@ class Budget(Base):
     dateCreated = Column(DateTime, default=datetime.utcnow)
     amountPredicted = Column(Numeric(10, 2), nullable=False)
     amountSpent = Column(Numeric(10, 2), nullable=True)
-    balance = Column(Numeric(10, 2), nullable=True)
+    balance = Column(Numeric(10, 2), nullable=True) #balance should be amountPredicted - amountSpent
 
     # many-to-many relationship with Category, via BudgetCategory junction table
     categories = relationship(
@@ -33,3 +33,16 @@ class Budget(Base):
     )
     # one-to-many relationship with User
     user = relationship('User', back_populates='budgets')
+
+    def to_dict(self):
+        return {
+            'budgetId': self.budgetId,
+            'userId': self.userId,
+            'categoryId': self.categoryId,
+            'budgetTitle': self.budgetTitle,
+            'dateCreated': self.dateCreated.strftime('%Y-%m-%d %H:%M:%S'),
+            'amountPredicted': float(self.amountPredicted),
+            'amountSpent': float(self.amountSpent) if self.amountSpent is not None else None,
+            'balance': float(self.balance) if self.balance is not None else None
+            # Add other fields as needed
+        }
