@@ -10,8 +10,8 @@ from sqlalchemy import Column, ForeignKey, Integer, PrimaryKeyConstraint, Table
 budget_category_table = Table(
     'budget_category',
     Base.metadata,
-    Column('budgetId', ForeignKey('budgets.budgetId'), primary_key=True),
+    Column('budgetId', ForeignKey('budgets.Id'), primary_key=True),
     Column(
-        'categoryId', ForeignKey('categories.categoryId'), primary_key=True
+        'categoryId', ForeignKey('categories.Id'), primary_key=True
     ),
 )

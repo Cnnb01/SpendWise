@@ -13,7 +13,7 @@ class Category(Base):
 
     __tablename__ = 'categories'
 
-    categoryId = Column(Integer, nullable=False, primary_key=True)
+    Id = Column(Integer, nullable=False, primary_key=True)
     categoryName = Column(String(60), nullable=False)
 
     # many-to-many relationship with Budget, via BudgetCategory junction table

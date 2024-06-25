@@ -14,13 +14,13 @@ class Budget(Base):
 
     __tablename__ = 'budgets'
 
-    budgetId = Column(
+    Id = Column(
         Integer, nullable=False, autoincrement=True, primary_key=True
     )
     categoryId = Column(
-        Integer, ForeignKey('categories.categoryId'), nullable=False
+        Integer, ForeignKey('categories.Id'), nullable=False
     )
-    userId = Column(Integer, ForeignKey('users.userId'), nullable=False)
+    userId = Column(Integer, ForeignKey('users.Id'), nullable=False)
     budgetTitle = Column(String(60), nullable=False)
     dateCreated = Column(DateTime, default=datetime.utcnow)
     amountPredicted = Column(Numeric(10, 2), nullable=False)

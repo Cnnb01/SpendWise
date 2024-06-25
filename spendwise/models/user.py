@@ -13,7 +13,7 @@ class User(Base):
 
     __tablename__ = 'users'
 
-    userId = Column(
+    Id = Column(
         Integer, nullable=False, autoincrement=True, primary_key=True
     )
     lastName = Column(String(150), nullable=False)
