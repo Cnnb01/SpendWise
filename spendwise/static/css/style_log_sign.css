@@ -2,20 +2,22 @@
 	box-sizing: border-box;
 }
 
-body,html {
+body {
     margin: 0;
     padding: 0;
     height: 100%;
     display: flex;
+	flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #D1DFFA;
 	font-family: 'Noto Sans', sans-serif;
+	padding: 50px 0px 50px 0px;
 }
 
 #form-container {
     border-radius: 20px;
-    padding: 0px 20px 10px 20px;
+    padding: 0px 30px 30px 30px;
     background-color: #ffffff;
     display: inline-block;
     width: 600px;
@@ -26,7 +28,7 @@ body,html {
 	color: hsl(213, 70%, 45%);
 	font-size: 24px;
 	font-weight: 500;
-	padding: 30px 0px 20px 0px;
+	padding: 30px 0px 30px 0px;
 }
 
 h1,
@@ -59,9 +61,9 @@ form {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-    padding: 0px 50px 30px 50px;
-    /* background-color: hsl(220, 100%, 98%); */
-	background-color: hsl(0, 0%, 100%);
+    padding: 30px 50px 30px 50px;
+    background-color: hsl(220, 100%, 98%);
+	/* background-color: hsl(0, 0%, 100%); */
     border-radius: 10px;
     text-align: center;
 }
@@ -72,15 +74,20 @@ form input {
     border-bottom: 1px solid hsl(220, 80%, 90%);
     margin: 0px;
     padding: 10px 10px 10px 0px;
-    /* background-color: hsl(220, 100%, 98%); */
-	background-color: hsl(0, 0%, 100%);
+    background-color: hsl(220, 100%, 98%);
+	/* background-color: hsl(0, 0%, 100%); */
     outline: none;
 	font-size: 20px;
 	color: hsl(215, 74%, 10%);
 }
 
-input::placeholder {
+form input::placeholder {
 	color: hsl(216, 10%, 78%)
+}
+
+form input:focus
+{
+	border-bottom: 2px solid hsl(218, 70%, 72%);
 }
 
 form ul {
@@ -90,10 +97,14 @@ form ul {
 	margin: 0px;
 	padding: 0px;
 	list-style-type: none;
-	gap: 20px;
+	gap: 30px;
 	width: 100%;
 }
 
+form li {
+	display: flex;
+	flex-direction: column;
+}
 form button {
 	border-style: none;
     border-radius: 10px;
@@ -111,3 +122,10 @@ form button {
 	font-size: 18px;
 	color: hsl(216, 10%, 45%);
 }
+
+/* footer {
+	margin-top: 100px;
+	height: 100px;
+	width: 100%;
+	background-color: hsl(218, 70%, 72%);
+} */
