@@ -4,17 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/style_budgets_create.css">
-    <script src="../static/js/budgets_create.js"></script>
+    <script src="../static/js/aj_budgets_create.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Create Budget</title>
 </head>
 <body>
     <h1>Create New Budget</h1>
     <div id="form_container">
-        <form id="budget_form">
+        <!-- <form id="budget_form">
             <label for="budget_title">Budget Title</label><br>
             <input type="text" id="budget_title" name="budget_title"><br>
             <label for="item_name">Item Name</label><br>
             <input type="text" id="item_name" name="item_name"><br>
+            <label for="amount_budgeted">Amount Budgeted</label><br>
+            <input type="number" id="amount_budgeted" name="amount_budgeted"><br>
+            <button type="button" id="submit_button">Submit</button>
+            <button type="button" id="done_button">Done</button>
+            <button type="button" id="back_button">Back</button>
+        </form> -->
+        <form id="budget_form">
+            <label for="budget_title">Budget Title</label><br>
+            <input type="text" id="budget_title" name="budget_title"><br>
+            <!-- <label for="user_id">User ID(new)</label><br>
+            <input type="number" id="user_id" name="user_id"><br> -->
+            <label for="category_id">Category Name</label><br>
+            <input type="number" id="category_id" name="category_id"><br>
             <label for="amount_budgeted">Amount Budgeted</label><br>
             <input type="number" id="amount_budgeted" name="amount_budgeted"><br>
             <button type="button" id="submit_button">Submit</button>
