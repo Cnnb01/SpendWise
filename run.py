@@ -32,5 +32,11 @@ def login():
     return render_template('login.html')
 
 
+@app.route('/budgets', strict_slashes=False)
+def budget():
+    """Shows the budget creation page of the application"""
+    return render_template('budgets_create.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
