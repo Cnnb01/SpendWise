@@ -1,22 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sign Up</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style_log_sign.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="../static/js/signup.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-    <div id="form">
-        <h2>Sign Up</h2>
-    <form id="signup-form", method="post">
-        <input type="text" id="first-name" name="first name" placeholder="First name"><br>
-        <input type="text" id="last-name" name="last name" placeholder="Last name"><br>
-        <input type="email" id="email" name="email" placeholder="Email"><br>
-        <input type="password" id="passwd" name="password" placeholder="Password"><br>
-        <input type="password" id="confirm-passwd" name="confirm password" placeholder="Confirm Password"><br>
-        <input type="submit" id="signup" value="Sign Up">
-    </form>
-    </div>
+    
 </body>
+</html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../static/css/style_log_sign.css">
+        <link rel="stylesheet" href="../static/css/fonts.css">
+        <script src="../static/js/jquery-3.2.1.min.js"></script>
+        <script src="../static/js/signup.js"></script>
+        <title>Sign Up</title>
+    </head>
+    <body>
+        <div id="form-container">
+            <h1>Sign Up</h1>
+            <form id="signup-form", method="post">
+                <ul>
+                    <li>
+                        <label class="input-label", for="first-name">First name</label>
+                        <input type="text" id="first-name" name="first name" placeholder="First name", required, autofocus>
+                    </li>
+                    <li>
+                        <label class="input-label", for="last-name">Last name</label>
+                        <input type="text" id="last-name" name="last name" placeholder="Last name", required>
+                    </li>
+                    <li>
+                        <label class="input-label", for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email", required>
+                    </li>
+                    <li>
+                        <label class="input-label", for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Password", required>
+                    </li>
+                    <li>
+                        <label class="input-label", for="confirm-password">Password</label>
+                        <input type="password" id="confirm-password" name="confirm password" placeholder="Confirm Password", required>
+                    </li>
+                </ul>
+                <button type="submit", value="sign_up">Sign Up</button>
+                <p class="have-an-account">
+                    Already have a spendwise account? <a href="login">Log in</a>
+                </p>
+            </form>
+        </div>
+    </body>
 </html>

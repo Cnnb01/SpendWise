@@ -16,6 +16,9 @@ setup_python_dev_environment.sh
 # images
 erd.png
 
+# temporary files
+.swp
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
