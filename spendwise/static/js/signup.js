@@ -5,8 +5,8 @@ $(document).ready(function () {
     const firstName = $('#first-name').val();
     const lastName = $('#last-name').val();
     const email = $('#email').val();
-    const passwd = $('#passwd').val();
-    const confirmedPasswd = $('#confirm-passwd').val();
+    const passwd = $('#password').val();
+    const confirmedPasswd = $('#confirm-password').val();
 
     if (passwd !== confirmedPasswd) {
       alert('Passwords don\'t match. Try again');
