@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Handles APIs for budgets"""
 
-from flask import Blueprint, jsonify, abort, request, make_response
+from flask import Blueprint, jsonify, abort, request, make_response, session
 from ...models import storage
 from ...models.budget import Budget
 
@@ -21,7 +21,7 @@ def add_budget():
     if  'userId' not in data or 'categoryId' not in data or 'budgetTitle' not in data or 'amountPredicted' not in data:
         abort(400, description="Missing required fields")
     new_budget = Budget(
-        # userId=data['userId'],
+        userId=session['current_user_id'],
         categoryId=data['categoryId'],
         budgetTitle=data['budgetTitle'],
         amountPredicted=data['amountPredicted'],
