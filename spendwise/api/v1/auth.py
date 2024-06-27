@@ -44,3 +44,26 @@ def signup():
         ),
         200,
     )
+
+@auth_bp.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    user = storage.session.query(User).filter_by(email=email).first()
+    if not user or not check_password_hash(user.hashedPwd, password):
+        return jsonify({'message': 'Invalid email or password'}), 401
+
+    return jsonify(
+        {
+            'message': 'Successfully logged in!',
+            'redirect': url_for('home_page'),
+        }
+    ), 200
+
+app = Flask(__name__)
+app.register_blueprint(auth_bp, url_prefix='/api/v1')
+
+if __name__ == '__main__':
+    app.run(debug=True)
