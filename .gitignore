@@ -1,3 +1,6 @@
+# flask session auto-generated folder
+flask_session/
+
 # helper scripts
 /helpers/
 run_app_in_test_env.sh
