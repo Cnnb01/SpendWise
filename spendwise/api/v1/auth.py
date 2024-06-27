@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
-from flask import Flask, Blueprint, request, jsonify, url_for
+import os
+from flask import Flask, Blueprint, request, jsonify, url_for, session
 from werkzeug.security import generate_password_hash
 from ...models.user import User
 from ...models import storage
+
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -35,6 +37,9 @@ def signup():
     storage.save()
 
     # return a success message, and where the user will be redirected
+    secret_key = os.getenv('SECRET_KEY')
+    session['current_user_id'] = user.Id
+
     return (
         jsonify(
             {

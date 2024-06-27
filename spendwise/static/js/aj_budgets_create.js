@@ -6,7 +6,7 @@ $(document).ready(function(){
 
         if(categoryId && budgetTitle && amountPredicted){
             $.ajax({
-                url:"http://localhost:5000/api/v1/budgets",
+                url:"/api/v1/budgets/add",
                 type: "POST",
                 contentType: "application/json",
                 data: JSON.stringify({

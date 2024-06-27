@@ -11,7 +11,5 @@ budget_category_table = Table(
     'budget_category',
     Base.metadata,
     Column('budgetId', ForeignKey('budgets.Id'), primary_key=True),
-    Column(
-        'categoryId', ForeignKey('categories.Id'), primary_key=True
-    ),
+    Column('categoryId', ForeignKey('categories.Id'), primary_key=True),
 )
