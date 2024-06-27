@@ -13,7 +13,12 @@ def add_budget():
     if not request.get_json():
         abort(400, description="Not a JSON")
     data = request.get_json()
-    if  'userId' not in data or 'categoryId' not in data or 'budgetTitle' not in data or 'amountPredicted' not in data:
+    if (
+        'userId' not in data
+        or 'categoryId' not in data
+        or 'budgetTitle' not in data
+        or 'amountPredicted' not in data
+    ):
         abort(400, description="Missing required fields")
     new_budget = Budget(
         userId=session['current_user_id'],
@@ -21,7 +26,7 @@ def add_budget():
         budgetTitle=data['budgetTitle'],
         amountPredicted=data['amountPredicted'],
         amountSpent=data.get('amountSpent', None),
-        balance=data.get('balance', None)
+        balance=data.get('balance', None),
     )
     storage.new(new_budget)
     storage.save()
@@ -29,6 +34,12 @@ def add_budget():
 
 
 @app_views.route('/budgets/get', methods=['GET'], strict_slashes=False)
+def get_budgets():
+    budgets = storage.all(Budget).values()
+    budgets_list = [budget.to_dict() for budget in budgets]
+    return jsonify(budgets_list)
+
+
 @app_views.route(
     '/budgets/update/<budgetId>', methods=['PUT'], strict_slashes=False
 )
@@ -57,9 +68,9 @@ def delete_budget(budgetId):
     storage.save()
     return make_response(jsonify({}), 200)
 
+
 # commands i used to test out the APIs, you have to have a user and a category and the budget in the db
 # curl -X GET http://localhost:5000/api/v1/budgets
 # curl -X PUT http://localhost:5000/api/v1/budgets/1 -H "Content-Type: application/json" -d '{"amountSpent": 200.00}'
 # curl -X POST http://localhost:5000/api/v1/budgets -H "Content-Type: application/json" -d '{"userId": 1, "categoryId": 2, "budgetTitle": "Wedding", "amountPredicted": 500.00}'
 # curl -X DELETE http://localhost:5000/api/v1/budgets/1
-

@@ -21,8 +21,8 @@ class Category(Base):
         'Budget', secondary=budget_category_table, back_populates='categories'
     )
 
-    def to_dict(self):#converts category obj to a dictionary
-        return{
+    def to_dict(self):  # converts category obj to a dictionary
+        return {
             'categoryId': self.categoryId,
-            'categoryName': self.categoryName
+            'categoryName': self.categoryName,
         }

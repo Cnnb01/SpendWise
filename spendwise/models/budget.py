@@ -14,18 +14,16 @@ class Budget(Base):
 
     __tablename__ = 'budgets'
 
-    Id = Column(
-        Integer, nullable=False, autoincrement=True, primary_key=True
-    )
-    categoryId = Column(
-        Integer, ForeignKey('categories.Id'), nullable=False
-    )
+    Id = Column(Integer, nullable=False, autoincrement=True, primary_key=True)
+    categoryId = Column(Integer, ForeignKey('categories.Id'), nullable=False)
     userId = Column(Integer, ForeignKey('users.Id'), nullable=False)
     budgetTitle = Column(String(60), nullable=False)
     dateCreated = Column(DateTime, default=datetime.utcnow)
     amountPredicted = Column(Numeric(10, 2), nullable=False)
     amountSpent = Column(Numeric(10, 2), nullable=True)
-    balance = Column(Numeric(10, 2), nullable=True) #balance should be amountPredicted - amountSpent
+    balance = Column(
+        Numeric(10, 2), nullable=True
+    )  # balance should be amountPredicted - amountSpent
 
     # many-to-many relationship with Category, via BudgetCategory junction table
     categories = relationship(
@@ -42,7 +40,13 @@ class Budget(Base):
             'budgetTitle': self.budgetTitle,
             'dateCreated': self.dateCreated.strftime('%Y-%m-%d %H:%M:%S'),
             'amountPredicted': float(self.amountPredicted),
-            'amountSpent': float(self.amountSpent) if self.amountSpent is not None else None,
-            'balance': float(self.balance) if self.balance is not None else None
+            'amountSpent': (
+                float(self.amountSpent)
+                if self.amountSpent is not None
+                else None
+            ),
+            'balance': (
+                float(self.balance) if self.balance is not None else None
+            ),
             # Add other fields as needed
         }

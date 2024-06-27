@@ -13,9 +13,7 @@ class User(Base):
 
     __tablename__ = 'users'
 
-    Id = Column(
-        Integer, nullable=False, autoincrement=True, primary_key=True
-    )
+    Id = Column(Integer, nullable=False, autoincrement=True, primary_key=True)
     lastName = Column(String(150), nullable=False)
     firstName = Column(String(150), nullable=False)
     email = Column(String(80), nullable=False)
