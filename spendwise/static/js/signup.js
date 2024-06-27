@@ -15,6 +15,8 @@ $(document).ready(function () {
 
     const showSignupSuccess = function (response) {
       alert(response.message);
+      // redirect the user to the appropriate page
+      window.location.href = response.redirect;
     };
 
     const showSignupFailure = function (jqXHR, textStatus, errorThrown) {

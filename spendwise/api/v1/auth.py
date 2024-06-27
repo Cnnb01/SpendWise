@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, Blueprint, request, jsonify
+from flask import Flask, Blueprint, request, jsonify, url_for
 from werkzeug.security import generate_password_hash
 from ...models.user import User
 from ...models import storage
@@ -34,7 +34,13 @@ def signup():
     storage.new(user)
     storage.save()
 
+    # return a success message, and where the user will be redirected
     return (
-        jsonify({'message': 'Successfully signed up!'}),
+        jsonify(
+            {
+                'message': 'Successfully signed up!',
+                'redirect': url_for('home_page'),
+            }
+        ),
         200,
     )

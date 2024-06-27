@@ -38,5 +38,11 @@ def budget():
     return render_template('budgets_create.html')
 
 
+@app.route('/home', strict_slashes=False)
+def home_page():
+    """Shows the home page for this user"""
+    return render_template('homepage.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
