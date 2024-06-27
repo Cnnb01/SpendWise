@@ -7,13 +7,8 @@ from ...models.budget import Budget
 
 app_views = Blueprint('app_views', __name__)
 
-@app_views.route('/budgets', methods=['GET'], strict_slashes=False)
-def get_budgets():
-    budgets = storage.all(Budget).values()
-    budgets_list = [budget.to_dict() for budget in budgets]
-    return jsonify(budgets_list)
 
-@app_views.route('/budgets', methods=['POST'], strict_slashes=False)
+@app_views.route('/budgets/add', methods=['POST'], strict_slashes=False)
 def add_budget():
     if not request.get_json():
         abort(400, description="Not a JSON")
@@ -32,7 +27,11 @@ def add_budget():
     storage.save()
     return make_response(jsonify(new_budget.to_dict()), 201)
 
-@app_views.route('/budgets/<budgetId>', methods=['PUT'], strict_slashes=False)
+
+@app_views.route('/budgets/get', methods=['GET'], strict_slashes=False)
+@app_views.route(
+    '/budgets/update/<budgetId>', methods=['PUT'], strict_slashes=False
+)
 def update_budget(budgetId):
     budget = storage.get(Budget, budgetId)
     if not budget:
@@ -46,7 +45,10 @@ def update_budget(budgetId):
     storage.save()
     return make_response(jsonify(budget.to_dict()), 200)
 
-@app_views.route('/budgets/<budgetId>', methods=['DELETE'], strict_slashes=False)
+
+@app_views.route(
+    '/budgets/delete/<budgetId>', methods=['DELETE'], strict_slashes=False
+)
 def delete_budget(budgetId):
     budget = storage.get(Budget, budgetId)
     if not budget:
