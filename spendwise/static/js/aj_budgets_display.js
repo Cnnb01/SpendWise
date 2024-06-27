@@ -1,5 +1,3 @@
-const { error } = require("console");
-
 $(document).ready(function(){
     function loadBudgets(){
         $.ajax({

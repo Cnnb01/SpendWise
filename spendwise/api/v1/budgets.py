@@ -21,7 +21,7 @@ def add_budget():
     if  'userId' not in data or 'categoryId' not in data or 'budgetTitle' not in data or 'amountPredicted' not in data:
         abort(400, description="Missing required fields")
     new_budget = Budget(
-        userId=data['userId'],
+        # userId=data['userId'],
         categoryId=data['categoryId'],
         budgetTitle=data['budgetTitle'],
         amountPredicted=data['amountPredicted'],
