@@ -31,6 +31,7 @@ app.register_blueprint(auth_bp, url_prefix='/api/v1')
 app.register_blueprint(app_views, url_prefix='/api/v1')
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
+
 @app.route('/', strict_slashes=False)
 def home():
     """Shows the homepage of the application"""
@@ -43,7 +44,7 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/budgets/add', strict_slashes=False)
+@app.route('/budgets/add', methods=['POST'], strict_slashes=False)
 def budget():
     """Shows the budget creation page of the application"""
     return render_template('budgets_create.html')
