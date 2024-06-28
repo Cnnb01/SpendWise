@@ -8,12 +8,8 @@ $(document).ready(function(){
             $.ajax({
                 url:"/api/v1/budgets/add",
                 type: "POST",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    categoryId: categoryId,
-                    budgetTitle: budgetTitle,
-                    amountPredicted: amountPredicted
-                }),
+                contentType: 'application/json',
+                data: JSON.stringify({categoryId, budgetTitle, amountPredicted}),
                 success: function(response){
                     alert("Budget created successfully.");
                     $("#budget_form")[0].reset();//clears the form
