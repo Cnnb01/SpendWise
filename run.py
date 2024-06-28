@@ -44,8 +44,8 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/budgets/add', methods=['POST'], strict_slashes=False)
-def budget():
+@app.route('/budgets/create', strict_slashes=False)
+def create_budget():
     """Shows the budget creation page of the application"""
     return render_template('budgets_create.html')
 
