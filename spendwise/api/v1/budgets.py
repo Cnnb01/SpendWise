@@ -14,8 +14,7 @@ def add_budget():
         abort(400, description="Not a JSON")
     data = request.get_json()
     if (
-        'userId' not in data
-        or 'categoryId' not in data
+        'categoryId' not in data
         or 'budgetTitle' not in data
         or 'amountPredicted' not in data
     ):
