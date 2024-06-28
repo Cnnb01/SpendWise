@@ -34,7 +34,7 @@ class Budget(Base):
 
     def to_dict(self):
         return {
-            'budgetId': self.budgetId,
+            'Id': self.Id,
             'userId': self.userId,
             'categoryId': self.categoryId,
             'budgetTitle': self.budgetTitle,
