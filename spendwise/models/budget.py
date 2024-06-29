@@ -43,10 +43,10 @@ class Budget(Base):
             'amountSpent': (
                 float(self.amountSpent)
                 if self.amountSpent is not None
-                else None
+                else 0.0,
             ),
             'balance': (
-                float(self.balance) if self.balance is not None else None
+                float(self.balance) if self.balance is not None else 0.0,
             ),
             # Add other fields as needed
         }

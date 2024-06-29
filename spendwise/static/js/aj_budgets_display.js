@@ -1,17 +1,24 @@
 $(document).ready(function(){
     function loadBudgets(){
         $.ajax({
-            url: "http://localhost:5000/api/v1/budgets",
+            url: "/api/v1/budgets/get",
             type: "GET",
             success: function(budgets){
                 budgets.forEach(function(budget){
                     $('#budget_table').append(
-                        '<tr><td>' + budget.bugetTitle + '</td>' +
-                        '<td>' + budget.itemName + '</td>' +
+                        '<tr><td>' + budget.budgetTitle + '</td>' +
+                        '<td>' + budget.categoryId + '</td>' +
                         '<td>' + budget.amountPredicted + '</td>' +
-                        '<td>' + budget.amountSpent + '</td>' +
-                        '<td>' + budget.balance + '</td></tr>'
+                        '<td contenteditable="true" class="amount_spent">' + budget.amountSpent + '</td>' +
+                        '<td class="balance">' + budget.balance + '</td></tr>'
                     );
+                });
+                // calculating the balance and making amount_spent editable
+                $('.amount_spent').on('input', function(){
+                    let amountSpent = parseFloat($(this).text());
+                    let amountPredicted = parseFloat($(this).prev().text());
+                    let balance = amountPredicted - amountSpent;
+                    $(this).next().text(balance.toFixed(2));
                 });
             },
             error: function(error){
@@ -21,6 +28,6 @@ $(document).ready(function(){
     }
     loadBudgets();
     $("#back_button").click(function() {
-        window.location.href = 'budgets_create.html';
+        window.location.href = '/budgets/create';
     });
 });

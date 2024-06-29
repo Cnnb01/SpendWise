@@ -49,6 +49,9 @@ def create_budget():
     """Shows the budget creation page of the application"""
     return render_template('budgets_create.html')
 
+@app.route('/budgets/display')
+def display_budgets():
+    return render_template('budgets_display.html')
 
 @app.route('/home', strict_slashes=False)
 def home_page():

@@ -40,27 +40,27 @@ def get_budgets():
 
 
 @app_views.route(
-    '/budgets/update/<budgetId>', methods=['PUT'], strict_slashes=False
+    '/budgets/update/<Id>', methods=['PUT'], strict_slashes=False
 )
-def update_budget(budgetId):
-    budget = storage.get(Budget, budgetId)
+def update_budget(Id):
+    budget = storage.get(Budget, Id)
     if not budget:
         abort(404)
     if not request.get_json():
         abort(400, description="Not a JSON")
     data = request.get_json()
     for k, v in data.items():
-        if k != 'budgetId':
+        if k != 'Id':
             setattr(budget, k, v)
     storage.save()
     return make_response(jsonify(budget.to_dict()), 200)
 
 
 @app_views.route(
-    '/budgets/delete/<budgetId>', methods=['DELETE'], strict_slashes=False
+    '/budgets/delete/Id>', methods=['DELETE'], strict_slashes=False
 )
-def delete_budget(budgetId):
-    budget = storage.get(Budget, budgetId)
+def delete_budget(Id):
+    budget = storage.get(Budget, Id)
     if not budget:
         abort(404)
     storage.delete(budget)

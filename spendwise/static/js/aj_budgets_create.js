@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $("#submit_button").click(function(){
+    $("#submit_button").click(function(event){
+        event.preventDefault(); // prevent default form submission behavior
         var categoryId = $("#category_id").val();
         var budgetTitle = $("#budget_title").val();
         var amountPredicted = $("#amount_budgeted").val();
@@ -24,10 +25,10 @@ $(document).ready(function(){
         }
     });
     $("#done_button").click(function() {
-        window.location.href = 'budgets_display.html';
+        window.location.href = '/budgets/display';
     });
 
     $("#back_button").click(function() {
-        window.location.href = 'budgets.html';
+        window.location.href = '/home';
     });
 });
