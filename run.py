@@ -38,7 +38,7 @@ def home():
     return render_template('signup.html')
 
 
-@app.route('/login', strict_slashes=False)
+@app.route('/login', methods=['GET'], strict_slashes=False)
 def login():
     """Shows the login page of the application"""
     return render_template('login.html')

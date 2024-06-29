@@ -49,3 +49,30 @@ def signup():
         ),
         200,
     )
+
+
+@auth_bp.route('/login', methods=['POST'])
+def login():
+    """Logs the user into the application, if they already have an account"""
+    # collect form data
+    data = request.get_json()
+
+    # check if the user already exists
+    email = data.get('email')
+    existing_user = storage.session.query(User).filter_by(email=email).first()
+    if not existing_user:
+        message = 'No such user. Check your spellings and try again'
+        return jsonify({'message': message}), 400
+
+    # check that the password is valid
+    password = data.get('password')
+    hashed_password = existing_user.hashedPwd
+    if not existing_user.pwd_is_correct(password):
+        message = 'Incorrect email or password. Please try again'
+        return jsonify({'message': message}), 400
+
+    message = 'logged in successfully!'
+    return (
+        jsonify({'message': message, 'redirect': url_for('home_page')}),
+        200,
+    )
