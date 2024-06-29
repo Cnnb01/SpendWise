@@ -3,18 +3,29 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="../static/css/style_log_sign.css">
+    <script src="../static/js/jquery-3.2.1.min.js"></script>
+    <script src="../static/js/login.js"></script>
 </head>
 <body>
-    
-    <div id="form">
-    <h2>Welcome Back</h2>
-    <h3>Enter your credentials to login</h3>
-        <form>
-            <input type="text" id="email" name="email" placeholder="Email"><br>
-            <input type="password" id="password" name="password" placeholder="Password"><br>
-            <input type="submit" id="login" value="Login">
+    <div id="form-container">
+    <h1>Welcome Back</h1>
+    <h1>Enter your credentials to login</h1>
+        <form id="login-form", method="post">
+            <ul>
+                <li>
+                    <label class="input-label", for="email">Email</label>
+                    <input type="text" id="email" name="email" placeholder="Email", required>
+                </li>
+                <li>
+                    <label class="input-label", for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password", required>
+                </li>
+            </ul>
+            <button type="submit" id="login" value="Login">Login</button>
+            <p class="dont-have-an-account">
+                Don't have a spendwise account? <a href="signup">Sign up</a>
+            </p>
         </form>
     </div>
-    
 </body>
 </html>
