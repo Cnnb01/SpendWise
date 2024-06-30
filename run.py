@@ -40,7 +40,7 @@ def home():
 
 
 @app.route('/signup', strict_slashes=False)
-def login():
+def signup():
     """Shows the sign up page of the application"""
     return render_template('signup.html')
 
