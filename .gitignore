@@ -1,3 +1,6 @@
+# spendwise virtual Environments
+spendwise-venv/
+
 # flask session auto-generated folder
 flask_session/
 
