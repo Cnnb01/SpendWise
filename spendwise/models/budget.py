@@ -41,9 +41,11 @@ class Budget(Base):
             'dateCreated': self.dateCreated.strftime('%Y-%m-%d %H:%M:%S'),
             'amountPredicted': float(self.amountPredicted),
             'amountSpent': (
-                float(self.amountSpent)
-                if self.amountSpent is not None
-                else 0.0,
+                (
+                    float(self.amountSpent)
+                    if self.amountSpent is not None
+                    else 0.0
+                ),
             ),
             'balance': (
                 float(self.balance) if self.balance is not None else 0.0,

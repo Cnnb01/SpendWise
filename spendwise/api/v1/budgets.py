@@ -39,9 +39,7 @@ def get_budgets():
     return jsonify(budgets_list)
 
 
-@app_views.route(
-    '/budgets/update/<Id>', methods=['PUT'], strict_slashes=False
-)
+@app_views.route('/budgets/update/<Id>', methods=['PUT'], strict_slashes=False)
 def update_budget(Id):
     budget = storage.get(Budget, Id)
     if not budget:
