@@ -33,15 +33,16 @@ cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 
 @app.route('/', strict_slashes=False)
+@app.route('/login', strict_slashes=False)
 def home():
-    """Shows the homepage of the application"""
-    return render_template('signup.html')
-
-
-@app.route('/login', methods=['GET'], strict_slashes=False)
-def login():
-    """Shows the login page of the application"""
+    """Shows the login page of the application as the first page"""
     return render_template('login.html')
+
+
+@app.route('/signup', strict_slashes=False)
+def login():
+    """Shows the sign up page of the application"""
+    return render_template('signup.html')
 
 
 @app.route('/budgets/create', strict_slashes=False)
@@ -49,9 +50,11 @@ def create_budget():
     """Shows the budget creation page of the application"""
     return render_template('budgets_create.html')
 
+
 @app.route('/budgets/display')
 def display_budgets():
     return render_template('budgets_display.html')
+
 
 @app.route('/home', strict_slashes=False)
 def home_page():
