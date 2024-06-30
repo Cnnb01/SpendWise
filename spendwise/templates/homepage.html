@@ -1,31 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style_nav.css">
-    <link rel="stylesheet" href="../static/css/style_homepage.css">
-    <title>Spendwise</title>
-</head>
-<body>
+<!-- inherit from the base template -->
+{% extends "base.html" %}
 
-    <div class="flex-container">
-        <div id="navbar"> 
-            <a class="navbar_item" id="navbar_home" href="homepage.html">Home</a>
-            <a class="navbar_item" id="navbar_expenses" href="expenses.html">Expenses</a>
-            <a class="navbar_item" id="navbar_budget" href="budgets.html">Budget</a>
+{% block title %}Spendwise{% endblock %}
+
+{% block other_styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/style_homepage.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        <div id="logo">
+            <img src="../images/LOGO.png" alt="Logo" id="centered_image">
         </div>
-    
-        <div class="grid-container">
-            <div id="logo">
-                <img src="../images/LOGO.png" alt="Logo" id="centered_image">
-            </div>
-            <div id="text1">
-                At SpendWise, we help you manage your finances better and spend wisely.
-            </div> 
-            <div id="text2">
-                Track your expenses, set budgets, and achieve your financial goals with ease.
-            </div>
+        <div id="text1">
+            At SpendWise, we help you manage your finances better and spend wisely.
+        </div> 
+        <div id="text2">
+            Track your expenses, set budgets, and achieve your financial goals with ease.
         </div>
     </div>
 
@@ -70,7 +61,5 @@
         // Set selected navbar item on page load
         setSelectedNavItem();
     });
-
     </script>
-</body>
-</html>
+{% endblock %}
