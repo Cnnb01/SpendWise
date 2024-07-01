@@ -45,6 +45,10 @@ def signup():
     """Shows the sign up page of the application"""
     return render_template('signup.html')
 
+@app.route('/budgets', strict_slashes=False)
+def budgets():
+    """Shows the budget page of the application"""
+    return render_template('budgets.html')
 
 @app.route('/budgets/create', strict_slashes=False)
 def create_budget():
