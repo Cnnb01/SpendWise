@@ -1,6 +1,6 @@
 body {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: #124076;
+    background-color: #D1DFFA;
 }
 
 h1 {
@@ -18,7 +18,7 @@ h1 {
 }
 
 #budget_table th {
-    background-color: #F9E897;
+    background-color: #236CC3;
     color: #000;
     text-align: left;
     padding: 10px;
@@ -31,11 +31,11 @@ h1 {
 }
 
 #budget_table tr:nth-child(odd) {
-    background-color: #F9E897; /* add a background color to every odd row */
+    background-color: #236CC3; /* add a background color to every odd row */
 }
 
 #budget_table tr:nth-child(even) {
-    background-color: #FCF4CF; /* add a background color to every even row */
+    background-color: #86aae9; /* add a background color to every even row */
 }
 
 button {
