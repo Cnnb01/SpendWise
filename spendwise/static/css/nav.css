@@ -15,12 +15,22 @@ body, html {
 
 /* Style for the navigation bar */
 #navbar {
-    width: 300px;
+    min-width: 220px;
     height: 100%; /* Full height of the viewport */
     background-color: #124076;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+/* push logout to the bottom */
+#navbar #logout {
+	margin-top: auto;
+}
+
+/* but do not push everything else to the top */
+#navbar #navbar_home {
+	margin-top: auto;
 }
 
 /* Style for each navigation item */
@@ -42,7 +52,15 @@ body, html {
     color: #144885;
 }
 
+.navbar_item:hover {
+    background-color: #86AAE9; /* Darker background on hover */
+    color:#144885;
+}
 
+#navbar_home.selected, #navbar_expenses.selected, #navbar_budget.selected {
+    background-color: #86AAE9;
+    color: #144885;
+}
 
 #content {
     display: flex;
@@ -51,6 +69,7 @@ body, html {
     justify-content: center;
 
 }
+
 /* Style for the centered image */
 #centered_image {
     width: 100%px;
