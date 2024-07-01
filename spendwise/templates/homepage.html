@@ -10,7 +10,7 @@
 {% block content %}
     <div class="grid-container">
         <div id="logo">
-            <img src="../images/LOGO.png" alt="Logo" id="centered_image">
+            <img src="{{ url_for('static', filename='images/LOGO.png') }}" alt="Logo" id="centered_image">
         </div>
         <div id="text1">
             At SpendWise, we help you manage your finances better and spend wisely.
