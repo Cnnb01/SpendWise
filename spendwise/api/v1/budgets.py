@@ -6,10 +6,10 @@ from ...models import storage
 from ...models.budget import Budget
 from .decorators import requires_logged_in_user
 
-app_views = Blueprint('app_views', __name__)
+apis = Blueprint('apis', __name__)
 
 
-@app_views.route('/budgets/add', methods=['POST'], strict_slashes=False)
+@apis.route('/budgets/add', methods=['POST'], strict_slashes=False)
 @requires_logged_in_user
 def add_budget():
     if not request.get_json():
@@ -34,7 +34,7 @@ def add_budget():
     return make_response(jsonify(new_budget.to_dict()), 201)
 
 
-@app_views.route('/budgets/get', methods=['GET'], strict_slashes=False)
+@apis.route('/budgets/get', methods=['GET'], strict_slashes=False)
 @requires_logged_in_user
 def get_budgets():
     budgets = storage.all(Budget).values()
@@ -42,7 +42,7 @@ def get_budgets():
     return jsonify(budgets_list)
 
 
-@app_views.route('/budgets/update/<Id>', methods=['PUT'], strict_slashes=False)
+@apis.route('/budgets/update/<Id>', methods=['PUT'], strict_slashes=False)
 @requires_logged_in_user
 def update_budget(Id):
     budget = storage.get(Budget, Id)
@@ -58,7 +58,7 @@ def update_budget(Id):
     return make_response(jsonify(budget.to_dict()), 200)
 
 
-@app_views.route(
+@apis.route(
     '/budgets/delete/Id>', methods=['DELETE'], strict_slashes=False
 )
 @requires_logged_in_user

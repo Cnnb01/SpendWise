@@ -5,17 +5,17 @@ from flask import Blueprint, jsonify, abort, request, make_response
 from ...models import storage
 from ...models.category import Category
 
-app_views = Blueprint('app_views', __name__)
+apis = Blueprint('apis', __name__)
 
 
-@app_views.route('/categories', methods=['GET'], strict_slashes=False)
+@apis.route('/categories', methods=['GET'], strict_slashes=False)
 def get_categories():
     categories = storage.all(Category).values()
     categories_list = [category.to_dict() for category in categories]
     return jsonify(categories_list)
 
 
-@app_views.route('/categories', methods=['POST'], strict_slashes=False)
+@apis.route('/categories', methods=['POST'], strict_slashes=False)
 def add_category():
     if not request.get_json():
         abort(400, description="Not a JSON")
@@ -28,7 +28,7 @@ def add_category():
     return make_response(jsonify(new_category.to_dict()), 201)
 
 
-@app_views.route(
+@apis.route(
     '/categories/<categoryId>', methods=['PUT'], strict_slashes=False
 )
 def update_category(categoryId):
@@ -46,7 +46,7 @@ def update_category(categoryId):
 
 
 # not sure we wanna delete a category, maybe an expense but thinking categories can just stay
-# @app_views.route('/categories/<categoryId>', methods=['DELETE'], strict_slashes=False)
+# @apis.route('/categories/<categoryId>', methods=['DELETE'], strict_slashes=False)
 # def delete_category(categoryId):
 #     category = storage.get(Category, categoryId)
 #     if not category:
