@@ -5,17 +5,17 @@ from flask import Blueprint, jsonify, abort, request, make_response
 from ...models import storage
 from ...models.expense import Expense
 
-app_views = Blueprint('app_views', __name__)
+apis = Blueprint('apis', __name__)
 
 
-@app_views.route('/expenses', methods=['GET'], strict_slashes=False)
+@apis.route('/expenses', methods=['GET'], strict_slashes=False)
 def get_expenses():
     expenses = storage.all(Expense)
     cleaned_expenses = [obj.to_dict() for obj in expenses.values()]
     return jsonify(cleaned_expenses)
 
 
-@app_views.route('/expenses', methods=['POST'], strict_slashes=False)
+@apis.route('/expenses', methods=['POST'], strict_slashes=False)
 def add_expense():
     if not request.get_json():
         abort(400, description="Not a JSON")
@@ -37,7 +37,7 @@ def add_expense():
     return make_response(jsonify(expense.to_dict()), 201)
 
 
-@app_views.route(
+@apis.route(
     '/expenses/<expenseId>', methods=['PUT'], strict_slashes=False
 )
 def update_expense(expenseId):
@@ -54,7 +54,7 @@ def update_expense(expenseId):
     return make_response(jsonify(expense.to_dict()), 200)
 
 
-@app_views.route(
+@apis.route(
     '/expenses/<expenseId>', methods=['DELETE'], strict_slashes=False
 )
 def delete_expense(expenseId):
