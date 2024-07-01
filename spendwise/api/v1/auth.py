@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 
 import os
-from flask import Flask, Blueprint, request, jsonify, url_for, session
+from flask import (
+    Flask,
+    Blueprint,
+    request,
+    jsonify,
+    url_for,
+    session,
+    redirect,
+)
 from werkzeug.security import generate_password_hash
 from ...models.user import User
 from ...models import storage
@@ -71,8 +79,19 @@ def login():
         message = 'Incorrect email or password. Please try again'
         return jsonify({'message': message}), 400
 
+    session['current_user_id'] = existing_user.Id
+
     message = 'logged in successfully!'
     return (
         jsonify({'message': message, 'redirect': url_for('home_page')}),
         200,
     )
+
+
+@auth_bp.route('/logout')
+def logout():
+    """Logs the user out of the application, redirecting them to the login page"""
+    session.pop('current_user_id', None)  # end this users session
+
+    # redirect the user to the login page
+    return redirect(url_for('home'))

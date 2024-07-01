@@ -11,6 +11,7 @@ from spendwise.api.v1.expenses import app_views
 from spendwise.api.v1.categories import app_views
 from spendwise.api.v1.budgets import app_views
 from spendwise.models import storage
+from spendwise.api.v1.decorators import requires_logged_in_user
 
 app = Flask(
     __name__,
@@ -57,9 +58,21 @@ def display_budgets():
 
 
 @app.route('/home', strict_slashes=False)
+@requires_logged_in_user
 def home_page():
     """Shows the home page for this user"""
     return render_template('homepage.html')
+
+
+@app.after_request
+def add_headers(response):
+    """Adds the specified headers to the response object, to control browser
+    behaviour
+
+    MDN docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
+    """
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate'
+    return response
 
 
 if __name__ == '__main__':

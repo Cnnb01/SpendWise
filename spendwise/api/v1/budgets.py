@@ -4,11 +4,13 @@
 from flask import Blueprint, jsonify, abort, request, make_response, session
 from ...models import storage
 from ...models.budget import Budget
+from .decorators import requires_logged_in_user
 
 app_views = Blueprint('app_views', __name__)
 
 
 @app_views.route('/budgets/add', methods=['POST'], strict_slashes=False)
+@requires_logged_in_user
 def add_budget():
     if not request.get_json():
         abort(400, description="Not a JSON")
@@ -33,6 +35,7 @@ def add_budget():
 
 
 @app_views.route('/budgets/get', methods=['GET'], strict_slashes=False)
+@requires_logged_in_user
 def get_budgets():
     budgets = storage.all(Budget).values()
     budgets_list = [budget.to_dict() for budget in budgets]
@@ -40,6 +43,7 @@ def get_budgets():
 
 
 @app_views.route('/budgets/update/<Id>', methods=['PUT'], strict_slashes=False)
+@requires_logged_in_user
 def update_budget(Id):
     budget = storage.get(Budget, Id)
     if not budget:
@@ -57,6 +61,7 @@ def update_budget(Id):
 @app_views.route(
     '/budgets/delete/Id>', methods=['DELETE'], strict_slashes=False
 )
+@requires_logged_in_user
 def delete_budget(Id):
     budget = storage.get(Budget, Id)
     if not budget:
