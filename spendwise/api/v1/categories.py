@@ -4,8 +4,7 @@
 from flask import Blueprint, jsonify, abort, request, make_response
 from ...models import storage
 from ...models.category import Category
-
-apis = Blueprint('apis', __name__)
+from . import apis
 
 
 @apis.route('/categories', methods=['GET'], strict_slashes=False)
@@ -28,9 +27,7 @@ def add_category():
     return make_response(jsonify(new_category.to_dict()), 201)
 
 
-@apis.route(
-    '/categories/<categoryId>', methods=['PUT'], strict_slashes=False
-)
+@apis.route('/categories/<categoryId>', methods=['PUT'], strict_slashes=False)
 def update_category(categoryId):
     category = storage.get(Category, categoryId)
     if not category:

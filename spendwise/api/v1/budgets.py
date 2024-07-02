@@ -5,8 +5,7 @@ from flask import Blueprint, jsonify, abort, request, make_response, session
 from ...models import storage
 from ...models.budget import Budget
 from .decorators import requires_logged_in_user
-
-apis = Blueprint('apis', __name__)
+from . import apis
 
 
 @apis.route('/budgets/add', methods=['POST'], strict_slashes=False)
@@ -58,9 +57,7 @@ def update_budget(Id):
     return make_response(jsonify(budget.to_dict()), 200)
 
 
-@apis.route(
-    '/budgets/delete/Id>', methods=['DELETE'], strict_slashes=False
-)
+@apis.route('/budgets/delete/Id>', methods=['DELETE'], strict_slashes=False)
 @requires_logged_in_user
 def delete_budget(Id):
     budget = storage.get(Budget, Id)

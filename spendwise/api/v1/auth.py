@@ -13,12 +13,10 @@ from flask import (
 from werkzeug.security import generate_password_hash
 from ...models.user import User
 from ...models import storage
+from . import apis
 
 
-auth_bp = Blueprint('auth', __name__)
-
-
-@auth_bp.route('/register', methods=['POST'])
+@apis.route('/register', methods=['POST'])
 def signup():
     # collect form data
     data = request.get_json()
@@ -59,7 +57,7 @@ def signup():
     )
 
 
-@auth_bp.route('/login', methods=['POST'])
+@apis.route('/login', methods=['POST'])
 def login():
     """Logs the user into the application, if they already have an account"""
     # collect form data
@@ -88,7 +86,7 @@ def login():
     )
 
 
-@auth_bp.route('/logout')
+@apis.route('/logout')
 def logout():
     """Logs the user out of the application, redirecting them to the login page"""
     session.pop('current_user_id', None)  # end this users session
