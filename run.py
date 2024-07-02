@@ -6,10 +6,7 @@ from dotenv import load_dotenv
 from flask_session import Session
 from flask_cors import CORS
 from flask import Flask, render_template, session
-from spendwise.api.v1.auth import auth_bp
-from spendwise.api.v1.expenses import apis
-from spendwise.api.v1.categories import apis
-from spendwise.api.v1.budgets import apis
+from spendwise.api.v1 import apis
 from spendwise.models import storage
 from spendwise.api.v1.decorators import requires_logged_in_user
 
@@ -28,7 +25,6 @@ app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
 # register blueprints
-app.register_blueprint(auth_bp, url_prefix='/api/v1')
 app.register_blueprint(apis, url_prefix='/api/v1')
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
