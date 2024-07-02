@@ -7,14 +7,14 @@ from ...models.expense import Expense
 from . import apis
 
 
-@apis.route('/expenses', methods=['GET'], strict_slashes=False)
+@apis.route('/expenses/get', methods=['GET'], strict_slashes=False)
 def get_expenses():
     expenses = storage.all(Expense)
     cleaned_expenses = [obj.to_dict() for obj in expenses.values()]
     return jsonify(cleaned_expenses)
 
 
-@apis.route('/expenses', methods=['POST'], strict_slashes=False)
+@apis.route('/expenses/add', methods=['POST'], strict_slashes=False)
 def add_expense():
     if not request.get_json():
         abort(400, description="Not a JSON")

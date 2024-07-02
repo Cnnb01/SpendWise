@@ -51,11 +51,18 @@ def create_budget():
     """Shows the budget creation page of the application"""
     return render_template('budgets_create.html')
 
+@app.route('/expenses/create', strict_slashes=False)
+def create_budget():
+    """Shows the budget creation page of the application"""
+    return render_template('expenses_create.html')
 
 @app.route('/budgets/display')
 def display_budgets():
     return render_template('budgets_display.html')
 
+@app.route('/expenses/display')
+def display_expenses():
+    return render_template('expenses_display.html')
 
 @app.route('/home', strict_slashes=False)
 @requires_logged_in_user
