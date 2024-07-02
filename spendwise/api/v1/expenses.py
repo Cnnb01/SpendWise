@@ -4,8 +4,7 @@
 from flask import Blueprint, jsonify, abort, request, make_response
 from ...models import storage
 from ...models.expense import Expense
-
-apis = Blueprint('apis', __name__)
+from . import apis
 
 
 @apis.route('/expenses', methods=['GET'], strict_slashes=False)
@@ -37,9 +36,7 @@ def add_expense():
     return make_response(jsonify(expense.to_dict()), 201)
 
 
-@apis.route(
-    '/expenses/<expenseId>', methods=['PUT'], strict_slashes=False
-)
+@apis.route('/expenses/<expenseId>', methods=['PUT'], strict_slashes=False)
 def update_expense(expenseId):
     expense = storage.get(Expense, expenseId)
     if not expense:
@@ -54,9 +51,7 @@ def update_expense(expenseId):
     return make_response(jsonify(expense.to_dict()), 200)
 
 
-@apis.route(
-    '/expenses/<expenseId>', methods=['DELETE'], strict_slashes=False
-)
+@apis.route('/expenses/<expenseId>', methods=['DELETE'], strict_slashes=False)
 def delete_expense(expenseId):
     expense = storage.get(Expense, expenseId)
     if not expense:
