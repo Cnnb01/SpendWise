@@ -42,18 +42,13 @@ body, html {
     text-decoration: none;
 }
 
-.navbar_item:hover {
-    background-color: #86AAE9; /* Darker background on hover */
-    color:#144885;
-}
-
 #navbar_home.selected, #navbar_expenses.selected, #navbar_budget.selected {
     background-color: #86AAE9;
     color: #144885;
 }
 
 .navbar_item:hover {
-    background-color: #D1DFFA; /* Darker background on hover */
+    background-color: #D1DFFA; /* Darker background on hover*/
     color:#144885;
 }
 

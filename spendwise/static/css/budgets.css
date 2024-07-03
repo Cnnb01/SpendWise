@@ -30,9 +30,13 @@ body, html {
   }
   
   button {
-    height: 55px;
-    width: 200px;
+    border-style: none;
+    color: #ffffff;
+    height: 65px;
+    width: 250px;
     border-radius: 20px;
     background-color: #124076;
+    font-size: 15px;
+	  font-weight: 500;
   }
   
