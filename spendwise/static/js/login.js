@@ -6,7 +6,6 @@ $(document).ready(function () {
     const password = $('#password').val();
 
     const showLoginSuccess = function (response) {
-      alert(response.message);
       // redirect the user to the appropriate page
       window.location.href = response.redirect;
     };

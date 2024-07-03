@@ -9,6 +9,7 @@ from flask import (
     url_for,
     session,
     redirect,
+    flash
 )
 from werkzeug.security import generate_password_hash
 from ...models.user import User
@@ -45,11 +46,12 @@ def signup():
     # return a success message, and where the user will be redirected
     secret_key = os.getenv('SECRET_KEY')
     session['current_user_id'] = user.Id
+    message = 'Successfully signed up!'
+    flash(message, 'success')
 
     return (
         jsonify(
             {
-                'message': 'Successfully signed up!',
                 'redirect': url_for('home_page'),
             }
         ),
@@ -78,8 +80,8 @@ def login():
         return jsonify({'message': message}), 400
 
     session['current_user_id'] = existing_user.Id
-
-    message = 'logged in successfully!'
+    message = 'You logged in successfully!'
+    flash(message, 'success')
     return (
         jsonify({'message': message, 'redirect': url_for('home_page')}),
         200,
