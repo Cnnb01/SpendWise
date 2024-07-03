@@ -57,7 +57,7 @@ def update_budget(Id):
     return make_response(jsonify(budget.to_dict()), 200)
 
 
-@apis.route('/budgets/delete/Id>', methods=['DELETE'], strict_slashes=False)
+@apis.route('/budgets/delete/<Id>', methods=['DELETE'], strict_slashes=False)
 @requires_logged_in_user
 def delete_budget(Id):
     budget = storage.get(Budget, Id)

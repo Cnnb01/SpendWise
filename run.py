@@ -52,7 +52,7 @@ def create_budget():
     return render_template('budgets_create.html')
 
 @app.route('/expenses/create', strict_slashes=False)
-def create_budget():
+def create_expense():
     """Shows the budget creation page of the application"""
     return render_template('expenses_create.html')
 
