@@ -69,7 +69,8 @@ def login():
     email = data.get('email')
     existing_user = storage.session.query(User).filter_by(email=email).first()
     if not existing_user:
-        message = 'No such user. Check your spellings and try again'
+        message = 'Incorrect email or password. Please try again'
+        flash(message, 'error')
         return jsonify({'message': message}), 400
 
     # check that the password is valid
@@ -77,6 +78,7 @@ def login():
     hashed_password = existing_user.hashedPwd
     if not existing_user.pwd_is_correct(password):
         message = 'Incorrect email or password. Please try again'
+        flash(message, 'error')
         return jsonify({'message': message}), 400
 
     session['current_user_id'] = existing_user.Id

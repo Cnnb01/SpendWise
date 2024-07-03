@@ -11,8 +11,8 @@ $(document).ready(function () {
     };
 
     const showLoginFailure = function (jqXHR, textStatus, errorThrown) {
-      const message = jqXHR.responseJSON.message;
-      alert(message);
+      // reload the login page
+      location.reload();
     };
 
     // AJAX request to send the form
