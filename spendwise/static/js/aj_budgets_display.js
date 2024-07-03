@@ -4,6 +4,22 @@ $(document).ready(function(){
             url: "/api/v1/budgets/get",
             type: "GET",
             success: function(budgets){
+        //         let currentTitle = "";
+        //         let currentRow = null;
+
+        //         budgets.forEach(function(budget){
+        //             if (budget.budgetTitle !== currentTitle) {
+        //                 currentTitle = budget.budgetTitle;
+        //                 currentRow = $('<tr>').append('<td>' + currentTitle + '</td>');
+        //             }
+        //   // Append remaining cells for the current budget
+        //             currentRow.append(
+        //                 '<td>' + budget.categoryId + '</td>' +
+        //                 '<td>' + budget.amountPredicted + '</td>' +
+        //                 '<td contenteditable="true" class="amount_spent">' + budget.amountSpent + '</td>' +
+        //                 '<td class="balance">' + budget.balance + '</td>'
+        //             );
+        //         });
                 budgets.forEach(function(budget){
                     $('#budget_table').append(
                         '<tr><td>' + budget.budgetTitle + '</td>' +
