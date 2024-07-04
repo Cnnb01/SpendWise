@@ -5,7 +5,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from .base_model import Base
-from .junction_tables import budget_category_table
+from .budget_category import BudgetCategory
 
 
 class Category(Base):
@@ -16,13 +16,11 @@ class Category(Base):
     Id = Column(Integer, nullable=False, primary_key=True)
     categoryName = Column(String(60), nullable=False)
 
-    # many-to-many relationship with Budget, via BudgetCategory junction table
-    budgets = relationship(
-        'Budget', secondary=budget_category_table, back_populates='categories'
-    )
+    # relationship with BudgetCategory
+    budget_categories = relationship('BudgetCategory', back_populates='category')
 
     def to_dict(self):  # converts category obj to a dictionary
         return {
-            'categoryId': self.categoryId,
+            'categoryId': self.Id,
             'categoryName': self.categoryName,
         }
