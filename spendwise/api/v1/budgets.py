@@ -13,7 +13,7 @@ from . import apis
 
 
 @apis.route('/budgets/add', methods=['POST'], strict_slashes=False)
-# #@requires_logged_in_user
+# @requires_logged_in_user
 def add_budget():
     data = request.get_json()
     print(data)#Debug
@@ -64,7 +64,7 @@ def add_budget():
 
 
 @apis.route('/budgets/get', methods=['GET'], strict_slashes=False)
-#@requires_logged_in_user
+@requires_logged_in_user
 def get_budgets():
     budgets = storage.all(Budget).values()
     budgets_list = [budget.to_dict() for budget in budgets]
@@ -72,7 +72,7 @@ def get_budgets():
 
 
 @apis.route('/budgets/update/<Id>', methods=['PUT'], strict_slashes=False)
-#@requires_logged_in_user
+@requires_logged_in_user
 def update_budget(Id):
     budget = storage.get(Budget, Id)
     if not budget:
