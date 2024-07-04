@@ -111,4 +111,5 @@ $(document).ready(function() {
     $("#create-budget-btn").click(function() {
         window.location.href = '/budgets/display';
     });
+    
 });
