@@ -108,7 +108,7 @@ $(document).ready(function() {
     });
 
     // Navigate to budgets display page
-    // $("#create-budget-btn").click(function() {
-    //     window.location.href = '/budgets/display';
-    // });
+    $("#create-budget-btn").click(function() {
+        window.location.href = '/budgets/display';
+    });
 });

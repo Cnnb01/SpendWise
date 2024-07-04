@@ -65,7 +65,7 @@ def display_expenses():
     return render_template('expenses_display.html')
 
 @app.route('/home', strict_slashes=False)
-@requires_logged_in_user
+#@requires_logged_in_user
 def home_page():
     """Shows the home page for this user"""
     return render_template('homepage.html')

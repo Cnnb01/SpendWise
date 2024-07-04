@@ -3,7 +3,7 @@
 """Starts the database, and defines possible database actions"""
 
 import os
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy import create_engine, MetaData, text
 from sqlalchemy.orm import sessionmaker, scoped_session
 from ..base_model import Base
 from ..budget import Budget
@@ -43,6 +43,7 @@ class DB:
         self.__session = None
         # drop all tables in the test environment
         if os.getenv('SPENDWISE_ENV') == 'test':
+            # self.drop_all_tables()
             Base.metadata.drop_all(bind=self.__engine)
 
         self.reload()  # initializes the db session.
@@ -113,3 +114,13 @@ class DB:
             .filter(getattr(cls, key_name) == id)
             .first()
         )
+
+    # def drop_all_tables(self):
+    #     """Drops all tables in the database, handling foreign key constraints"""
+    #     with self.__engine.connect() as connection:
+    #         # Disable foreign key checks
+    #         connection.execute(text("SET FOREIGN_KEY_CHECKS=0;"))
+    #         # Drop all tables
+    #         Base.metadata.drop_all(bind=self.__engine)
+    #         # Enable foreign key checks
+    #         connection.execute(text("SET FOREIGN_KEY_CHECKS=1;"))

@@ -1,18 +1,45 @@
 #!/usr/bin/env python3
 """Handles APIs for budgets"""
 
-from flask import Blueprint, jsonify, abort, request, make_response, session
+from flask import Blueprint, jsonify, abort, request, make_response
+from flask import session as flask_session
 from ...models import storage
 from ...models.budget import Budget
 # from .decorators import requires_logged_in_user
+from ...models.category import Category
+from ...models.budget_category import BudgetCategory
+from .decorators import requires_logged_in_user
 from . import apis
 
 
 @apis.route('/budgets/add', methods=['POST'], strict_slashes=False)
-# @requires_logged_in_user
+# #@requires_logged_in_user
 def add_budget():
     # if not request.get_json():
     #     abort(400, description="Not a JSON")
+    # data = request.get_json()
+    # if (
+    #     'categoryId' not in data
+    #     or 'budgetTitle' not in data
+    #     or 'amountPredicted' not in data
+    # ):
+    #     abort(400, description="Missing required fields")
+    # new_budget = Budget(
+    #     userId=flask_session['current_user_id'],
+    #     categoryId=data['categoryId'],
+    #     budgetTitle=data['budgetTitle'],
+    #     amountPredicted=data['amountPredicted'],
+    #     amountSpent=data.get('amountSpent', None),
+    #     balance=data.get('balance', None),
+    # )
+    # storage.new(new_budget)
+    # storage.save()
+    
+    # >>>>>>>> NEW CODE DEBUG
+    # Extract budget information
+    # if not request.get_json():
+    #     abort(400, description="Not a JSON")
+
     data = request.get_json()
     print(data)#Debug
     if (
@@ -21,21 +48,48 @@ def add_budget():
         # or 'amountPredicted' not in data
     ):
         abort(400, description="Missing required fields")
-    new_budget = Budget(
-        userId=session.get('current_user_id', 1), #DEBUG
-        categoryId=data['categoryId'],
-        budgetTitle=data['budgetTitle'],
-        amountPredicted=data['amountPredicted'],
-        amountSpent=data.get('amountSpent', None),
-        balance=data.get('balance', None),
+
+    budget_title = data['budgetTitle']
+    user_id = flask_session.get('current_user_id', 1)
+
+    # sum all amounts across all categories in the budget
+    amount_predicted = sum(
+        int(item['amountBudgeted'])
+        for item in data['categories']
     )
+    print(f'Amount predicted = {amount_predicted}')
+
+    # Create a new budget
+    new_budget = Budget(
+        userId=user_id,
+        budgetTitle=budget_title,
+        amountPredicted=amount_predicted
+        )
     storage.new(new_budget)
+    storage.save()
+
+    # Create entries in the junction table
+    for category_data in data['categories']:
+        category_name = category_data['categoryName'].lower()
+        amount_budgeted = category_data['amountBudgeted']
+
+        category = storage.session.query(Category).filter_by(categoryName=category_name).first()
+        # Create this category if it does not exist
+        if not category:
+            category = Category(categoryName=category_name)
+            storage.new(category)
+            storage.save()
+
+        # Create an entry in the junction table
+        budget_category = BudgetCategory(budgetId=new_budget.Id, categoryId=category.Id, amountBudgeted=amount_budgeted)
+        storage.new(budget_category)
+
     storage.save()
     return make_response(jsonify(new_budget.to_dict()), 201)
 
 
 @apis.route('/budgets/get', methods=['GET'], strict_slashes=False)
-# @requires_logged_in_user
+#@requires_logged_in_user
 def get_budgets():
     budgets = storage.all(Budget).values()
     budgets_list = [budget.to_dict() for budget in budgets]
@@ -43,7 +97,7 @@ def get_budgets():
 
 
 @apis.route('/budgets/update/<Id>', methods=['PUT'], strict_slashes=False)
-# @requires_logged_in_user
+#@requires_logged_in_user
 def update_budget(Id):
     budget = storage.get(Budget, Id)
     if not budget:

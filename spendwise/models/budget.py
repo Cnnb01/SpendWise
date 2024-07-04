@@ -6,7 +6,6 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Numeric
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from .base_model import Base
-from .junction_tables import budget_category_table
 
 
 class Budget(Base):
@@ -15,20 +14,18 @@ class Budget(Base):
     __tablename__ = 'budgets'
 
     Id = Column(Integer, nullable=False, autoincrement=True, primary_key=True)
-    categoryId = Column(Integer, ForeignKey('categories.Id'), nullable=False)
     userId = Column(Integer, ForeignKey('users.Id'), nullable=False)
     budgetTitle = Column(String(60), nullable=False)
     dateCreated = Column(DateTime, default=datetime.utcnow)
     amountPredicted = Column(Numeric(10, 2), nullable=False)
-    amountSpent = Column(Numeric(10, 2), nullable=True)
+    amountSpent = Column(Numeric(10, 2), nullable=True, default=0)
     balance = Column(
-        Numeric(10, 2), nullable=True
+        Numeric(10, 2), nullable=True, default=0
     )  # balance should be amountPredicted - amountSpent
 
-    # many-to-many relationship with Category, via BudgetCategory junction table
-    categories = relationship(
-        'Category', secondary=budget_category_table, back_populates='budgets'
-    )
+    # relationship with BudgetCategory
+    categories = relationship('BudgetCategory', back_populates='budget')
+
     # one-to-many relationship with User
     user = relationship('User', back_populates='budgets')
 
@@ -36,7 +33,6 @@ class Budget(Base):
         return {
             'Id': self.Id,
             'userId': self.userId,
-            'categoryId': self.categoryId,
             'budgetTitle': self.budgetTitle,
             'dateCreated': self.dateCreated.strftime('%Y-%m-%d %H:%M:%S'),
             'amountPredicted': float(self.amountPredicted),
