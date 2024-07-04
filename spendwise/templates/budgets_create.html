@@ -8,11 +8,32 @@
 
 {% block more_scripts %}
     <script src="../static/js/aj_budgets_create.js"></script>
+    <!-- <script src="../static/js/add_row.js"></script> -->
 {% endblock %}
 
 {% block content %}
     <h1>Create New Budget</h1>
-    <div id="form_container">
+    <form method="post", action="/api/v1/budgets/add">
+        <div id="table-container">
+            <div id="budget-title-section">
+                <label for="budget-title">Budget title</label>
+                <input id="budget-title" type="text", autofocus>
+            </div>
+            <button id="start-btn">Start</button>
+            <table id="budget-creation-table">
+                <th>Category name</th>
+                <th>Amount budgeted</th>
+                <tr class="budget-entry">
+                    <td><input type="text" name='category_name'></td>
+                    <td><input type="text" name='amount_budgeted'></td>
+                    <td><button class="delete-btn">delete</button></td>
+                </tr>
+            </table>
+            <button id="add-item-btn">Add item</button>
+            <button type="submit" id="create-budget-btn">Create budget</button>
+        </div>
+    </form>
+    <!-- <div id="form_container">
         <form id="budget_form", method="post", action="/api/v1/budgets/add">
             <label for="budget_title">Budget Title</label><br>
             <input type="text" id="budget_title" name="budget_title"><br>
@@ -24,5 +45,5 @@
             <button type="button" id="done_button">Done</button>
             <button type="button" id="back_button">Back</button>
         </form>
-    </div>
+    </div> -->
 {% endblock %}

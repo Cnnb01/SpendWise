@@ -4,24 +4,25 @@
 from flask import Blueprint, jsonify, abort, request, make_response, session
 from ...models import storage
 from ...models.budget import Budget
-from .decorators import requires_logged_in_user
+# from .decorators import requires_logged_in_user
 from . import apis
 
 
 @apis.route('/budgets/add', methods=['POST'], strict_slashes=False)
-@requires_logged_in_user
+# @requires_logged_in_user
 def add_budget():
-    if not request.get_json():
-        abort(400, description="Not a JSON")
+    # if not request.get_json():
+    #     abort(400, description="Not a JSON")
     data = request.get_json()
+    print(data)#Debug
     if (
-        'categoryId' not in data
+        'categories' not in data
         or 'budgetTitle' not in data
-        or 'amountPredicted' not in data
+        # or 'amountPredicted' not in data
     ):
         abort(400, description="Missing required fields")
     new_budget = Budget(
-        userId=session['current_user_id'],
+        userId=session.get('current_user_id', 1), #DEBUG
         categoryId=data['categoryId'],
         budgetTitle=data['budgetTitle'],
         amountPredicted=data['amountPredicted'],
@@ -34,7 +35,7 @@ def add_budget():
 
 
 @apis.route('/budgets/get', methods=['GET'], strict_slashes=False)
-@requires_logged_in_user
+# @requires_logged_in_user
 def get_budgets():
     budgets = storage.all(Budget).values()
     budgets_list = [budget.to_dict() for budget in budgets]
@@ -42,7 +43,7 @@ def get_budgets():
 
 
 @apis.route('/budgets/update/<Id>', methods=['PUT'], strict_slashes=False)
-@requires_logged_in_user
+# @requires_logged_in_user
 def update_budget(Id):
     budget = storage.get(Budget, Id)
     if not budget:
@@ -58,7 +59,7 @@ def update_budget(Id):
 
 
 @apis.route('/budgets/delete/<Id>', methods=['DELETE'], strict_slashes=False)
-@requires_logged_in_user
+# @requires_logged_in_user
 def delete_budget(Id):
     budget = storage.get(Budget, Id)
     if not budget:
