@@ -15,31 +15,6 @@ from . import apis
 @apis.route('/budgets/add', methods=['POST'], strict_slashes=False)
 # #@requires_logged_in_user
 def add_budget():
-    # if not request.get_json():
-    #     abort(400, description="Not a JSON")
-    # data = request.get_json()
-    # if (
-    #     'categoryId' not in data
-    #     or 'budgetTitle' not in data
-    #     or 'amountPredicted' not in data
-    # ):
-    #     abort(400, description="Missing required fields")
-    # new_budget = Budget(
-    #     userId=flask_session['current_user_id'],
-    #     categoryId=data['categoryId'],
-    #     budgetTitle=data['budgetTitle'],
-    #     amountPredicted=data['amountPredicted'],
-    #     amountSpent=data.get('amountSpent', None),
-    #     balance=data.get('balance', None),
-    # )
-    # storage.new(new_budget)
-    # storage.save()
-    
-    # >>>>>>>> NEW CODE DEBUG
-    # Extract budget information
-    # if not request.get_json():
-    #     abort(400, description="Not a JSON")
-
     data = request.get_json()
     print(data)#Debug
     if (
