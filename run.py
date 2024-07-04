@@ -30,6 +30,10 @@ cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 
 @app.route('/', strict_slashes=False)
+def landing_page():
+    """Shows the landing page of the application"""
+    return render_template('landing_page.html')
+
 @app.route('/login', strict_slashes=False)
 def home():
     """Shows the login page of the application as the first page"""
