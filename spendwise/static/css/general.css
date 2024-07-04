@@ -1,5 +1,10 @@
-/* For styles that apply to all or most pages */
+/* Ensure that the body and html elements occupy the full height of the viewport */
+/* html, body {
+    height: 100%;
+    margin: 0;
+} */
 
+/* For styles that apply to all or most pages */
 * {
 	box-sizing: border-box;
 }
@@ -8,4 +13,10 @@
 .single-page-split {
 	display: flex;
 	flex-direction: row;
+}
+
+.right-area {
+	border: 100px solid black;
+	width: 100h;
+	background-color: antiquewhite;
 }
