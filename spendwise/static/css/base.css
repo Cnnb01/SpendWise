@@ -1,8 +1,13 @@
 /* Ensure that the body and html elements occupy the full height of the viewport */
-/* html, body {
-    height: 100%;
-    margin: 0;
-} */
+body {
+	/* display: flex; */
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	/* to create a flexbox container as to position navbar and content side-by-side. */
+	background-color: #D1DFFA;
+	font-family: 'Noto Sans', 'sans-serif';
+}
 
 /* For styles that apply to all or most pages */
 * {
