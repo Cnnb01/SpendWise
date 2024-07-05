@@ -27,7 +27,7 @@
             {% endif %}
         {% endwith %}
         
-        <div class="single-page-split">
+        <div id="single-page-split">
             {% block navbar %}
                 <div id="navbar"> 
                     <a class="navbar_item" id="navbar_home" href="{{ url_for('home_page') }}">Home</a>
@@ -36,7 +36,9 @@
                     <a class="navbar_item" id="logout" href="{{ url_for('apis.logout') }}">Logout</a>
                 </div>
             {% endblock navbar %}
-            {% block content %}{% endblock %}
+            <div id="right-split">
+                {% block content %}{% endblock %}
+            </div>
         </div>
     </body>
 </html>

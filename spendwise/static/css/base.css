@@ -15,13 +15,12 @@ body {
 }
 
 /* nav bar on the left, and content on the right */
-.single-page-split {
+#single-page-split {
 	display: flex;
 	flex-direction: row;
 }
 
-.right-area {
-	border: 100px solid black;
-	width: 100h;
-	background-color: antiquewhite;
+#right-split {
+	width: 100%;
+	background-color: hsl(213, 80%, 90%);
 }
