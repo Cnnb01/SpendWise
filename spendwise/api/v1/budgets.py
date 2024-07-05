@@ -11,6 +11,15 @@ from ...models.budget_category import BudgetCategory
 from .decorators import requires_logged_in_user
 from . import apis
 
+@apis.route('/budgets/<Id>/categories', methods=['GET'])
+def get_budget_categories(Id):
+    budgets = storage.all(Budget).values()
+    budgets_list = []
+    for budget in budgets:
+        budget_dict = budget.to_dict()
+        budget_dict['categories'] = [category.to_dict() for category in budget.categories]
+        budgets_list.append(budget_dict)
+    return jsonify(budgets_list)
 
 @apis.route('/budgets/add', methods=['POST'], strict_slashes=False)
 # #@requires_logged_in_user
@@ -102,4 +111,5 @@ def delete_budget(Id):
 # curl -X GET http://localhost:5000/api/v1/budgets
 # curl -X PUT http://localhost:5000/api/v1/budgets/1 -H "Content-Type: application/json" -d '{"amountSpent": 200.00}'
 # curl -X POST http://localhost:5000/api/v1/budgets -H "Content-Type: application/json" -d '{"userId": 1, "categoryId": 2, "budgetTitle": "Wedding", "amountPredicted": 500.00}'
+# curl -X POST http://localhost:5000/api/v1/budgets -H "Content-Type: application/json" -d '{"userId": 1, "budgetTitle": "Wedding", "amountPredicted": 500.00}'
 # curl -X DELETE http://localhost:5000/api/v1/budgets/1

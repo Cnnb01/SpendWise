@@ -3,12 +3,11 @@
 {% block title %}Create Budget{% endblock %}
 
 {% block more_styles %}
-    <link rel="stylesheet" href="../static/css/budgets_create.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/budgets_create.css') }}">
 {% endblock %}
 
 {% block more_scripts %}
-    <script src="../static/js/aj_budgets_create.js"></script>
-    <!-- <script src="../static/js/add_row.js"></script> -->
+    <script src="{{ url_for('static', filename='js/aj_budgets_create.js') }}"></script>
 {% endblock %}
 
 {% block content %}

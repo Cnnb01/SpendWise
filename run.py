@@ -55,6 +55,11 @@ def create_budget():
     """Shows the budget creation page of the application"""
     return render_template('budgets_create.html')
 
+@app.route('/budgets/<Id>/categories', strict_slashes=False)
+def create_specific_budget(Id):
+    """Shows the budget creation page of the application"""
+    return render_template('category_display.html')
+
 @app.route('/expenses/create', strict_slashes=False)
 def create_expense():
     """Shows the budget creation page of the application"""
