@@ -13,3 +13,9 @@ class BudgetCategory(Base):
     
     budget = relationship('Budget', back_populates='categories')
     category = relationship('Category')
+
+    def to_dict(self):
+        return {
+            'category_name': self.categoryId,
+            'amount_budgeted': self.amountBudgeted
+        }

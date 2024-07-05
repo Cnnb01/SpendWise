@@ -44,17 +44,6 @@ tr:hover {
     background-color: #e6f2ff; /* Slightly darker blue on hover */
 }
 
-/* Link Styles */
-a {
-    color: #005f99;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #003f66;
-    text-decoration: underline;
-}
-
 /* Button Styles */
 button {
     background-color: #124076; /* Dark blue */

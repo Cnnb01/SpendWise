@@ -4,7 +4,9 @@ $(document).ready(function(){
             url: "/api/v1/budgets/" + budgetId + "/categories",
             type: "GET",
             success: function(data){
-                $("#budget-title").text(data.budgetTitle + " Categories");
+                console.log("Received data:", data);//debbugging
+                $("#category_table").find("tr:gt(0)").remove();//clearing existing rows except the header
+                $("h1").text(data.budgetTitle + " Categories");
                 data.categories.forEach(function(category){
                     $('#category_table').append(
                         '<tr>' +
@@ -20,9 +22,9 @@ $(document).ready(function(){
         });
     }
 
-    // Extract budgetId from URL
-    var urlParams = new URLSearchParams(window.location.search);
-    var budgetId = urlParams.get('budgetId');
+    // extract budgetId from URL path
+    var pathArray = window.location.pathname.split('/');
+    var budgetId = pathArray[pathArray.length - 2];
 
     if (budgetId) {
         loadCategories(budgetId);
@@ -32,3 +34,4 @@ $(document).ready(function(){
         window.location.href = '/budgets/display';
     });
 });
+
