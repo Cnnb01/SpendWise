@@ -119,7 +119,6 @@ body {
 			opacity: 0;
 		}
 
-
 /* Wrapper */
 
 	.wrapper {
@@ -143,10 +142,6 @@ body {
 			color: #144885;
 		}
 
-		.wrapper.style3 {
-			background-color: #B4D8FF;
-			color: #2455aa;
-		}
 
 		.wrapper.fullscreen {
 			display: -moz-flex;
