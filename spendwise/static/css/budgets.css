@@ -1,13 +1,3 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex; /* to create a flexbox container as to position navbar and content side-by-side. */
-    background-color: #D1DFFA;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: #124076;
-  }
-  
   #wel_msg {
     color: #07162c;
     font-size: 2em;

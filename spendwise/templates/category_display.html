@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../static/css/category_display.css"> -->
+    <script src="../static/js/jquery-3.2.1.min.js"></script>
+    <script src="../static/js/aj_category_display.js"></script>
+    <title>Category Display</title>
+</head>
+<body>
+    <h1>{{ budget_title }} Categories</h1>
+<table id="category_table">
+  <tr>
+    <th>Category Name</th>
+    <th>Amount Budgeted</th>
+  </tr>
+  {% for category in categories %}
+  <tr>
+    <td>{{ category.categoryName }}</td>
+    <td>{{ category.amountBudgeted }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+    <!-- <h1 id="budget-title">Budget Categories</h1>
+    
+    <table id="category_table">
+        <tr>
+            <th>Category Name</th>
+            <th>Amount Budgeted</th>
+        </tr>
+    </table> -->
+    <button id="back_button">Back</button>
+</body>
+</html>

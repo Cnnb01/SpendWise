@@ -4,26 +4,9 @@ $(document).ready(function(){
             url: "/api/v1/budgets/get",
             type: "GET",
             success: function(budgets){
-        //         let currentTitle = "";
-        //         let currentRow = null;
-
-        //         budgets.forEach(function(budget){
-        //             if (budget.budgetTitle !== currentTitle) {
-        //                 currentTitle = budget.budgetTitle;
-        //                 currentRow = $('<tr>').append('<td>' + currentTitle + '</td>');
-        //             }
-        //   // Append remaining cells for the current budget
-        //             currentRow.append(
-        //                 '<td>' + budget.categoryId + '</td>' +
-        //                 '<td>' + budget.amountPredicted + '</td>' +
-        //                 '<td contenteditable="true" class="amount_spent">' + budget.amountSpent + '</td>' +
-        //                 '<td class="balance">' + budget.balance + '</td>'
-        //             );
-        //         });
                 budgets.forEach(function(budget){
                     $('#budget_table').append(
-                        '<tr><td>' + budget.budgetTitle + '</td>' +
-                        '<td>' + budget.categoryId + '</td>' +
+                        '<tr><td><a href="/budgets/' + budget.Id + '/categories">' + budget.budgetTitle + '</a></td>' +//bug probably caused by the /budgets/, coz js files don't get loaded to category_display.html, the GET req appearing is "GET /budgets/static/js/jquery-3.2.1.min.js HTTP/1.1" 404 - instead of "GET /static/js/aj_budgets_display.js HTTP/1.1" 200 -
                         '<td>' + budget.amountPredicted + '</td>' +
                         '<td contenteditable="true" class="amount_spent">' + budget.amountSpent + '</td>' +
                         '<td class="balance">' + budget.balance + '</td></tr>'
