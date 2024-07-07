@@ -451,3 +451,44 @@ body {
 			}
 
 		}
+
+section.contacts {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+/* Contact icons and text */
+ul.contacts {
+	display: flex;
+	padding: 0px;
+	margin: 0px;
+	gap: 25px;
+}
+
+ul.contacts > li  {
+	list-style-type: none;
+}
+
+.contact-name {
+	min-width: 90px;
+	border-right: 4px solid hsl(213, 70%, 72%);
+	border-style:dotted;
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
+}
+
+.icon-text-container {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.contact-icon {
+	width: 30px;
+	height: auto;
+	fill: hsl(213, 50%, 45%);
+}
+
+/* contacts hovering animations */
