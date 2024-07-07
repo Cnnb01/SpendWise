@@ -67,7 +67,12 @@ def login():
 
     # check if the user already exists
     email = data.get('email')
-    existing_user = storage.session.query(User).filter_by(email=email).first()
+    try:
+        existing_user = storage.session.query(User).filter_by(email=email).first()
+    except Exception as e:
+        storage.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
     if not existing_user:
         message = 'Incorrect email or password. Please try again'
         flash(message, 'error')
