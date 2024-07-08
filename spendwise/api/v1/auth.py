@@ -27,7 +27,11 @@ def signup():
     passwd = data.get('passwd')
 
     # check if this user already exists
-    user_exists = storage.session.query(User).filter_by(email=email).first()
+    try:
+        user_exists = storage.session.query(User).filter_by(email=email).first()
+    except Exception as e:
+        storage.session.rollback()
+        return jsonify({'error': str(e)}), 500
     if user_exists:
         print('User already exists!!!!!')  # DEBUG
         message = 'User already exists. If this is you, please log in'
