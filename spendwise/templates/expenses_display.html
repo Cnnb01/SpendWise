@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/tables.css">
+{% extends "base.html" %}
 
-    <title>Expenses</title>
-</head>
-<body>
+{% block title %}Expenses{% endblock %}
+
+{% block more_styles %}
+    <link rel="stylesheet" href="../static/css/tables.css">
+{% endblock %}
+
+{% block more_scripts%}
+    <script src="../static/js/expense_display.js"></script>
+{% endblock %}
+
+{% block content %}
     <div id="table-container">
         <h1>Expenses</h1> 
         <table id="budget_table">
@@ -24,7 +27,4 @@
         </table>
         <button id="back_button">Back</button>
     </div>
-    <script src="../static/js/jquery-3.2.1.min.js"></script>
-    <script src="../static/js/expense_display.js"></script>
-</body>
-</html>
+{% endblock %}
