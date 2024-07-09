@@ -1,45 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block more_styles %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login_signup.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/flash.css') }}">
-    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+{% endblock %}
+
+{% block more_scripts %}
     <script src="{{ url_for('static', filename='js/login.js') }}"></script>
     <script src="{{ url_for('static', filename='js/flash.js') }}"></script>
-</head>
-<body>
-    <!-- Display any flash messages -->
-    {% with messages = get_flashed_messages(with_categories=True) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="alert alert-dismissible alert-{{ category }}">
-                    {{ message }}
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+{% endblock %}
 
-    <div id="form-container">
-    <h1>Welcome Back</h1>
-    <h1>Enter your credentials to login</h1>
-        <form id="login-form", method="post">
-            <ul>
-                <li>
-                    <label class="input-label", for="email">Email</label>
-                    <input type="text" id="email" name="email" placeholder="Email", required>
-                </li>
-                <li>
-                    <label class="input-label", for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password", required>
-                </li>
-            </ul>
-            <button type="submit" id="login" value="Login">Login</button>
-            <p class="dont-have-an-account">
-                Don't have a spendwise account? <a href="signup">Sign up</a>
-            </p>
-        </form>
-    </div>
-</body>
-</html>
+{% block navbar %}{% endblock %}
+
+{% block content %}
+<div id="form-container">
+<h1>Welcome Back</h1>
+<h1>Enter your credentials to login</h1>
+    <form id="login-form", method="post">
+        <ul>
+            <li>
+                <label class="input-label", for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Email", required>
+            </li>
+            <li>
+                <label class="input-label", for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password", required>
+            </li>
+        </ul>
+        <button type="submit" id="login" value="Login">Login</button>
+        <p class="dont-have-an-account">
+            Don't have a spendwise account? <a href="signup">Sign up</a>
+        </p>
+    </form>
+</div>
+{% endblock %}
