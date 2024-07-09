@@ -5,11 +5,11 @@
 /* For primary call to action buttons  */
 button.cta-primary {
     border-style: none;
-    color: hsl(220, 100%, 98%);
+    color: var(--blue-100);
     height: var(--btn-height-normal);
 	width: 100%;
     border-radius: var(--radius-normal);
-    background-color: hsl(212, 50%, 30%);
+    background-color: var(--blue-500);
     font-size: var(--font-size-normal);
 	font-weight: var(--font-weight-bold);
 }
