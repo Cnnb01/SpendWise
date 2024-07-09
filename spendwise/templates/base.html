@@ -32,7 +32,7 @@
             {% block navbar %}
                 <div id="navbar"> 
                     <a class="navbar_item" id="navbar_home" href="{{ url_for('home_page') }}">Home</a>
-                    <a class="navbar_item" id="navbar_expenses" href="expenses.html">Expenses</a>
+                    <a class="navbar_item" id="navbar_expenses" href="{{ url_for('create_expense') }}">Expenses</a>
                     <a class="navbar_item" id="navbar_budget" href="{{ url_for('budgets') }}">Budget</a>
                     <a class="navbar_item" id="logout" href="{{ url_for('apis.logout') }}">Logout</a>
                 </div>

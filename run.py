@@ -28,22 +28,26 @@ Session(app)
 app.register_blueprint(apis, url_prefix='/api/v1')
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
-
 @app.route('/', strict_slashes=False)
 def landing_page():
     """Shows the landing page of the application"""
     return render_template('landing_page.html')
 
-@app.route('/login', strict_slashes=False)
-def home():
-    """Shows the login page of the application as the first page"""
-    return render_template('login.html')
-
+@app.route('/home', strict_slashes=False)
+#@requires_logged_in_user
+def home_page():
+    """Shows the home page for this user"""
+    return render_template('homepage.html')
 
 @app.route('/signup', strict_slashes=False)
 def signup():
     """Shows the sign up page of the application"""
     return render_template('signup.html')
+
+@app.route('/login', strict_slashes=False)
+def home():
+    """Shows the login page of the application as the first page"""
+    return render_template('login.html')
 
 @app.route('/budgets', strict_slashes=False)
 def budgets():
@@ -55,6 +59,10 @@ def create_budget():
     """Shows the budget creation page of the application"""
     return render_template('budgets_create.html')
 
+@app.route('/budgets/display')
+def display_budgets():
+    return render_template('budgets_display.html')
+
 @app.route('/budgets/<Id>/categories', strict_slashes=False)
 def create_specific_budget(Id):
     """Shows the budget creation page of the application"""
@@ -62,23 +70,12 @@ def create_specific_budget(Id):
 
 @app.route('/expenses/create', strict_slashes=False)
 def create_expense():
-    """Shows the budget creation page of the application"""
+    """Shows the expenses creation page of the application"""
     return render_template('expenses_create.html')
-
-@app.route('/budgets/display')
-def display_budgets():
-    return render_template('budgets_display.html')
 
 @app.route('/expenses/display')
 def display_expenses():
     return render_template('expenses_display.html')
-
-@app.route('/home', strict_slashes=False)
-#@requires_logged_in_user
-def home_page():
-    """Shows the home page for this user"""
-    return render_template('homepage.html')
-
 
 @app.after_request
 def add_headers(response):

@@ -1,12 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
+
+{% block title %}Expenses{% endblock %}
+
+{% block more_styles %}
     <link rel="stylesheet" href="../static/css/tables.css">
-    <title>Expenses</title>
-</head>
-<body>
+{% endblock %}
+
+{% block more_scripts %}
+    <script src="../static/js/add_expense.js"></script>
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
     <form id="budget-form">
         <h1>Create New Expense</h1>
         <div id="table-container">
@@ -34,7 +40,4 @@
             <button type="submit" id="create-budget-btn" style="display: none;">Create expense</button>
         </div>
     </form>
-    <script src="../static/js/jquery-3.2.1.min.js"></script>
-    <script src="../static/js/add_expense.js"></script>
-</body>
-</html>
+{% endblock %}
