@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<!--   <link rel="stylesheet" href="fonts.css">     --> 
+    <link rel="stylesheet" href="playground.css">
+    <link rel="stylesheet" href="tables.css">
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="add_row.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div id="table-container">
+            <div id="budget-title-section">
+                <label for="budget-title">Budget title</label>
+                <input id="budget-title" type="text", autofocus>
+            </div>
+            <button id="start-btn">Start</button>
+            <table id="budget-creation-table">
+                <th>Category name</th>
+                <th>Amount budgeted</th>
+                <tr class="budget-entry">
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><button class="delete-btn">delete</button></td>
+                </tr>
+            </table>
+            <button id="add-item-btn">Add item</button>
+            <button type="submit" id="create-budget-btn">Create budget</button>
+        </div>
+    </form>
+</body>
+</html>
