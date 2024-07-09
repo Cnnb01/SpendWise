@@ -13,13 +13,15 @@ from . import apis
 
 @apis.route('/budgets/<Id>/categories', methods=['GET'])
 def get_budget_categories(Id):
-    budgets = storage.all(Budget).values()
-    budgets_list = []
-    for budget in budgets:
-        budget_dict = budget.to_dict()
-        budget_dict['categories'] = [category.to_dict() for category in budget.categories]
-        budgets_list.append(budget_dict)
-    return jsonify(budgets_list)
+    budget = storage.get(Budget, Id)
+    if not budget:
+        abort(404)
+    categories = [{'category_name': category.categoryId, 'amount_budgeted': category.amountBudgeted} for category in budget.categories]
+    
+    return jsonify({
+        'budgetTitle': budget.budgetTitle,
+        'categories': categories
+    })
 
 @apis.route('/budgets/add', methods=['POST'], strict_slashes=False)
 # #@requires_logged_in_user
@@ -63,7 +65,7 @@ def add_budget():
             category = Category(categoryName=category_name)
             storage.new(category)
             storage.save()
-
+            
         # Create an entry in the junction table
         budget_category = BudgetCategory(budgetId=new_budget.Id, categoryId=category.Id, amountBudgeted=amount_budgeted)
         storage.new(budget_category)
@@ -109,6 +111,7 @@ def delete_budget(Id):
 
 # commands i used to test out the APIs, you have to have a user and a category and the budget in the db
 # curl -X GET http://localhost:5000/api/v1/budgets
+# curl -X GET "http://localhost:5000/api/v1/budgets/1/categories"
 # curl -X PUT http://localhost:5000/api/v1/budgets/1 -H "Content-Type: application/json" -d '{"amountSpent": 200.00}'
 # curl -X POST http://localhost:5000/api/v1/budgets -H "Content-Type: application/json" -d '{"userId": 1, "categoryId": 2, "budgetTitle": "Wedding", "amountPredicted": 500.00}'
 # curl -X POST http://localhost:5000/api/v1/budgets -H "Content-Type: application/json" -d '{"userId": 1, "budgetTitle": "Wedding", "amountPredicted": 500.00}'

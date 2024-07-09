@@ -1,25 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/budgets_display.css">
-    <script src="../static/js/jquery-3.2.1.min.js"></script>
-    <script src="../static/js/aj_budgets_display.js"></script>
+{% extends "base.html" %}
+{% block more_styles %}    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/budgets_display.css') }}">
+{% endblock %}
+{% block more_scripts %}
+    <script src="{{ url_for('static', filename='js/aj_budgets_display.js') }}"></script>
+{% endblock %}
+{% block title %}
     <title>Display Budget</title>
-</head>
-<body>
-    <h1>Display Budget</h1>
+{% endblock %}
+{% block navbar %}
     
-    <table id="budget_table">
-        <tr>
-            <th>Budget Title</th>
-            <!-- <th>Item Name</th> -->
-            <th>Amount Budgeted</th>
-            <th>Amount Spent</th>
-            <th>Remainder/Excess</th>
-        </tr>
-    </table>
-    <button id="back_button">Back</button>
-</body>
-</html>
+{% endblock %}
+{% block content %}
+<h1>Display Budget</h1>
+<div class="container"> 
+<table id="budget_table">
+    <tr>
+        <th>Budget Title</th>
+        <!-- <th>Item Name</th> -->
+        <th>Amount Budgeted</th>
+        <th>Amount Spent</th>
+        <th>Remainder/Excess</th>
+    </tr>
+</table>
+</div> 
+<button id="back_button">Back</button>
+{% endblock %}
+    

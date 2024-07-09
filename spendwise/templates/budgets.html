@@ -2,13 +2,13 @@
 {% extends "base.html" %}
 
 {% block more_styles %}
-<link rel="stylesheet" href="../static/css/budgets.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/budgets.css') }}">
 {% endblock %}
 
 {% block more_scripts %}
-<script src="../static/js/budgets.js"></script>
+    <script src="{{ url_for('static', filename='js/budgets.js') }}"></script>
 {% endblock %}
-    
+
 {% block title %}budgets{% endblock %}
 {% block content %}
     <div id="content">

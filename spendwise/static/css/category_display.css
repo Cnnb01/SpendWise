@@ -1,0 +1,88 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* original blue background D1DFFA */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    color: #124076; /* Dark blue */
+    margin-bottom: 20px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #ffffff; /* White background for the table */
+}
+
+table, th, td {
+    border: 1px solid #cce7ff; /* Light blue borders */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #124076; /* Dark blue background for headers */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f0f8ff; /* Light blue for even rows */
+}
+
+tr:hover {
+    background-color: #e6f2ff; /* Slightly darker blue on hover */
+}
+
+/* Button Styles */
+button {
+    background-color: #124076; /* Dark blue */
+    border-radius: 10px;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto;
+    display: block;
+}
+
+button:hover {
+    background-color: #003f66; /* Darker blue on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    table, th, td {
+        display: block;
+        width: 100%;
+    }
+
+    th {
+        text-align: right;
+        padding-right: 20px;
+    }
+
+    th::after {
+        content: ":";
+    }
+
+    td {
+        text-align: right;
+        padding-left: 20px;
+    }
+
+    tr {
+        margin-bottom: 20px;
+    }
+}
