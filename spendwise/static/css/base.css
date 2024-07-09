@@ -1,3 +1,6 @@
+/* Import css variables */
+@import url('variables.css');
+
 /* Ensure that the body and html elements occupy the full height of the viewport */
 body {
 	/* display: flex; */
@@ -6,7 +9,7 @@ body {
 	height: 100%;
 	/* to create a flexbox container as to position navbar and content side-by-side. */
 	background-color: #D1DFFA;
-	font-family: 'Noto Sans', 'sans-serif';
+	font-family: var(--font-family-standard);
 }
 
 /* For styles that apply to all or most pages */

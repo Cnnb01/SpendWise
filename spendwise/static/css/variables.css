@@ -1,0 +1,11 @@
+:root {
+	/* font sizes */
+	--font-size-xsmall: 14px;
+	--font-size-small: 16px;
+	--font-size-normal: 18px ;
+	--font-size-large: 20px;
+	--font-size-xlarge: 24px;
+
+	/* font families */
+	--font-family-standard: 'Noto Sans', 'sans-serif';
+}
