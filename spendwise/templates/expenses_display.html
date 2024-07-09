@@ -3,11 +3,11 @@
 {% block title %}Expenses{% endblock %}
 
 {% block more_styles %}
-    <link rel="stylesheet" href="../static/css/tables.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
 {% endblock %}
 
 {% block more_scripts%}
-    <script src="../static/js/expense_display.js"></script>
+    <script src="{{ url_for('static', filename='js/expense_display.js') }}"></script>
 {% endblock %}
 
 {% block content %}
