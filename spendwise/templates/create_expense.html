@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/tables.css">
+    <title>Expenses</title>
+</head>
+<body>
+    <form id="budget-form">
+        <h1>Create New Expense</h1>
+        <div id="table-container">
+            <div id="budget-title-section">
+                <label for="budget-title">Expense title</label>
+                <input id="budget-title" type="text" autofocus>
+            </div>
+            <button id="start-btn">Start</button>
+            <table id="budget-creation-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Category name</th>
+                        <th>Amount spent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="budget-entry">
+                        <td><input type="text" name="category-name[]" required></td>
+                        <td><input type="number" name="amount-spent[]" required></td>
+                        <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button id="add-item-btn" style="display: none;">Add item</button>
+            <button type="submit" id="create-budget-btn" style="display: none;">Create expense</button>
+        </div>
+    </form>
+    <script src="../static/js/jquery-3.2.1.min.js"></script>
+    <script src="../static/js/add_expense.js"></script>
+</body>
+</html>

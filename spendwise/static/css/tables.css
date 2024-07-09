@@ -1,0 +1,143 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #D1DFFA;
+	font-family: 'Noto Sans', sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#table-container{
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
+    overflow: hidden;
+    border-radius: 20px;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #D1DFFA;
+}
+
+#budget-title-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    justify-content: center; /* Centers items vertically */
+    text-align: center;
+	padding: 20px;
+    width: 80vh;
+}
+
+#budget-title-section label, h1 {
+    margin-bottom: 10px;
+    color: #007bff;
+    text-align: center;
+}
+
+#budget-title-section input, #budget-creation-table input {
+    width: 100%;
+    max-width: 400px; /* Optional: sets a maximum width for the input */
+    padding: 10px;
+    border: 1px solid hsl(218, 70%, 72%);
+    border-radius: 10px;
+    font-size: 16px;
+	text-align: center;
+	outline: none;
+}
+
+
+#budget-title-section input:focus{
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+	border: 1px solid hsl(218, 70%, 72%);
+	
+}
+
+input {
+	border: none;
+	outline: none;
+}
+
+/* initially, do not show the table, and the create budget button */
+#budget-creation-table,
+#create-budget-btn,
+#add-item-btn {
+  display: none;
+}
+
+#budget_table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse; /* Collapse borders */  
+}
+
+#budget_table th {
+    background-color: #124076;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    font-weight: 300;
+}
+
+#budget-creation-table {
+	background-color: #D1DFFA;
+    color: #124076;
+	font-weight: 400;
+}
+
+#budget_table td {
+    padding-inline: 40px;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #ddd; /* add border to the bottom of the cells */
+}
+
+#budget_table tr:nth-child(odd) {
+    background-color: #D1DFFA; /* add a background color to every odd row */
+}
+
+#budget_table tr:nth-child(even) {
+    background-color: #86aae9; /* add a background color to every even row */
+}
+
+button {
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: #124076;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.budget-info {
+	display: flex;
+	gap: 10px;
+}
+
+#add-item-btn,
+#create-budget-btn {
+	margin-top: 20px;
+	width: 40%;
+}
