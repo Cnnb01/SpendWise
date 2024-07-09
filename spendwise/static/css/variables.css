@@ -6,6 +6,14 @@
 	--font-size-large: 20px;
 	--font-size-xlarge: 24px;
 
-	/* font families */
+	/* fonts */
 	--font-family-standard: 'Noto Sans', 'sans-serif';
+	--font-weight-bold: 600;
+
+	/* radii */
+	--radius-normal: 10px;
+	--radius-large:20px;
+
+	/* buttons */
+	--btn-height-normal: 60px;
 }
