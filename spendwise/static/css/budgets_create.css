@@ -1,16 +1,20 @@
+/* import variables */
+@import url('variables.css');
+
 #table-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: fit-content;
+	min-width: 1000px;
 	background-color: hsl(222, 100%, 98%);
 	padding: 20px;
+	border-radius: 10px;
 }
 
 input {
 	border: 1px solid hsl(218, 70%, 72%);
 	border-radius: 4px;
-	font-size: 20px;
+	font-size: var(--font-size-large);
 	padding: 4px 4px 4px 4px;
 }
 
@@ -58,4 +62,6 @@ button {
 
 .new-budget-area {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 }

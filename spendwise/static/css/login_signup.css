@@ -1,3 +1,6 @@
+/* import variables */
+@import url('variables.css');
+
 * {
 	box-sizing: border-box;
 }
@@ -11,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #D1DFFA;
-	font-family: 'Noto Sans', sans-serif;
+	font-family: var(--font-family-standard);
 	padding: 50px 0px 50px 0px;
 }
 
@@ -27,7 +30,7 @@ body {
 
 #form-container h1 {
 	color: hsl(213, 70%, 45%);
-	font-size: 24px;
+	font-size: var(--font-size-xlarge);
 	font-weight: 500;
 	padding: 30px 0px 30px 0px;
 }
@@ -52,7 +55,7 @@ h3 {
 
 .input-label {
 	margin: 0px;
-	font-size: 14px;
+	font-size: var(--font-size-xsmall);
 	font-weight: 400;
 	text-align: left;
 	color: hsl(216, 10%, 45%);
@@ -78,7 +81,7 @@ form input {
     background-color: hsl(220, 100%, 98%);
 	/* background-color: hsl(0, 0%, 100%); */
     outline: none;
-	font-size: 20px;
+	font-size: var(--font-size-large);
 	color: hsl(215, 74%, 10%);
 }
 
@@ -106,6 +109,7 @@ form li {
 	display: flex;
 	flex-direction: column;
 }
+
 form button {
 	border-style: none;
     border-radius: 10px;
@@ -114,14 +118,14 @@ form button {
     color: #ffffff;
     width: 100%;
 	height: 60px;
-	font-size: 18px;
+	font-size: var(--font-size-normal);
 	font-weight: 600;
 }
 
 .have-an-account,
 .dont-have-an-account {
 	margin: 30px 0px 0px 0px;
-	font-size: 18px;
+	font-size: var(--font-size-normal);
 	color: hsl(216, 10%, 45%);
 }
 
@@ -131,3 +135,4 @@ form button {
 	width: 100%;
 	background-color: hsl(218, 70%, 72%);
 } */
+ 

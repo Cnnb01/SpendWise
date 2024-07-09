@@ -1,0 +1,15 @@
+/* For styling buttons */
+
+@import url('variables.css');
+
+/* For primary call to action buttons  */
+button.cta-primary {
+    border-style: none;
+    color: var(--blue-100);
+    height: var(--btn-height-normal);
+	width: 100%;
+    border-radius: var(--radius-normal);
+    background-color: var(--blue-500);
+    font-size: var(--font-size-normal);
+	font-weight: var(--font-weight-bold);
+}
