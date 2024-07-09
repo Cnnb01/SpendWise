@@ -5,14 +5,14 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	min-width: 1000px;
-	background-color: hsl(222, 100%, 98%);
+	min-width: 900px;
+	background-color: var(--blue-100);
 	padding: 20px;
 	border-radius: 10px;
 }
 
 input {
-	border: 1px solid hsl(218, 70%, 72%);
+	border: 1px solid var(--blue-300);
 	border-radius: 4px;
 	font-size: var(--font-size-large);
 	padding: 4px 4px 4px 4px;
@@ -23,7 +23,7 @@ button {
 	width: 60px;
 	height: 30px;
 	border: none;
-	background-color: hsl(220, 80%, 90%);
+	background-color: var(--blue-200);
 }
 
 /* initially, do not show the table, and the create budget button */
@@ -51,7 +51,7 @@ button {
 }
 
 .delete-btn:hover {
-	background-color: hsl(220, 80%, 90%);
+	background-color: var(--blue-200);
 }
 
 #add-item-btn,

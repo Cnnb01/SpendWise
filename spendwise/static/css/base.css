@@ -8,7 +8,7 @@ body {
 	padding: 0;
 	height: 100%;
 	/* to create a flexbox container as to position navbar and content side-by-side. */
-	background-color: #D1DFFA;
+	background-color: var(--blue-200);
 	font-family: var(--font-family-standard);
 }
 
@@ -25,5 +25,5 @@ body {
 
 #right-split {
 	width: 100%;
-	background-color: hsl(213, 80%, 90%);
+	background-color: var(--blue-200);
 }

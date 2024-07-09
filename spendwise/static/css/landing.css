@@ -45,7 +45,7 @@ body {
 
 		a:hover {
 			border-bottom-color: transparent;
-			color: #ffffff;
+			color: white;
 		}
 
 
@@ -326,7 +326,7 @@ body {
 			}
 
 			#sidebar nav a.active {
-				color: #ffffff;
+				color: white;
 			}
 
 				#sidebar nav a.active:after {

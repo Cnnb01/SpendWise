@@ -10,7 +10,7 @@
 #navbar {
     min-width: 220px;
     height: 100vh; /* Full height of the viewport */
-    background-color: #124076;
+    background-color: var(--blue-500);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,24 +30,24 @@
 .navbar_item {
     font-size: var(--font-size-large); 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #ffffff;
+    color: white;
     padding: 40px;
     text-decoration: none;
 }
 
 #navbar_home.selected, #navbar_expenses.selected, #navbar_budget.selected {
-    background-color: #86AAE9;
-    color: #144885;
+    background-color: var(--blue-300);
+    color: var(--blue-500);
 }
 
 .navbar_item:hover {
-    background-color: #D1DFFA; /* Darker background on hover*/
-    color:#144885;
+    background-color: var(--blue-200); /* Darker background on hover*/
+    color:var(--blue-500);
 }
 
 #navbar_home.selected, #navbar_expenses.selected, #navbar_budget.selected {
-    background-color: #D1DFFA;
-    color: #144885;
+    background-color: var(--blue-200);
+    color: var(--blue-500);
 }
 
 #content {

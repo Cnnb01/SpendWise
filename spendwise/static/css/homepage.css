@@ -29,11 +29,11 @@
     grid-area: 2 / 1 / 2 / 2;
     text-align: center;
     font-family: var(--font-family-standard);
-    color: #124076;
+    color: var(--blue-500);
     font-size: large;
     font-weight: bold;
     padding: 40px;
-    background-color: #86AAE9;
+    background-color: var(--blue-300);
     border-radius: 50px;
 }
 
@@ -41,15 +41,15 @@
     grid-area: 3 / 2 / 3 / 3;
     text-align: center;
     font-family: var(--font-family-standard);
-    color: #124076;
+    color: var(blue-500);
     font-size: large;
     font-weight: bold;
     padding: 40px;
-    background-color: #86AAE9;
+    background-color: var(--blue-300);
     border-radius: 50px;
 }
 
 #text1:hover, #text2:hover {
-    background-color:#144885; /* Darker background on hover */
-    color: #ffffff;
+    background-color:var(--blue-500); /* Darker background on hover */
+    color: white;
 }

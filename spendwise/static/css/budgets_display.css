@@ -1,3 +1,6 @@
+/* import variables */
+@import url('variables.css');
+
 h1 {
     text-align: center;
 }
@@ -13,31 +16,31 @@ h1 {
 }
 
 #budget_table th {
-    background-color: #236CC3;
-    color: #000;
+    background-color: var(--blue-400);
+    color: var(--blue-600);
     text-align: left;
     padding: 10px;
 }
 
 #budget_table td {
     padding: 10px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd; /* add border to the bottom of the cells */
+    border-top: 1px solid var(--grey-200);
+    border-bottom: 1px solid var(--grey-200); /* add border to the bottom of the cells */
 }
 
 #budget_table tr:nth-child(odd) {
-    background-color: #236CC3; /* add a background color to every odd row */
+    background-color: var(--blue-400); /* add a background color to every odd row */
 }
 
 #budget_table tr:nth-child(even) {
-    background-color: #86aae9; /* add a background color to every even row */
+    background-color: var(--blue-300); /* add a background color to every even row */
 }
 
 button {
     margin-top: 10px;
     border-radius: 20px;
-    background-color: #124076;
-    color: #fff;
+    background-color: var(--blue-500);
+    color: white;
     border: none;
     padding: 10px;
     cursor: pointer;

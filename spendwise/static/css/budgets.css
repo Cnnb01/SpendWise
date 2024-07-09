@@ -1,5 +1,7 @@
+@import url('variables.css');
+
   #wel_msg {
-    color: #07162c;
+    color: var(--blue-600);
     font-size: 2em;
     font-weight: bold;
     margin: 30px;
@@ -21,12 +23,12 @@
   
   button {
     border-style: none;
-    color: #ffffff;
+    color: white;
     height: 65px;
     width: 250px;
     border-radius: 20px;
-    background-color: #124076;
-    font-size: 15px;
+    background-color: var(--blue-500);
+    font-size: var(--font-size-normal);
 	  font-weight: 500;
   }
   
