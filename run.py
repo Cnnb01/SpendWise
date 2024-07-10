@@ -75,6 +75,7 @@ def create_expense():
 
 @app.route('/expenses/display')
 def display_expenses():
+    """Displays the list of expenses added"""
     return render_template('expenses_display.html')
 
 @app.after_request
