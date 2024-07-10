@@ -17,17 +17,19 @@ class Expense(Base):
     categoryId = Column(Integer, ForeignKey('categories.Id'), nullable=False)
     dateAdded = Column(DateTime, default=datetime.utcnow)
     expenseAmount = Column(Numeric(10, 2), nullable=False)
+    itemName = Column(String(128), nullable=False)
 
     def to_dict(
         self,
     ):  # converts an Expense object to a dictionary for easy manipulation and JSON serialization.
         """Convert the Expense object to a dictionary"""
         return {
-            'expenseId': self.expenseId,
+            'Id': self.Id,
             'userId': self.userId,
             'categoryId': self.categoryId,
             'dateAdded': self.dateAdded,
             'expenseAmount': str(
                 self.expenseAmount
             ),  # Convert Decimal to string
+            'itemName': self.itemName
         }

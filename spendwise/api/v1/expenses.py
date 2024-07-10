@@ -11,6 +11,7 @@ from . import apis
 def get_expenses():
     expenses = storage.all(Expense)
     cleaned_expenses = [obj.to_dict() for obj in expenses.values()]
+    print(jsonify(cleaned_expenses))
     return jsonify(cleaned_expenses)
 
 
@@ -19,21 +20,34 @@ def add_expense():
     if not request.get_json():
         abort(400, description="Not a JSON")
     data = request.get_json()
-    if (
-        'userId' not in data
-        or 'categoryId' not in data
-        or 'expenseAmount' not in data
-    ):
-        abort(400, description="Missing required fields")
+    if 'entries' not in data or not isinstance(data['entries'], list):
+        abort(400, description="Missing required fields or invalid format")
 
-    expense = Expense(
-        userId=data['userId'],
-        categoryId=data['categoryId'],
-        expenseAmount=data['expenseAmount'],
-    )
-    storage.new(expense)
+    expense_entries = data['entries']
+    if not expense_entries:
+        abort(400, description="No expense entries provided")
+
+    new_expenses = []
+    for entry in expense_entries:
+        if (
+            'category' not in entry
+            or 'amount' not in entry
+            or 'item' not in entry
+        ):
+            abort(400, description="Missing required fields in one of the entries")
+
+        new_expense = Expense(
+            userId=1,  # Replace with actual user ID if needed
+            categoryId=entry['category'],
+            expenseAmount=entry['amount'],
+            itemName=entry['item']  # Assuming you have this field in your Expense model
+        )
+        storage.new(new_expense)
+        new_expenses.append(new_expense)
+
     storage.save()
-    return make_response(jsonify(expense.to_dict()), 201)
+    return make_response(jsonify([expense.to_dict() for expense in new_expenses]), 201)
+
 
 
 @apis.route('/expenses/<expenseId>', methods=['PUT'], strict_slashes=False)

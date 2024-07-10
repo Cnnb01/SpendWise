@@ -41,9 +41,9 @@ $(document).ready(function() {
         };
 
         // Save expense to localStorage
-        let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
-        expenses.push(expense);
-        localStorage.setItem('expenses', JSON.stringify(expenses));
+        // let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+        // expenses.push(expense);
+        // localStorage.setItem('expenses', JSON.stringify(expenses));
 
         // Navigate to display.html
         window.location.href = 'display_expenses.html';

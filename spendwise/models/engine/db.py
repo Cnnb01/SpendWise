@@ -22,7 +22,7 @@ classes = {
 id_names = {
     "Budget": 'Id',
     "Category": 'categoryId',
-    "Expense": 'expenseId',
+    "Expense": 'Id',
     "User": 'userId',
 }
 
