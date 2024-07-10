@@ -1,38 +1,3 @@
-// $(document).ready(function(){
-//     $("#submit_button").click(function(event){
-//         event.preventDefault(); // prevent default form submission behavior
-//         var categoryId = $("#category_id").val();
-//         var budgetTitle = $("#budget_title").val();
-//         var amountPredicted = $("#amount_budgeted").val();
-
-//         if(categoryId && budgetTitle && amountPredicted){
-//             $.ajax({
-//                 url:"/api/v1/budgets/add",
-//                 type: "POST",
-//                 contentType: 'application/json',
-//                 data: JSON.stringify({categoryId, budgetTitle, amountPredicted}),
-//                 success: function(response){
-//                     alert("Budget created successfully.");
-//                     $("#budget_form")[0].reset();//clears the form
-//                 },
-//                 error: function(error){
-//                     console.log("Error:", error);
-//                 }
-//             });
-//         }
-//         else{
-//             alert("Please fill in all required fields")
-//         }
-//     });
-//     $("#create-budget-btn").click(function() {
-//         window.location.href = '/budgets/display';
-//     });
-
-    // $("#back_button").click(function() {
-    //     window.location.href = '/home';
-    // });
-// });
-
 $(document).ready(function() {
     // show table and other buttons when the user starts to create the budget
     $("#start-btn").click(function(event) {
@@ -45,14 +10,13 @@ $(document).ready(function() {
     // Add more item rows to the table when the add item button is clicked
     $("#add-item-btn").click(function(event) {
         event.preventDefault();
-        
         // Create a new table row element
-        const newRow = $("<tr></tr>").addClass("budget-entry");
+        const newRow = $("<tr></tr>").addClass("info-entry");
         
         // Add cells (columns) to the new row
         newRow.append("<td><input type='text' name='category_name'></td>"); // Category name
         newRow.append("<td><input type='number' name='amount_budgeted'></td>"); // Amount budgeted
-        newRow.append("<td><button type='button' class='delete-btn'>Delete</button></td>"); // Delete button
+        newRow.append("<td><button type='button' class='delete-btn'>delete</button></td>"); // Delete button
         
         // Append the new row to the table body
         $("#budget-creation-table tbody").append(newRow);

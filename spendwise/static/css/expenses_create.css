@@ -3,12 +3,14 @@
 
 
 /* initially, do not show the table, and the create budget button */
-#budget-creation-table,
-#create-budget-btn,
+#expense-creation-table,
+#create-expense-btn,
 #add-item-btn {
   display: none;
 }
 
-form {
-	width: 100%;
+.new-expense-area {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }

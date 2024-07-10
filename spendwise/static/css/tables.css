@@ -1,10 +1,14 @@
 @import url('variables.css');
 
-#table-container{
-    width: 100%;
-    max-width: 600px;
+#table-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+    min-width: 600px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 30px;
+    padding: 50px 60px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
     overflow: hidden;
     border-radius: var(--radius-large);
@@ -14,7 +18,6 @@
 
 table {
     width: 100%;
-    max-width: 600px;
     margin: 0 auto;
     padding: 30px;
     overflow: hidden;
@@ -22,61 +25,63 @@ table {
     background-color: var(--blue-200);
 }
 
-#budget-title-section {
+.title-section {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centers items horizontally */
     justify-content: center; /* Centers items vertically */
     text-align: center;
-	padding: 20px;
-    width: 80vh;
+	padding: 0px;
+    width: 100%;
 }
 
-#budget-title-section label, h1 {
+.title-section label, h1 {
     margin-bottom: 10px;
     color: var(--blue-400);
     text-align: center;
 }
 
-#budget-title-section input, #budget-creation-table input {
+.title-section label {
+	font-size: var(--font-size-normal);
+}
+
+.title-section input,
+#budget-creation-table input,
+#expense-creation-table input {
     width: 100%;
-    max-width: 400px; /* Optional: sets a maximum width for the input */
     padding: 10px;
     border: 1px solid var(--blue-300);
     border-radius: var(--radius-normal);
-    font-size: 16px;
+    font-size: var(--font-size-large);
 	text-align: center;
 	outline: none;
 }
 
+.title-section input {
+	font-weight: var(--font-weight-bold);
+	color: var(--blue-500);
+}
 
-#budget-title-section input:focus{
+.title-section input:focus{
     border-color: var(--blue-400);
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 	border: 1px solid var(--blue-300);
-	
 }
 
-input {
-	border: none;
-	outline: none;
+.info-entry {
+	width: 100%;
 }
 
-/* initially, do not show the table, and the create budget button */
-#budget-creation-table,
-#create-budget-btn,
-#add-item-btn {
-  display: none;
-}
-
-#budget_table {
+#budget_table,
+#expense_table {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse; /* Collapse borders */  
 }
 
-#budget_table th {
+#budget_table th,
+#expense_table th {
     background-color: var(--blue-500);
     color: white;
     text-align: center;
@@ -84,23 +89,27 @@ input {
     font-weight: 300;
 }
 
-#budget-creation-table {
+#budget-creation-table,
+#expense-creation-table {
 	background-color: var(--blue-200);
     color: var(--blue-500);
 	font-weight: 400;
 }
 
-#budget_table td {
+#budget_table td
+#expense_table td {
     padding-inline: 40px;
     border-top: 1px solid var(--grey-200);
     border-bottom: 1px solid var(--grey-200); /* add border to the bottom of the cells */
 }
 
-#budget_table tr:nth-child(odd) {
+#budget_table tr:nth-child(odd)
+#expense_table tr:nth-child(odd) {
     background-color: var(--blue-200); /* add a background color to every odd row */
 }
 
-#budget_table tr:nth-child(even) {
+#budget_table tr:nth-child(even)
+#expense_table tr:nth-child(even) {
     background-color: var(--blue-300); /* add a background color to every even row */
 }
 
@@ -112,18 +121,11 @@ button {
     border: none;
     padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease;
 }
 
-
-
-.budget-info {
+.budget-info
+.expense-info {
 	display: flex;
 	gap: 10px;
-}
-
-#add-item-btn,
-#create-budget-btn {
-	margin-top: 20px;
-	width: 40%;
 }

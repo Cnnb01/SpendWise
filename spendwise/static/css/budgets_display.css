@@ -6,26 +6,28 @@ h1 {
 }
 
 .container {
-    max-width: 97%; /* Adjust this to change the maximum width of the table */
-    margin: 0 auto; /* Centers the table */
+	display: flex;
+    max-width: 100%; /* Adjust this to change the maximum width of the table */
+	justify-content: center;
 }
 
 /* Table Styles */
-table {
+#budget_table {
     font-size: var(--font-size-normal);
-    width: 100%;
+    width: 85%;
     border-collapse: collapse;
+	border-radius: var(--radius-large);
     font-family: var(--font-family-standard);
     margin: 20px 0; /* Adjusts the top and bottom margin */
     background-color: white; /* White background for the table */
 }
 
 
-#budget_table th {
+tr th {
     background-color: var(--blue-400);
     color: var(--blue-600);
     padding: 10px;
-    text-align: left;
+    /* text-align: left; */
 }
 
 
@@ -33,6 +35,7 @@ table {
     padding: 10px;
     border-top: 1px solid var(--grey-200);
     border-bottom: 1px solid var(--grey-200); /* add border to the bottom of the cells */
+	text-align: center;
 }
 
 #budget_table tr:nth-child(odd) {
@@ -42,14 +45,13 @@ table {
 #budget_table tr:nth-child(even) {
     background-color: var(--blue-100); /* add a background color to every even row */
 }
+
 #budget_table th {
     background-color: var(--blue-300); /* Dark blue background for headers */
     color:var(--blue-600);
+	font-weight: var(--font-weight-bold);
 }
 
-/* tr:nth-child(even) {
-    background-color: #f0f8ff; /* Light blue for even rows 
-} */
 
 tr:hover {
     background-color: #e6f2ff; /* Slightly darker blue on hover */
@@ -64,27 +66,6 @@ a {
 a:hover {
     color: #003f66;
     text-decoration: underline;
-}
-
-/* Button Styles */
-button {
-
-    margin-top: 10px;
-    border-radius: 20px;
-    background-color: var(--blue-500);
-    border-radius: 10px;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 16px;
-    margin: 20px auto;
-    display: block;
-}
-
-button:hover {
-    background-color: #003f66; /* Darker blue on hover */
 }
 
 /* Responsive Design */
