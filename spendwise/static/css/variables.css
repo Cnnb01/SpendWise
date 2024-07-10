@@ -9,10 +9,12 @@
 	/* fonts */
 	--font-family-standard: 'Noto Sans', 'sans-serif';
 	--font-weight-bold: 600;
+	--font-weight-normal: 400;
 
 	/* radii */
+	--radius-small: 5px;
 	--radius-normal: 10px;
-	--radius-large:20px;
+	--radius-large: 20px;
 
 	/* buttons */
 	--btn-height-normal: 60px;
