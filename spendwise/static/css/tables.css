@@ -1,6 +1,6 @@
 @import url('variables.css');
 
-#table-container{
+#table-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -18,7 +18,6 @@
 
 table {
     width: 100%;
-    min-width: 600px;
     margin: 0 auto;
     padding: 30px;
     overflow: hidden;
@@ -32,14 +31,18 @@ table {
     align-items: center; /* Centers items horizontally */
     justify-content: center; /* Centers items vertically */
     text-align: center;
-	padding: 20px;
-    width: 80vh;
+	padding: 0px;
+    width: 100%;
 }
 
 .title-section label, h1 {
     margin-bottom: 10px;
     color: var(--blue-400);
     text-align: center;
+}
+
+.title-section label {
+	font-size: var(--font-size-normal);
 }
 
 .title-section input,
@@ -54,6 +57,10 @@ table {
 	outline: none;
 }
 
+.title-section input {
+	font-weight: var(--font-weight-bold);
+	color: var(--blue-500);
+}
 
 .title-section input:focus{
     border-color: var(--blue-400);
