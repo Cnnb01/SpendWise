@@ -8,8 +8,9 @@ $(document).ready(function() {
     $("#add-item-btn").click(function(event) {
         event.preventDefault();
         const newRow = $("<tr class='info-entry'></tr>");
-        newRow.append("<td><input type='text' name='category-name[]' required></td>");
-        newRow.append("<td><input type='number' name='amount-spent[]' required></td>");
+        newRow.append("<td><input type='text' name='item-name' required></td>");
+        newRow.append("<td><input type='text' name='category-name' required></td>");
+        newRow.append("<td><input type='number' name='amount-spent' required></td>");
         newRow.append("<td><button class='delete-btn'>delete</button></td>");
         $("#expense-creation-table tbody").append(newRow);
     });
