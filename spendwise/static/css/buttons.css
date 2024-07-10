@@ -53,6 +53,8 @@ button.cta-secondary-filled {
 	font-weight: var(--font-weight-bold);
 }
 
+/* SPECIFIC STYLES */
+
 /* delete buttons */
 .delete-btn {
 	border-style: none;
