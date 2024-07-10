@@ -15,22 +15,20 @@
     <form id="budget-form">
 
         <div id="table-container">
-            <div class="title-section">
-                <label for="expense-title">Expense title</label>
-                <input id="expense-title" type="text" autofocus>
-            </div>
             <button  class="cta-primary" id="start-btn">Start</button>
             <table id="expense-creation-table">
-                <!-- <thead>
+                <thead>
                     <tr>
-                        <th>Category name</th>
+                        <th>Item name</th>
+                        <th>Category</th>
                         <th>Amount spent</th>
                     </tr>
-                </thead> -->
+                </thead>
                 <tbody>
                 <tr class="info-entry">
-                    <td><input type="text" name="category-name[]" required></td>
-                    <td><input type="number" name="amount-spent[]" required></td>
+                    <td><input type="text" name="item-name" required></td>
+                    <td><input type="text" name="category-name" required></td>
+                    <td><input type="number" name="amount-spent" required></td>
                     <td><button class="delete-btn">delete</button></td>
                 </tr>
                 </tbody>
