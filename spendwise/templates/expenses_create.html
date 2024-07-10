@@ -3,7 +3,7 @@
 {% block title %}Expenses{% endblock %}
 
 {% block more_styles %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/expenses_create.css') }}">
 {% endblock %}
 
 {% block more_scripts %}
@@ -11,31 +11,32 @@
 {% endblock %}
 
 {% block content %}
+    <h1>Create New Expense</h1>
     <form id="budget-form">
-        <h1>Create New Expense</h1>
+
         <div id="table-container">
-            <div id="budget-title-section">
-                <label for="budget-title">Expense title</label>
-                <input id="budget-title" type="text" autofocus>
+            <div class="title-section">
+                <label for="expense-title">Expense title</label>
+                <input id="expense-title" type="text" autofocus>
             </div>
-            <button id="start-btn">Start</button>
-            <table id="budget-creation-table" style="display: none;">
-                <thead>
+            <button  class="cta-primary" id="start-btn">Start</button>
+            <table id="expense-creation-table">
+                <!-- <thead>
                     <tr>
                         <th>Category name</th>
                         <th>Amount spent</th>
                     </tr>
-                </thead>
+                </thead> -->
                 <tbody>
-                    <tr class="budget-entry">
-                        <td><input type="text" name="category-name[]" required></td>
-                        <td><input type="number" name="amount-spent[]" required></td>
-                        <td><button class="delete-btn">Delete</button></td>
-                    </tr>
+                <tr class="info-entry">
+                    <td><input type="text" name="category-name[]" required></td>
+                    <td><input type="number" name="amount-spent[]" required></td>
+                    <td><button class="delete-btn">delete</button></td>
+                </tr>
                 </tbody>
             </table>
-            <button id="add-item-btn" style="display: none;">Add item</button>
-            <button type="submit" id="create-budget-btn" style="display: none;">Create expense</button>
+            <button class="cta-secondary-outline" id="add-item-btn" style="display: none;">+ Add item</button>
+            <button class="cta-primary" type="submit" id="create-expense-btn" style="display: none;">Create expense</button>
         </div>
     </form>
 {% endblock %}

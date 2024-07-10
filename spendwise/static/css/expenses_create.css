@@ -1,0 +1,16 @@
+/* import variables */
+@import url('variables.css');
+
+
+/* initially, do not show the table, and the create budget button */
+#expense-creation-table,
+#create-expense-btn,
+#add-item-btn {
+  display: none;
+}
+
+.new-expense-area {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
