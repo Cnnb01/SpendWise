@@ -8,3 +8,7 @@
 #add-item-btn {
   display: none;
 }
+
+form {
+	width: 100%;
+}
