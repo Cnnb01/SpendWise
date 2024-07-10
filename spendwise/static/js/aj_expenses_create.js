@@ -13,7 +13,7 @@ $(document).ready(function() {
         newRow.append("<td><input type='text' name='item-name' required></td>");
         newRow.append("<td><input type='text' name='category-name' required></td>");
         newRow.append("<td><input type='number' name='amount-spent' required></td>");
-        newRow.append("<td></td>");
+        newRow.append("<td><button class='delete-btn'>Delete</button></td>");
         $("#expense-creation-table tbody").append(newRow);
     });
 
@@ -54,7 +54,6 @@ $(document).ready(function() {
                 contentType: 'application/json',
                 data: JSON.stringify(expense),
                 success: function(response){
-                    alert (JSON.stringify(response))
                     alert("Expense added successfully.");
 
                     window.location.href = '/expenses/display';
