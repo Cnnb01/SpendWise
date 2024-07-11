@@ -33,7 +33,6 @@ def signup():
         storage.session.rollback()
         return jsonify({'error': str(e)}), 500
     if user_exists:
-        print('User already exists!!!!!')  # DEBUG
         message = 'User already exists. If this is you, please log in'
         return (jsonify({'message': message}), 400)
 
