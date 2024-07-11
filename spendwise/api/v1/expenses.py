@@ -4,6 +4,7 @@
 from flask import Blueprint, jsonify, abort, request, make_response
 from ...models import storage
 from ...models.expense import Expense
+from ...models.category import Category
 from . import apis
 
 
@@ -27,6 +28,12 @@ def add_expense():
     if not expense_entries:
         abort(400, description="No expense entries provided")
 
+    # fetch all existing categories and their ids
+    categories = {
+        category.categoryName.lower(): category.Id
+        for category in storage.session.query(Category).all()
+        }
+
     new_expenses = []
     for entry in expense_entries:
         if (
@@ -36,9 +43,17 @@ def add_expense():
         ):
             abort(400, description="Missing required fields in one of the entries")
 
+        # add this user category to the database if it does not exist
+        category_name = entry.get('category').lower()
+        if category_name not in categories:
+            category = Category(categoryName=category_name)
+            storage.new(category)
+            storage.save()
+            categories.update({category.Id: category.categoryName}) # update categories dict with the new category
+
         new_expense = Expense(
-            userId=1,  # Replace with actual user ID if needed
-            categoryId=entry['category'],
+            userId=1,  # Replace with actual user ID if needed #DEBUG
+            categoryId=categories[category_name],
             expenseAmount=entry['amount'],
             itemName=entry['item']  # Assuming you have this field in your Expense model
         )
