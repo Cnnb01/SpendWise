@@ -1,0 +1,15 @@
+/* For various text styles */
+@import url('variables.css');
+
+.instruction-heading {
+	font-size: var(--font-size-xxlarge);
+}
+
+/* labels on forms */
+.input-label {
+	margin: 0px;
+	font-size: var(--font-size-xsmall);
+	font-weight: var(--font-weight-normal);
+	text-align: left;
+	color: var(--grey-400);
+}
