@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 from flask_session import Session
 from flask_cors import CORS
 from flask import Flask, render_template, session
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from spendwise.api.v1 import apis
 from spendwise.models import storage
 from spendwise.api.v1.decorators import requires_logged_in_user
@@ -20,6 +22,22 @@ app = Flask(
 load_dotenv()
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://{}:{}@{}/{}'.format(
+                os.getenv('SPENDWISE_MYSQL_USER'),
+                os.getenv('SPENDWISE_MYSQL_PWD'),
+                os.getenv('SPENDWISE_MYSQL_HOST'),
+                os.getenv('SPENDWISE_MYSQL_DB'))
+
+# For database migrations
+db = SQLAlchemy(app)
+migrate = Migrate(app=app, db=db)
+
+# Import all models here for the migrations to work properly
+from spendwise.models.user import User
+from spendwise.models.category import Category
+from spendwise.models.expense import Expense
+from spendwise.models.budget import Budget
+from spendwise.models.budget_category import BudgetCategory
 
 # Initialize the server-side session
 Session(app)
