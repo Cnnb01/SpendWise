@@ -33,7 +33,6 @@ def add_expense():
         category.categoryName.lower(): category.Id
         for category in storage.session.query(Category).all()
         }
-
     new_expenses = []
     for entry in expense_entries:
         if (
@@ -49,7 +48,7 @@ def add_expense():
             category = Category(categoryName=category_name)
             storage.new(category)
             storage.save()
-            categories.update({category.Id: category.categoryName}) # update categories dict with the new category
+            categories.update({category.categoryName: category.Id}) # update categories dict with the new category
 
         new_expense = Expense(
             userId=1,  # Replace with actual user ID if needed #DEBUG
@@ -57,6 +56,7 @@ def add_expense():
             expenseAmount=entry['amount'],
             itemName=entry['item']  # Assuming you have this field in your Expense model
         )
+
         storage.new(new_expense)
         new_expenses.append(new_expense)
 
