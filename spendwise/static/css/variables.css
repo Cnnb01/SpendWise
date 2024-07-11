@@ -5,6 +5,7 @@
 	--font-size-normal: 18px ;
 	--font-size-large: 20px;
 	--font-size-xlarge: 24px;
+	--font-size-xxlarge: 30px;
 
 	/* fonts */
 	--font-family-standard: 'Noto Sans', 'sans-serif';
@@ -16,6 +17,9 @@
 	--radius-small: 5px;
 	--radius-normal: 10px;
 	--radius-large: 20px;
+
+	/* general spacing */
+	--padding-tlr: 60px; /* tlr - top left right */
 
 	/* buttons */
 	--btn-height-normal: 60px;
