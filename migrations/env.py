@@ -1,5 +1,6 @@
 import logging
 from logging.config import fileConfig
+import os
 
 from flask import current_app
 
@@ -13,6 +14,14 @@ config = context.config
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 logger = logging.getLogger('alembic.env')
+
+# Construct the DATABASE_URL dynamically
+DATABASE_URL = 'mysql+mysqldb://{}:{}@{}/{}'.format(
+    os.getenv('SPENDWISE_MYSQL_USER'),
+    os.getenv('SPENDWISE_MYSQL_PWD'),
+    os.getenv('SPENDWISE_MYSQL_HOST'),
+    os.getenv('SPENDWISE_MYSQL_DB')
+)
 
 
 def get_engine():
@@ -36,7 +45,18 @@ def get_engine_url():
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-config.set_main_option('sqlalchemy.url', get_engine_url())
+config.set_main_option('sqlalchemy.url', DATABASE_URL) # use the dynamic db URL generated
+
+# Add model MetaData objects for alembic's 'autogenerate' support
+from spendwise.models.user import User
+from spendwise.models.expense import Expense
+from spendwise.models.budget import Budget
+from spendwise.models.budget_category import BudgetCategory
+from spendwise.models.category import Category
+
+# dealing with target metadata directly
+target_metadata = current_app.extensions['migrate'].db.metadata
+
 target_db = current_app.extensions['migrate'].db
 
 # other values from the config, defined by the needs of env.py,
@@ -46,9 +66,9 @@ target_db = current_app.extensions['migrate'].db
 
 
 def get_metadata():
-    if hasattr(target_db, 'metadatas'):
-        return target_db.metadatas[None]
-    return target_db.metadata
+    if hasattr(target_metadata, 'metadatas'):
+        return target_metadata.metadatas[None]
+    return target_metadata
 
 
 def run_migrations_offline():
