@@ -11,17 +11,15 @@
 
 {% block title %}budgets{% endblock %}
 {% block content %}
-    <div id="content">
-        <p id="wel_msg">Welcome to the budget creator, simplified budgeting for all your needs, get started by clicking the button below!</p>
-        <div id="budget_button">
-            <button id="create_budget">Create New Budget</button>
-        </div>
-        <script>
-            $(document).ready(function(){
-                $('#create_budget').click(function(){
-                    window.location.href = "{{ url_for('create_budget') }}";
-                });
-            });
-        </script>
+    <p class="instruction-heading">Welcome to the budget creator, simplified budgeting for all your needs, get started by clicking the button below!</p>
+    <div id="budget_button">
+        <button id="create_budget">Create New Budget</button>
     </div>
+    <script>
+        $(document).ready(function(){
+            $('#create_budget').click(function(){
+                window.location.href = "{{ url_for('create_budget') }}";
+            });
+        });
+    </script>
 {% endblock %}
