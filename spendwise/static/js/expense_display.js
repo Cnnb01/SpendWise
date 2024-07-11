@@ -1,48 +1,28 @@
 $(document).ready(function() {
-    // Retrieve budgets from localStorage
-    let budgets = JSON.parse(localStorage.getItem('budgets')) || [];
+  $.ajax({
+      url: "/api/v1/expenses/get",
+      type: "GET",
+      success: function(response) {
+        // item name, category, amount spent, date added
+        response.forEach(expense => {
+          const expenseRow = $(`<tr></tr>`)
 
-    // Function to render the table rows
-    function renderTable() {
-        $("#budget_table tbody").empty(); // Clear the existing rows
-        budgets.forEach((budget, budgetIndex) => {
-            budget.entries.forEach((entry, entryIndex) => {
-                const newRow = $("<tr></tr>");
-                newRow.append(`<td>${budget.title}</td>`);
-                newRow.append(`<td>${entry.category}</td>`);
-                newRow.append(`<td>${entry.amount}</td>`);
-                newRow.append(`<td><button class="delete-btn" data-budget-index="${budgetIndex}" data-entry-index="${entryIndex}">Delete</button></td>`);
-                $("#budget_table tbody").append(newRow);
-            });
+          // add columns to the row
+          expenseRow.append(`<td>${expense.itemName}</td>`);
+          expenseRow.append(`<td>${expense.categoryId}</td>`);
+          expenseRow.append(`<td>${expense.expenseAmount}</td>`);
+          expenseRow.append(`<td>${expense.dateAdded}</td>`);
+
+          $('#expense_table').append(expenseRow);
         });
-    }
+        console.log(response);
+      },
+      error: function(error) {
+          console.log("Error:", error);
+      }
+  });
 
-    // Initial render of the table
-    renderTable();
-
-    // Handle the delete button click
-    $("#budget_table").on('click', '.delete-btn', function() {
-        const budgetIndex = $(this).data('budget-index');
-        const entryIndex = $(this).data('entry-index');
-
-        // Remove the entry from the budget
-        budgets[budgetIndex].entries.splice(entryIndex, 1);
-
-        // If the budget has no more entries, remove the budget itself
-        if (budgets[budgetIndex].entries.length === 0) {
-            budgets.splice(budgetIndex, 1);
-        }
-
-        // Update localStorage
-        localStorage.setItem('budgets', JSON.stringify(budgets));
-
-        // Re-render the table
-        renderTable();
-    });
-
-    // Handle the back button click
-    $("#back_button").click(function() {
-        window.history.back();
-    });
+  $("#back_button").click(function() {
+    window.location.href = '/expenses/create';
+  });
 });
-
