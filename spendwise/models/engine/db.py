@@ -38,7 +38,9 @@ class DB:
                 os.getenv('SPENDWISE_MYSQL_PWD'),
                 os.getenv('SPENDWISE_MYSQL_HOST'),
                 os.getenv('SPENDWISE_MYSQL_DB'),
-            )
+            ),
+            pool_recycle=3600,
+            pool_pre_ping=True,
         )
         self.__session = None
         # drop all tables in the test environment
