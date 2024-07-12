@@ -27,23 +27,20 @@ def get_budget_categories(Id):
 # #@requires_logged_in_user
 def add_budget():
     data = request.get_json()
-    print(data)#Debug
     if (
         'categories' not in data
         or 'budgetTitle' not in data
         # or 'amountPredicted' not in data
     ):
         abort(400, description="Missing required fields")
-
     budget_title = data['budgetTitle']
-    user_id = flask_session.get('current_user_id', 1)
+    user_id = flask_session.get('current_user_id', 1) # DEBUG
 
     # sum all amounts across all categories in the budget
     amount_predicted = sum(
         int(item['amountBudgeted'])
         for item in data['categories']
     )
-    print(f'Amount predicted = {amount_predicted}')
 
     # Create a new budget
     new_budget = Budget(
@@ -54,18 +51,24 @@ def add_budget():
     storage.new(new_budget)
     storage.save()
 
+    # get all categories present in the db
+    # fetch all existing categories and their ids
+    categories = {
+        category.categoryName.lower(): category.Id
+        for category in storage.session.query(Category).all()
+        }
+
     # Create entries in the junction table
     for category_data in data['categories']:
         category_name = category_data['categoryName'].lower()
         amount_budgeted = category_data['amountBudgeted']
 
-        category = storage.session.query(Category).filter_by(categoryName=category_name).first()
         # Create this category if it does not exist
-        if not category:
+        if category_name not in categories:
             category = Category(categoryName=category_name)
             storage.new(category)
             storage.save()
-            
+            categories.update({category.categoryName: category.Id}) # update categories dict with the new category
         # Create an entry in the junction table
         budget_category = BudgetCategory(budgetId=new_budget.Id, categoryId=category.Id, amountBudgeted=amount_budgeted)
         storage.new(budget_category)
