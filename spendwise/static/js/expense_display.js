@@ -9,7 +9,7 @@ $(document).ready(function() {
 
           // add columns to the row
           expenseRow.append(`<td>${expense.itemName}</td>`);
-          expenseRow.append(`<td>${expense.categoryId}</td>`);
+          expenseRow.append(`<td>${expense.categoryName}</td>`);
           expenseRow.append(`<td>${expense.expenseAmount}</td>`);
           expenseRow.append(`<td>${expense.dateAdded}</td>`);
 

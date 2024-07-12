@@ -11,10 +11,19 @@ from . import apis
 @apis.route('/expenses/get', methods=['GET'], strict_slashes=False)
 def get_expenses():
     expenses = storage.all(Expense)
-    cleaned_expenses = [obj.to_dict() for obj in expenses.values()]
-    print(jsonify(cleaned_expenses))
+    # add the category name to the dictionary representation of an expense before returning to the frontend
+    cleaned_expenses = []
+    for obj in expenses.values():
+        obj_dict = obj.to_dict()
+        obj_dict.update({
+            'categoryName': storage.session.query(Category).filter_by(Id = (obj.categoryId)).one().categoryName
+            })
+        # remove the category id from the expense
+        if 'categoryId' in obj_dict:
+            del obj_dict['categoryId']
+        cleaned_expenses.append(obj_dict)
+    print(cleaned_expenses)
     return jsonify(cleaned_expenses)
-
 
 @apis.route('/expenses/add', methods=['POST'], strict_slashes=False)
 def add_expense():
