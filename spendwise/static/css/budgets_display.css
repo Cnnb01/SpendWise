@@ -14,7 +14,6 @@ h1 {
 /* Table Styles */
 #budget_table {
     font-size: var(--font-size-normal);
-    width: 85%;
     border-collapse: collapse;
 	border-radius: var(--radius-large);
     font-family: var(--font-family-standard);
