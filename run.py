@@ -52,7 +52,7 @@ def landing_page():
     return render_template('landing_page.html')
 
 @app.route('/home', strict_slashes=False)
-#@requires_logged_in_user
+@requires_logged_in_user
 def home_page():
     """Shows the home page for this user"""
     return render_template('homepage.html')

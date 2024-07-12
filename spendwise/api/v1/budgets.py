@@ -16,17 +16,28 @@ def get_budget_categories(Id):
     budget = storage.get(Budget, Id)
     if not budget:
         abort(404)
-    categories = [{'category_name': category.categoryId, 'amount_budgeted': category.amountBudgeted} for category in budget.categories]
-    
+    test_categories = [
+        category.to_dict() for category in budget.categories
+    ]
+
+    print(test_categories)
+    categories = [
+            {
+            'category_id': category.categoryId,
+            'amount_budgeted': category.amountBudgeted}
+            for category in budget.categories
+        ]
+    print(categories) #DEBUG
     return jsonify({
         'budgetTitle': budget.budgetTitle,
         'categories': categories
     })
 
 @apis.route('/budgets/add', methods=['POST'], strict_slashes=False)
-# #@requires_logged_in_user
+@requires_logged_in_user
 def add_budget():
     data = request.get_json()
+    print(data) # DEBUG
     if (
         'categories' not in data
         or 'budgetTitle' not in data
@@ -35,12 +46,15 @@ def add_budget():
         abort(400, description="Missing required fields")
     budget_title = data['budgetTitle']
     user_id = flask_session.get('current_user_id', 1) # DEBUG
+    
 
     # sum all amounts across all categories in the budget
     amount_predicted = sum(
         int(item['amountBudgeted'])
         for item in data['categories']
     )
+
+    item_name = data['categories'][0].get('itemName', 'No item name')
 
     # Create a new budget
     new_budget = Budget(
@@ -70,7 +84,12 @@ def add_budget():
             storage.save()
             categories.update({category.categoryName: category.Id}) # update categories dict with the new category
         # Create an entry in the junction table
-        budget_category = BudgetCategory(budgetId=new_budget.Id, categoryId=category.Id, amountBudgeted=amount_budgeted)
+        budget_category = BudgetCategory(
+            budgetId=new_budget.Id,
+            categoryId=category.Id,
+            amountBudgeted=amount_budgeted,
+            itemName=item_name)
+
         storage.new(budget_category)
 
     storage.save()
@@ -78,7 +97,7 @@ def add_budget():
 
 
 @apis.route('/budgets/get', methods=['GET'], strict_slashes=False)
-#@requires_logged_in_user
+@requires_logged_in_user
 def get_budgets():
     budgets = storage.all(Budget).values()
     budgets_list = [budget.to_dict() for budget in budgets]
@@ -86,7 +105,7 @@ def get_budgets():
 
 
 @apis.route('/budgets/update/<Id>', methods=['PUT'], strict_slashes=False)
-#@requires_logged_in_user
+@requires_logged_in_user
 def update_budget(Id):
     budget = storage.get(Budget, Id)
     if not budget:
@@ -102,7 +121,7 @@ def update_budget(Id):
 
 
 @apis.route('/budgets/delete/<Id>', methods=['DELETE'], strict_slashes=False)
-# @requires_logged_in_user
+@requires_logged_in_user
 def delete_budget(Id):
     budget = storage.get(Budget, Id)
     if not budget:
