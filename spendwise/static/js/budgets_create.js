@@ -14,6 +14,7 @@ $(document).ready(function() {
         const newRow = $("<tr></tr>").addClass("info-entry");
         
         // Add cells (columns) to the new row
+        newRow.append("<td><input type='text' name='item_name'></td>"); // Category name
         newRow.append("<td><input type='text' name='category_name'></td>"); // Category name
         newRow.append("<td><input type='number' name='amount_budgeted'></td>"); // Amount budgeted
         newRow.append("<td><button type='button' class='delete-btn'>delete</button></td>"); // Delete button
@@ -31,15 +32,17 @@ $(document).ready(function() {
     $("#create-budget-btn").click(function(event) {
         event.preventDefault();
         
-        var budgetTitle = $("#budget-title").val();
-        var categories = [];
+        const budgetTitle = $("#budget-title").val();
+        const categories = [];
         
         $("#budget-creation-table tbody tr").each(function() {
-            var categoryName = $(this).find("input[name='category_name']").val();
-            var amountBudgeted = $(this).find("input[name='amount_budgeted']").val();
-            
-            if (categoryName && amountBudgeted) {
+            const itemName = $(this).find("input[name='item_name']").val();
+            const categoryName = $(this).find("input[name='category_name']").val();
+            const amountBudgeted = $(this).find("input[name='amount_budgeted']").val();
+
+            if (itemName && amountBudgeted) {
                 categories.push({
+                    itemName: itemName,
                     categoryName: categoryName,
                     amountBudgeted: amountBudgeted
                 });
