@@ -4,13 +4,14 @@ $(document).ready(function(){
             url: "/api/v1/budgets/get",
             type: "GET",
             success: function(budgets){
+              const budgetTable = $('#budget_table');
                 budgets.forEach(function(budget){
-                    $('#budget_table').append(
-                        '<tr><td><a href="/budgets/' + budget.Id + '/categories">' + budget.budgetTitle + '</a></td>' +//bug probably caused by the /budgets/, coz js files don't get loaded to category_display.html, the GET req appearing is "GET /budgets/static/js/jquery-3.2.1.min.js HTTP/1.1" 404 - instead of "GET /static/js/budgets_display.js HTTP/1.1" 200 -
-                        '<td>' + budget.amountPredicted + '</td>' +
-                        '<td contenteditable="true" class="amount_spent">' + budget.amountSpent + '</td>' +
-                        '<td class="balance">' + budget.balance + '</td></tr>'
-                    );
+                  const budgetRow = $(`<tr></tr>`);
+                  budgetRow.append(`<td><a href="/budgets/${budget.Id}/categories">${budget.budgetTitle}</a></td>`);
+                  budgetRow.append(`<td>${budget.amountPredicted}</td>`);
+                  budgetRow.append(`<td contenteditable="true" class="amount_spent">${budget.amountSpent}</td>`);
+                  budgetRow.append(`<td class="balance">${budget.balance}</td>`);
+                  budgetTable.append(budgetRow);
                 });
                 // calculating the balance and making amount_spent editable
                 $('.amount_spent').on('input', function(){
