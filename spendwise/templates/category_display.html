@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="../static/css/category_display.css"> -->
+{% extends "base.html" %}
+
+{% block title %}Category Display{% endblock %}
+
+{% block more_styles %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/category_display.css') }}">
-    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+{% endblock %}
+
+{% block more_scripts %}
     <script src="{{ url_for('static', filename='js/category_display.js') }}"></script>
-    <title>Category Display</title>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <h1>Categories</h1>
     <table id="category_table">
         <tr>
@@ -18,5 +19,4 @@
         </tr>
     </table>
     <button id="back_button">Back</button>
-</body>
-</html>
+{% endblock %}
