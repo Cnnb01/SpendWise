@@ -21,6 +21,7 @@ body {
 #single-page-split {
 	display: flex;
 	flex-direction: row;
+	height: 100vh;
 }
 
 #right-split {
@@ -30,4 +31,5 @@ body {
 	width: 100%;
 	background-color: var(--blue-200);
 	padding: var(--padding-tlr) var(--padding-tlr) 0px var(--padding-tlr);
+	overflow-y: auto;
 }
