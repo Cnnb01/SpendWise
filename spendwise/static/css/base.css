@@ -33,3 +33,9 @@ body {
 	padding: var(--padding-tlr) var(--padding-tlr) 0px var(--padding-tlr);
 	overflow-y: auto;
 }
+
+/* disable scrolling on some pages */
+#right-split.not-scrollable
+{
+	overflow-y: visible;
+}

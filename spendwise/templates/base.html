@@ -39,7 +39,8 @@
                     <a class="navbar_item" id="logout" href="{{ url_for('apis.logout') }}">Logout</a>
                 </div>
             {% endblock navbar %}
-            <div id="right-split">
+            <!-- conditionally scroll the right split div using jinja templates -->
+            <div id="right-split" class="{{ scroll_class | default('') }}">
                 {% block content %}{% endblock %}
             </div>
         </div>
