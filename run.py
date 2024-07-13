@@ -54,7 +54,7 @@ def maintenance_mode(error):
 @app.before_request
 def check_for_maintenance():
     """Renders a maintenance page if the site is in maintenance mode"""
-    if os.getenv('MAINTENANCE_MODE') and not request.path.startswith('/static/'):
+    if os.getenv('MAINTENANCE_MODE') == 'maintenance_mode' and not request.path.startswith('/static/'):
         abort(503)
 
 @app.route('/', strict_slashes=False)
