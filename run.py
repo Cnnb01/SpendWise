@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 from flask_session import Session
 from flask_cors import CORS
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, abort, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from spendwise.api.v1 import apis
@@ -45,6 +45,17 @@ Session(app)
 # register blueprints
 app.register_blueprint(apis, url_prefix='/api/v1')
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
+
+@app.errorhandler(503)
+def maintenance_mode(error):
+    """custom error handler for maintenance mode"""
+    return render_template('error_pages/will_be_back.html'), 503
+
+@app.before_request
+def check_for_maintenance():
+    """Renders a maintenance page if the site is in maintenance mode"""
+    if os.getenv('MAINTENANCE_MODE') and not request.path.startswith('/static/'):
+        abort(503)
 
 @app.route('/', strict_slashes=False)
 def landing_page():

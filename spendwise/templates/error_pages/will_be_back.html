@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+    <div style="display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    text-align: center;">
+        <div class="generic-paragraph">👋 Hello, and thanks for visiting.</div>
+        <img src="{{ url_for('static', filename='images/')}}" alt="">
+        <div class="generic-paragraph">There's no one here at the moment,</div>
+        <div class="generic-paragraph">because we are down for maintenance.</div>
+        <div class="generic-paragraph">Do check back later.</div>
+    </div>
+{% endblock %}
