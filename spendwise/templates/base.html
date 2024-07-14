@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}{% endblock %}</title>
+        <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.ico">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/flash.css') }}">
@@ -29,7 +30,7 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        
+
         <div id="single-page-split">
             {% block navbar %}
                 <div id="navbar"> 
@@ -44,5 +45,7 @@
                 {% block content %}{% endblock %}
             </div>
         </div>
+        {% block bottom_scripts %}
+        {% endblock %}
     </body>
 </html>
