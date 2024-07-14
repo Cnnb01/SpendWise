@@ -21,7 +21,8 @@
 	/* general spacing */
 	--spacing-small: 30px;
 	--spacing-normal: 60px;
-	--spacing-large: 80px;
+	--spacing-large: 90px;
+	--spacing-xlarge: 100px;
 
 	/* buttons */
 	--btn-height-normal: 60px;
