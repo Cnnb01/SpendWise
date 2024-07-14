@@ -1,9 +1,8 @@
 <!-- For jinja2 macros -->
 
 <!-- team contacts for landing page -->
-{% macro team_contact(name, email_link, github_link, linkedin_link) -%}
+{% macro team_contact(email_link, github_link, linkedin_link) -%}
     <ul class="contacts">
-        <li class="contact-name">{{ name }}</li>
         <li>
             <a href="{{ email_link }}">
                 <div class="icon-text-container">

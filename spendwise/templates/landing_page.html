@@ -1,137 +1,144 @@
 {% from 'macros/landing_page.html' import team_contact %}
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Spendwise</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../static/css/landing.css" />
-        <link rel="stylesheet" href="../static/css/fonts.css" />
-		<link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.ico">
-	</head>
-	<body class="is-preload">
-        <section id="sidebar">
+
+<head>
+    <title>Spendwise</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../static/css/landing.css" />
+    <link rel="stylesheet" href="../static/css/fonts.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.ico">
+</head>
+
+<body class="is-preload">
+    <section id="sidebar">
+        <div class="inner">
+            <nav>
+                <ul>
+                    <li><a href="#intro">Welcome</a></li>
+                    <li><a href="#two">Features</a></li>
+                    <li><a href="#one">About</a></li>
+                    <li><a href="{{ url_for('signup') }}">Sign up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <div id="wrapper">
+        <section id="intro" class="wrapper style1 fullscreen fade-up">
             <div class="inner">
-                <nav>
-                    <ul>
-                        <li><a href="#intro">Welcome</a></li>
-                        <li><a href="#two">Features</a></li>
-                        <li><a href="#one">About</a></li>
-                        <li><a href="#three">Get in touch</a></li>
-                        <li><a href="{{ url_for('signup') }}">Sign up</a></li>
-                    </ul>
-                </nav>
+                <img id='logo-with-text' src="../static/images/spendwise_logo_with_text.png"
+                    style="vertical-align:top; float: right;" alt="spendwise logo with text">
+                <h1>Welcome to Spendwise!</h1>
+                <h4>We help you take control of your finances with ease</h4>
             </div>
         </section>
 
-        <div id="wrapper">
-                <section id="intro" class="wrapper style1 fullscreen fade-up">
+
+        <section id="two" class="wrapper style2 spotlights">
+            <section>
+                <div class="content">
                     <div class="inner">
-                        <img id='logo-with-text' src="../static/images/spendwise_logo_with_text.png"
-                        style="vertical-align:top; float: right;" alt="spendwise logo with text">
-                        <h1>Welcome to Spendwise!</h1>
-                        <h4>We help you take control of your finances with ease</h4>
+                        <h2>Budget creation</h2>
+                        <p>
+                            Create and customize budgets for various purposes. Whether it's for monthly expenses,
+                            a vacation, or a special project, our app allows you to set up budgets tailored to
+                            your needs, helping you manage your finances effectively.
+                        </p>
                     </div>
-                </section>
+                </div>
+            </section>
 
-
-                <section id="two" class="wrapper style2 spotlights">
-                    <section>
-                        <div class="content">
-                            <div class="inner">
-                                <h2>Budget creation</h2>
-                                <p>
-                                    Create and customize budgets for various purposes. Whether it's for monthly expenses,
-                                    a vacation, or a special project, our app allows you to set up budgets tailored to
-                                    your needs, helping you manage your finances effectively.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section>
-                        <div class="content">
-                            <div class="inner">
-                                <h2>Expense tracking</h2>
-                                <p>
-                                    Log and categorize your expenses with ease. Our app provides a user-friendly interface to
-                                    keep track of your spending habits, allowing you to see where your money goes and helping
-                                    you make informed financial decisions.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-                </section>
-
-                <section id="one" class="wrapper style2 spotlights">
-                    <section>
-                        <div class="content">
-                            <div class="inner">
-
-                                <h2>The inspiration behind the project</h2>
-                                <p>
-                                    The idea for this expense tracking app came from our personal struggles with managing finances.
-                                    We found it challenging to keep track of my expenses and stick to a budget. Therefore we aimed
-                                    to create a simple yet powerful tool for budgeting and tracking expenses.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="content">
-                            <div class="inner">
-                                <h2>Our team</h2>
-                                <h3>Joseph</h3>
-                                <p>
-                                    Joseph has a strong preference for Python and excels in data structures,algorithms, and libraries.
-                                    He is also proficient in writing comprehensive documentation. His backend expertise with databases
-                                    and Python makes him an invaluable team member.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section>
-                        <div class="content">
-                            <div class="inner">
-                                <h3>Charity</h3>
-                                <p>
-                                    Charity excels in crafting intuitive user interfaces and robust APIs,
-                                    ensuring our application is both user-friendly and technologically sound.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section>
-                        <div class="content">
-                            <div class="inner">
-                                <h3>Ilef</h3>
-                                <p>
-                                    Ilef brings extensive skills in both backend and frontend development. With proficiency
-                                    in Flask and Python, Ilef is well-equipped to handle complex backend tasks and create
-                                    intuitive user interfaces.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-                </section>
-
-                <section id="three" class="wrapper style1 fade-up">
+            <section>
+                <div class="content">
                     <div class="inner">
-                        <h2>Get in touch</h2>
-                        <p>We'd love to hear from you! Whether you have questions about Spendwise, want to collaborate, or simply want to say hello,
-                            feel free to reach out to us. You can contact us via email or connect with us on Social Media Platforms.</p>
-                        <div class="split style1">
-                            <section class="contacts">
-                                {{ team_contact(name="Joseph", email_link="mailto:jamukun@proton.me", github_link="https://github.com/josfam", linkedin_link="https://www.linkedin.com/in/amukun/") }}
-                                {{ team_contact(name="Charity", email_link="mailto:nyamambanyaguch@gmail.com", github_link="https://github.com/Cnnb01", linkedin_link="https://www.linkedin.com/in/charity-nyamamba-8b3533253/") }}
-                                {{ team_contact(name="Ilef", email_link="mailto:bchinyyilef@gmail.com", github_link="https://github.com/Ilef01", linkedin_link="https://www.linkedin.com/in/bchini-ilef-/") }}
-                            </section>
+                        <h2>Expense tracking</h2>
+                        <p>
+                            Log and categorize your expenses with ease. Our app provides a user-friendly interface to
+                            keep track of your spending habits, allowing you to see where your money goes and helping
+                            you make informed financial decisions.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="one" class="wrapper style2 spotlights">
+            <section>
+                <div class="content">
+                    <div class="inner">
+
+                        <h2>The inspiration behind the project</h2>
+                        <p>
+                            The idea for this expense tracking app came from our personal struggles with managing
+                            finances.
+                            We found it challenging to keep track of my expenses and stick to a budget. Therefore we
+                            aimed
+                            to create a simple yet powerful tool for budgeting and tracking expenses.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="content">
+                    <div class="inner">
+                        <div class="team_member_info">
+                            <h2>Our team</h2>
+                            <img class="team_photo" src="{{ url_for('static', filename='images/team/joseph.jpeg') }}" alt="Joseph, a team member">
+                            <h3>Joseph</h3>
+                            {{ team_contact(email_link="mailto:jamukun@proton.me",
+                            github_link="https://github.com/josfam", linkedin_link="https://www.linkedin.com/in/amukun/") }}
+                            <p>
+                                Joseph has a strong preference for Python and excels in data structures,algorithms, and
+                                libraries.
+                                He is also proficient in writing comprehensive documentation. His backend expertise with
+                                databases
+                                and Python makes him an invaluable team member.
+                            </p>
                         </div>
                     </div>
-                </section>
-        </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="content">
+                    <div class="inner">
+                        <div class="team_member_info">
+                            <img class="team_photo" src="{{ url_for('static', filename='images/team/charity.jpeg') }}" alt="Chrarity, a team member">
+                            <h3>Charity</h3>
+                            {{ team_contact(email_link="mailto:nyamambanyaguch@gmail.com",
+                            github_link="https://github.com/Cnnb01",
+                            linkedin_link="https://www.linkedin.com/in/charity-nyamamba-8b3533253/") }}
+                            <p>
+                                Charity excels in crafting intuitive user interfaces and robust APIs,
+                                ensuring our application is both user-friendly and technologically sound.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="content">
+                    <div class="inner">
+                        <div class="team_member_info">
+                            <img class="team_photo" src="{{ url_for('static', filename='images/team/ilef.jpeg') }}" alt="Ilef, a team member">
+                            <h3>Ilef</h3>
+                            {{ team_contact(email_link="mailto:bchinyyilef@gmail.com",
+                            github_link="https://github.com/Ilef01",
+                            linkedin_link="https://www.linkedin.com/in/bchini-ilef-/") }}
+                            <p>
+                                Ilef brings extensive skills in both backend and frontend development. With proficiency
+                                in Flask and Python, Ilef is well-equipped to handle complex backend tasks and create
+                                intuitive user interfaces.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
 
     <!-- Scripts -->
     <script src="../static/js/jquery.min.js"></script>
@@ -141,5 +148,6 @@
     <script src="../static/js/breakpoints.min.js"></script>
     <script src="../static/js/main.js"></script>
 
-	</body>
+</body>
+
 </html>

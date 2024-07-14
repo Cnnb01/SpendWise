@@ -20,8 +20,8 @@
 
 	/* general spacing */
 	--spacing-small: 30px;
-	--spacing-normal: 40px;
-	--spacing-large: 60px;
+	--spacing-normal: 60px;
+	--spacing-large: 80px;
 
 	/* buttons */
 	--btn-height-normal: 60px;
