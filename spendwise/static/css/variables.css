@@ -19,7 +19,9 @@
 	--radius-large: 20px;
 
 	/* general spacing */
-	--padding-tlr: 60px; /* tlr - top left right */
+	--spacing-small: 30px;
+	--spacing-normal: 40px;
+	--spacing-large: 60px;
 
 	/* buttons */
 	--btn-height-normal: 60px;
