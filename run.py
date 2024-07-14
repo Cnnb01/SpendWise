@@ -49,7 +49,7 @@ cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 @app.errorhandler(503)
 def maintenance_mode(error):
     """custom error handler for maintenance mode"""
-    return render_template('error_pages/will_be_back.html'), 503
+    return render_template('errors/maintenance.html'), 503
 
 @app.before_request
 def check_for_maintenance():

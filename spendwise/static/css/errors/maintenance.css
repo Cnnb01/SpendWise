@@ -1,0 +1,19 @@
+@import url('../variables.css');
+
+.maintenance-message {
+	display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 100%;
+    background-color: var(--blue-500);
+    color: var(--blue-100);
+    border-radius: var(--radius-large);
+    justify-content: center;
+    text-align: center;
+}
+
+/* generic paragraph */
+.generic-paragraph {
+	font-family: var(--font-family-standard);
+	font-size: var(--font-size-xlarge);
+}

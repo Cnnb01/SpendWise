@@ -13,9 +13,3 @@
 	text-align: left;
 	color: var(--grey-400);
 }
-
-/* generic paragraph */
-.generic-paragraph {
-	font-family: var(--font-family-standard);
-	font-size: var(--font-size-xlarge);
-}
