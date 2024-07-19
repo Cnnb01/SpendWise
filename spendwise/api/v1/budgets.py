@@ -27,7 +27,7 @@ def get_budget_categories(Id):
             'amount_budgeted': category.amountBudgeted}
             for category in budget.categories
         ]
-    print(categories) #DEBUG
+
     return jsonify({
         'budgetTitle': budget.budgetTitle,
         'categories': categories
@@ -37,7 +37,6 @@ def get_budget_categories(Id):
 @requires_logged_in_user
 def add_budget():
     data = request.get_json()
-    print(data) # DEBUG
     if (
         'categories' not in data
         or 'budgetTitle' not in data
@@ -45,7 +44,7 @@ def add_budget():
     ):
         abort(400, description="Missing required fields")
     budget_title = data['budgetTitle']
-    user_id = flask_session.get('current_user_id', 1) # DEBUG
+    user_id = flask_session.get('current_user_id')
     
 
     # sum all amounts across all categories in the budget

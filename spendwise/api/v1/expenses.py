@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 "Handles APIs for expenses"
 
-from flask import Blueprint, jsonify, abort, request, make_response
+from flask import Blueprint, jsonify, abort, request, make_response, session as flask_session
 from ...models import storage
 from ...models.expense import Expense
 from ...models.category import Category
@@ -60,7 +60,7 @@ def add_expense():
             categories.update({category.categoryName: category.Id}) # update categories dict with the new category
 
         new_expense = Expense(
-            userId=1,  # Replace with actual user ID if needed #DEBUG
+            userId=flask_session.get('current_user_id'),
             categoryId=categories[category_name],
             expenseAmount=entry['amount'],
             itemName=entry['item']  # Assuming you have this field in your Expense model
