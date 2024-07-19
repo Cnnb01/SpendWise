@@ -1,26 +1,13 @@
 @import url('variables.css');
 
-  #wel_msg {
-    color: var(--blue-600);
-    font-size: 2em;
-    font-weight: bold;
-    margin: 30px;
-  }
-  
-  #budget_button {
-    margin: auto;
-    margin-top: 50px;
-  }
+#wel_msg {
+	color: var(--blue-600);
+	font-size: 2em;
+	font-weight: bold;
+	margin: 30px;
+}
 
-  
-  button {
-    border-style: none;
-    color: white;
-    height: 65px;
-    width: 250px;
-    border-radius: 20px;
-    background-color: var(--blue-500);
-    font-size: var(--font-size-normal);
-	  font-weight: 500;
-  }
-  
+#budget_button {
+	margin: auto;
+	margin-top: 50px;
+}
