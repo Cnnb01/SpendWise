@@ -19,10 +19,12 @@
 	--radius-large: 20px;
 
 	/* general spacing */
-	--spacing-small: 30px;
-	--spacing-normal: 60px;
-	--spacing-large: 90px;
-	--spacing-xlarge: 100px;
+	--space-xxsmall: 16px;
+	--space-xsmall: 24px;
+	--space-small: 32px;
+	--space-normal: 48px;
+	--space-large: 64px;
+	--space-xlarge: 96px;
 
 	/* buttons */
 	--btn-height-normal: 60px;

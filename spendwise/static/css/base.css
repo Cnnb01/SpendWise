@@ -30,7 +30,7 @@ body {
 	align-items: center;
 	width: 100%;
 	background-color: var(--blue-200);
-	padding: var(--spacing-large) var(--spacing-large) 0px var(--spacing-large);
+	padding: var(--space-large) var(--space-large) 0px var(--space-large);
 	overflow-y: auto;
 }
 

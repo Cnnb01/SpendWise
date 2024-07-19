@@ -9,7 +9,7 @@
 	left: 50%;
 	transform: translateX(-50%);
 
-	top: 20px;
+	top: var(--space-xsmall);
 	font-size: var(--font-size-large);
 	font-family: var(--font-family-standard);
 	display: flex;
@@ -17,7 +17,7 @@
 	height: fit-content;
 	align-items: center;
 	justify-content: space-between;
-	padding: 20px 40px 20px 40px;
+	padding: var(--space-xxsmall) var(--space-xxsmall) var(--space-xxsmall) var(--space-small);
 	border-radius: var(--radius-normal);
 }
 
