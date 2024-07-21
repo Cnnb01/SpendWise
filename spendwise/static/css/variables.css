@@ -29,6 +29,10 @@
 	/* buttons */
 	--btn-height-normal: 60px;
 
+	/* transformations */
+	--scale-factor-small: 0.97;
+	--scale-factor-large: 0.90;
+
 	/* colors from pallette */
 	--blue-600: hsl(213, 50%, 10%);
 	--blue-500: hsl(212, 50%, 30%);

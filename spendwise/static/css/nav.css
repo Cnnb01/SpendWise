@@ -43,11 +43,13 @@
 .navbar_item:hover {
     background-color: var(--blue-200); /* Darker background on hover*/
     color:var(--blue-500);
+	text-decoration: underline;
 }
 
-#navbar_home.selected, #navbar_expenses.selected, #navbar_budget.selected {
-    background-color: var(--blue-200);
-    color: var(--blue-500);
+/* animate on click */
+.navbar_item:active {
+	transform: scale(var(--scale-factor-large));
+	border-radius: var(--radius-small);
 }
 
 #content {
