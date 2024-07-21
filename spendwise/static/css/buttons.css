@@ -30,6 +30,7 @@ button.cta-secondary-outline {
     height: var(--btn-height-normal);
 	width: 100%;
     border-radius: var(--radius-normal);
+	border-style: none;
     background-color: transparent;
     font-size: var(--font-size-normal);
 	font-weight: var(--font-weight-bold);
@@ -44,6 +45,7 @@ button.cta-secondary-outline:hover {
 button.cta-secondary-outline:active {
 	background-color: var(--blue-300);
 	color: var(--blue-500);
+	transform: scale(var(--scale-factor-small));
 }
 
 /* For secondary call to action buttons -- already outlined in their normal state */
