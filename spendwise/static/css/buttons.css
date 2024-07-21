@@ -65,6 +65,7 @@ button.cta-secondary-filled {
 	border-style: none;
 	background-color: transparent;
 	border-radius: var(--radius-small);
+	height: 40px;
 	color: var(--blue-400);
 	margin-top: 0px;
 	width: 100%;
