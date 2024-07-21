@@ -18,6 +18,11 @@ button.cta-primary:hover {
 	background-color: var(--blue-500);
 }
 
+button.cta-primary:active {
+	background-color: var(--blue-600);
+	transform: scale(var(--scale-factor-small));
+}
+
 /* For secondary call to action buttons -- outlined but filled on hover */
 button.cta-secondary-outline {
     /* border: 1px solid var(--blue-400); */
