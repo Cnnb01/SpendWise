@@ -29,9 +29,9 @@
 /* Style for each navigation item */
 .navbar_item {
     font-size: var(--font-size-large); 
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: var(--font-family-standard);
     color: white;
-    padding: 40px;
+    padding: var(--space-small);
     text-decoration: none;
 }
 
@@ -46,9 +46,14 @@
 	text-decoration: underline;
 }
 
+/* Define the transition on transform and border-radius */
+.navbar_item {
+    transition: all 0.1s ease-out;
+}
+
 /* animate on click */
 .navbar_item:active {
-	transform: scale(var(--scale-factor-large));
+	transform: scale(var(--scale-factor-small));
 	border-radius: var(--radius-small);
 }
 
