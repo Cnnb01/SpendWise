@@ -34,7 +34,7 @@
 	--scale-factor-large: 0.90;
 
 	/* colors from pallette */
-	--blue-600: hsl(213, 50%, 10%);
+	--blue-600: hsl(213, 50%, 20%);
 	--blue-500: hsl(212, 50%, 30%);
 	--blue-400: hsl(213, 50%, 45%);
 	--blue-300: hsl(213, 70%, 72%);
