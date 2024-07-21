@@ -2,6 +2,10 @@
 
 @import url('variables.css');
 
+button {
+	transition: all 0.1s ease-out;
+}
+
 /* For primary call to action buttons  */
 button.cta-primary {
     border-style: none;
