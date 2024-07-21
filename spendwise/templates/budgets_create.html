@@ -11,28 +11,17 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Create New Budget</h1>
-    <form method="post", action="/api/v1/budgets/add">
+    <h1>Create a new budget</h1>
+    <form id="budget-form">
         <div id="table-container">
             <div class="title-section">
                 <label for="budget-title">Budget title</label>
                 <input id="budget-title" type="text", autofocus>
             </div>
             <button class="cta-primary" id="start-btn">Start</button>
-            <table id="budget-creation-table">
-                <th>Item name</th>
-                <th>Category</th>
-                <th>Amount budgeted</th>
-                <tr class="info-entry">
-                    <td><input type="text" name='item_name'></td>
-                    <td><input type="text" name='category_name'></td>
-                    <td><input type="number" name='amount_budgeted'></td>
-                    <td><button class="delete-btn">delete</button></td>
-                </tr>
-            </table>
-
-            <button class="cta-secondary-outline" id="add-item-btn">+ Add item</button>
-            <button class="cta-primary" type="submit" id="create-budget-btn">Create budget</button>
-
+            <!-- table inserted with js -->
+            <button class="cta-secondary-outline hidden" id="add-item-btn">+ Add item</button>
+            <button class="cta-primary hidden" type="submit" id="create-budget-btn">Create budget</button>
+        </div>
     </form>
 {% endblock %}
