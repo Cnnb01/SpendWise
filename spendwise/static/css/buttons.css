@@ -2,6 +2,10 @@
 
 @import url('variables.css');
 
+button {
+	transition: all 0.1s ease-out;
+}
+
 /* For primary call to action buttons  */
 button.cta-primary {
     border-style: none;
@@ -18,6 +22,11 @@ button.cta-primary:hover {
 	background-color: var(--blue-500);
 }
 
+button.cta-primary:active {
+	background-color: var(--blue-600);
+	transform: scale(var(--scale-factor-small));
+}
+
 /* For secondary call to action buttons -- outlined but filled on hover */
 button.cta-secondary-outline {
     /* border: 1px solid var(--blue-400); */
@@ -25,6 +34,7 @@ button.cta-secondary-outline {
     height: var(--btn-height-normal);
 	width: 100%;
     border-radius: var(--radius-normal);
+	border-style: none;
     background-color: transparent;
     font-size: var(--font-size-normal);
 	font-weight: var(--font-weight-bold);
@@ -39,6 +49,7 @@ button.cta-secondary-outline:hover {
 button.cta-secondary-outline:active {
 	background-color: var(--blue-300);
 	color: var(--blue-500);
+	transform: scale(var(--scale-factor-small));
 }
 
 /* For secondary call to action buttons -- already outlined in their normal state */
@@ -60,6 +71,7 @@ button.cta-secondary-filled {
 	border-style: none;
 	background-color: transparent;
 	border-radius: var(--radius-small);
+	height: 40px;
 	color: var(--blue-400);
 	margin-top: 0px;
 	width: 100%;

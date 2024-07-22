@@ -9,11 +9,12 @@ class BudgetCategory(Base):
 
     __tablename__ = 'budget_categories'
 
-    budgetId = Column(Integer, ForeignKey('budgets.Id'), primary_key=True)
-    categoryId = Column(Integer, ForeignKey('categories.Id'), primary_key=True)
+    Id = Column(Integer, autoincrement=True, nullable=False, primary_key=True)
+    budgetId = Column(Integer, ForeignKey('budgets.Id'), nullable=False)
+    categoryId = Column(Integer, ForeignKey('categories.Id'), nullable=False)
     amountBudgeted = Column(Numeric(10, 2), nullable=False)
     itemName = Column(String(60), nullable=False)
-    
+
     budget = relationship('Budget', back_populates='categories')
     category = relationship('Category')
 

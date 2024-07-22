@@ -37,23 +37,17 @@ def get_budget_categories(Id):
 @requires_logged_in_user
 def add_budget():
     data = request.get_json()
-    if (
-        'categories' not in data
-        or 'budgetTitle' not in data
-        # or 'amountPredicted' not in data
-    ):
+    if ('items' not in data or 'budgetTitle' not in data):
         abort(400, description="Missing required fields")
     budget_title = data['budgetTitle']
     user_id = flask_session.get('current_user_id')
-    
 
     # sum all amounts across all categories in the budget
     amount_predicted = sum(
         int(item['amountBudgeted'])
-        for item in data['categories']
+        for item in data['items']
     )
 
-    item_name = data['categories'][0].get('itemName', 'No item name')
 
     # Create a new budget
     new_budget = Budget(
@@ -72,20 +66,28 @@ def add_budget():
         }
 
     # Create entries in the junction table
-    for category_data in data['categories']:
-        category_name = category_data['categoryName'].lower()
-        amount_budgeted = category_data['amountBudgeted']
+    for item in data['items']:
+        item_name = item.get('itemName', 'unknown item')
+        category_name = item['categoryName'].lower()
+        amount_budgeted = item['amountBudgeted']
 
+        # a missing category is unknown by default
+        if not category_name:
+            category_name = 'unknown'
         # Create this category if it does not exist
-        if category_name not in categories:
+        elif category_name not in categories:
             category = Category(categoryName=category_name)
             storage.new(category)
             storage.save()
-            categories.update({category.categoryName: category.Id}) # update categories dict with the new category
+            # update categories dict with the new category
+            categories.update({category.categoryName: category.Id})
+        else:
+            pass
+
         # Create an entry in the junction table
         budget_category = BudgetCategory(
             budgetId=new_budget.Id,
-            categoryId=category.Id,
+            categoryId=categories.get(category_name),
             amountBudgeted=amount_budgeted,
             itemName=item_name)
 

@@ -1,14 +1,6 @@
 /* import variables */
 @import url('variables.css');
 
-
-/* initially, do not show the table, and the create budget button */
-#budget-creation-table,
-#create-budget-btn,
-#add-item-btn {
-  display: none;
-}
-
 form {
 	width: 100%;
 }

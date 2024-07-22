@@ -39,3 +39,8 @@ body {
 {
 	overflow-y: visible;
 }
+
+/* making things invisible */
+.hidden {
+	display: none;
+}
